@@ -1,0 +1,45 @@
+How to examples
+========================================================
+
+
+## Пример
+## Подключение требуемых пакетов
+```{r}
+require(quantmod)
+require(rCharts)
+suppressPackageStartupMessages(
+  require(googleVis)
+)
+```
+
+## Пример
+## Получение объекта DateTime POSIXct
+```{r}
+txt <- "Date  Time  value
+20010101 000000  0.833
+20010101 000500  0.814
+20010101 001000  0.794
+20010101 001500  0.772"
+print(txt)
+
+df <- read.table(text=txt, header=TRUE, 
+                 colClasses=c("character", "character", "numeric"))
+df$DateTime <- as.POSIXct(paste(df$Date, df$Time), format="%Y%m%d %H%M%S")
+```
+
+## Пример
+## Посмотреть датафрейм (в отдельном окне)
+```{r}
+## Посмотреть датафрейм
+print(df)
+## посмотреть датафрейм в отдельном окне
+View(df)
+#
+```
+
+You can also embed plots, for example:
+
+```{r fig.width=7, fig.height=6}
+plot(cars)
+```
+
