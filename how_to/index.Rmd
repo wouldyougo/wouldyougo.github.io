@@ -1,6 +1,11 @@
 How to examples
 ========================================================
 
+## Синтаксис Markdown 
+* [Синтаксис Markdown](http://ru.wikipedia.org/wiki/Markdown "http://ru.wikipedia.org/wiki/Markdown")
+Markdown is an easy-to-write plain text format for creating web content. 
+* See [Using Markdown with RStudio](http://www.rstudio.com/ide/docs/authoring/using_markdown) to learn more.
+* See also: [Using Equations with Markdown](http://www.rstudio.com/ide/docs/authoring/using_markdown_equations).
 
 ## Пример
 ## Подключение требуемых пакетов
@@ -32,14 +37,64 @@ df$DateTime <- as.POSIXct(paste(df$Date, df$Time), format="%Y%m%d %H%M%S")
 ```{r}
 ## Посмотреть датафрейм
 print(df)
+```
+```{r}
 ## посмотреть датафрейм в отдельном окне
+## This code block are displayed in a fixed-width font but not evaulated
+```
+```
 View(df)
-#
 ```
 
-You can also embed plots, for example:
-
-```{r fig.width=7, fig.height=6}
-plot(cars)
+## Пример
+## Опубликовать rCharts на rpubs или gist
+```{r eval=FALSE}
+require(RJSONIO)
+require(rCharts)
+names(iris) = gsub("\\.", "", names(iris))
+r1 <- rPlot(SepalLength ~ SepalWidth | Species, data = iris, 
+            color = 'Species', type = 'point')
+#r1$publish('Scatterplot', host = 'gist')
+r1$publish('Scatterplot', host = 'rpubs')
 ```
 
+## Пример
+## При возникновении ошибки
+```
+## Error: SSL certificate problem, verify that the CA cert is OK. Details:
+## error:14090086:SSL routines:SSL3_GET_SERVER_CERTIFICATE:certificate verify failed
+```
+```{r eval=FALSE}
+## Можно добавить строку в файл Rprofile 
+## c:\Program Files\R\R-3.0.2\library\base\R\Rprofile
+options(rpubs.upload.method = "internal")
+
+## другой вариант с помощью RCurl
+library(RCurl) 
+# Set SSL certs globally
+options(RCurlOptions = list(cainfo = system.file("CurlSSL", "cacert.pem", package = "RCurl")))
+```
+
+## Пример
+## reproduce the post
+```{r eval=FALSE}
+library(slidify)
+author("mydeck")
+slidify("index.Rmd")
+system('open index.html')
+publish('mydeck', host = 'dropbox')
+```
+
+
+## Пример
+## Настройка chunk options
+```{r eval=TRUE}
+library(knitr)
+# 
+opts_chunk$get()
+opts_chunk$get("results")
+opts_chunk$set(results = 'asis')
+opts_chunk$get("results")
+opts_chunk$set(fig.width=7, fig.height=5)
+opts_chunk$get()
+```

@@ -181,6 +181,15 @@ hljs.initHighlightingOnLoad();
 <body>
 <h1>How to examples</h1>
 
+<h2>Синтаксис Markdown</h2>
+
+<ul>
+<li><a href="http://ru.wikipedia.org/wiki/Markdown" title="http://ru.wikipedia.org/wiki/Markdown">Синтаксис Markdown</a>
+Markdown is an easy-to-write plain text format for creating web content. </li>
+<li>See <a href="http://www.rstudio.com/ide/docs/authoring/using_markdown">Using Markdown with RStudio</a> to learn more.</li>
+<li>See also: <a href="http://www.rstudio.com/ide/docs/authoring/using_markdown_equations">Using Equations with Markdown</a>.</li>
+</ul>
+
 <h2>Пример</h2>
 
 <h2>Подключение требуемых пакетов</h2>
@@ -244,17 +253,364 @@ print(df)
 ## 4 20010101 001500 0.772 2001-01-01 00:15:00
 </code></pre>
 
-<pre><code class="r">## посмотреть датафрейм в отдельном окне
-View(df)
+<pre><code class="r">## посмотреть датафрейм в отдельном окне This code block are displayed in a
+## fixed-width font but not evaulated
+</code></pre>
+
+<pre><code>View(df)
+</code></pre>
+
+<h2>Пример</h2>
+
+<h2>Опубликовать rCharts на rpubs или gist</h2>
+
+<pre><code class="r">require(RJSONIO)
+require(rCharts)
+names(iris) = gsub(&quot;\\.&quot;, &quot;&quot;, names(iris))
+r1 &lt;- rPlot(SepalLength ~ SepalWidth | Species, data = iris, color = &quot;Species&quot;, 
+    type = &quot;point&quot;)
+# r1$publish(&#39;Scatterplot&#39;, host = &#39;gist&#39;)
+r1$publish(&quot;Scatterplot&quot;, host = &quot;rpubs&quot;)
+</code></pre>
+
+<h2>Пример</h2>
+
+<h2>При возникновении ошибки</h2>
+
+<pre><code>## Error: SSL certificate problem, verify that the CA cert is OK. Details:
+## error:14090086:SSL routines:SSL3_GET_SERVER_CERTIFICATE:certificate verify failed
+</code></pre>
+
+<pre><code class="r">## Можно добавить строку в файл Rprofile c:\Program
+## Files\R\R-3.0.2\library\base\R\Rprofile
+options(rpubs.upload.method = &quot;internal&quot;)
+
+## другой вариант с помощью RCurl
+library(RCurl)
+# Set SSL certs globally
+options(RCurlOptions = list(cainfo = system.file(&quot;CurlSSL&quot;, &quot;cacert.pem&quot;, package = &quot;RCurl&quot;)))
+</code></pre>
+
+<h2>Пример</h2>
+
+<h2>reproduce the post</h2>
+
+<pre><code class="r">library(slidify)
+author(&quot;mydeck&quot;)
+slidify(&quot;index.Rmd&quot;)
+system(&quot;open index.html&quot;)
+publish(&quot;mydeck&quot;, host = &quot;dropbox&quot;)
+</code></pre>
+
+<h2>Пример</h2>
+
+<h2>Настройка chunk options</h2>
+
+<pre><code class="r">library(knitr)
 # 
+opts_chunk$get()
 </code></pre>
 
-<p>You can also embed plots, for example:</p>
-
-<pre><code class="r">plot(cars)
+<pre><code>## $eval
+## [1] TRUE
+## 
+## $echo
+## [1] TRUE
+## 
+## $results
+## [1] &quot;markup&quot;
+## 
+## $tidy
+## [1] TRUE
+## 
+## $cache
+## [1] FALSE
+## 
+## $dependson
+## NULL
+## 
+## $cache.path
+## [1] &quot;cache/&quot;
+## 
+## $cache.vars
+## NULL
+## 
+## $ref.label
+## NULL
+## 
+## $child
+## NULL
+## 
+## $engine
+## [1] &quot;R&quot;
+## 
+## $prompt
+## [1] FALSE
+## 
+## $comment
+## [1] &quot;##&quot;
+## 
+## $autodep
+## [1] FALSE
+## 
+## $fig.keep
+## [1] &quot;high&quot;
+## 
+## $fig.show
+## [1] &quot;asis&quot;
+## 
+## $fig.align
+## [1] &quot;default&quot;
+## 
+## $fig.path
+## [1] &quot;figure/&quot;
+## 
+## $fig.ext
+## NULL
+## 
+## $dev
+## [1] &quot;png&quot;
+## 
+## $dpi
+## [1] 72
+## 
+## $dev.args
+## NULL
+## 
+## $fig.width
+## [1] 7
+## 
+## $fig.height
+## [1] 7
+## 
+## $fig.env
+## [1] &quot;figure&quot;
+## 
+## $fig.cap
+## NULL
+## 
+## $fig.scap
+## NULL
+## 
+## $fig.lp
+## [1] &quot;fig:&quot;
+## 
+## $fig.pos
+## [1] &quot;&quot;
+## 
+## $out.width
+## NULL
+## 
+## $out.height
+## NULL
+## 
+## $out.extra
+## NULL
+## 
+## $resize.width
+## NULL
+## 
+## $resize.height
+## NULL
+## 
+## $external
+## [1] TRUE
+## 
+## $sanitize
+## [1] FALSE
+## 
+## $purl
+## [1] TRUE
+## 
+## $highlight
+## [1] TRUE
+## 
+## $size
+## [1] &quot;normalsize&quot;
+## 
+## $warning
+## [1] TRUE
+## 
+## $error
+## [1] TRUE
+## 
+## $message
+## [1] TRUE
+## 
+## $background
+## [1] &quot;#F7F7F7&quot;
+## 
+## $split
+## [1] FALSE
+## 
+## $include
+## [1] TRUE
+## 
+## $interval
+## [1] 1
+## 
+## $aniopts
+## [1] &quot;controls,loop&quot;
 </code></pre>
 
-<p><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAfgAAAGwCAMAAABy/YdMAAAAbFBMVEX9/v0AAAAAADkAAGUAOTkAOWUAOY8AZrU5AAA5ADk5AGU5OY85j9plAABlADllAGVlOQBlZjlltf2POQCPOTmPOWWPjzmPtY+P2/21ZgC1/rW1/v3ajzna24/a/v39tWX924/9/rX9/tr9/v0hhXJqAAAAJHRSTlP//////////////////////////////////////////////wBYLA0NAAAACXBIWXMAAAsSAAALEgHS3X78AAAJjElEQVR4nO3di3LbuBlA4bW7jd2snLTyXqSNGl38/u9YkVbqRKIVUsRPAjjnm061bSYIN8ckCF2gX16E9MvcB6B5GB7K8FCGhzI8lOGhDA9leCjDQxkeyvBQhocyPJThoQwPZXgow0MZHsrwUIaHMjyU4aEMD2V4KMNDGR7K8FCGhzI8lOGhDA9leCjDQxkeyvBQhocyPJThoQwPZXgow0MZHsrwUIaHMjyU4aEMD2V4KMNDGR7K8FCGhzI8lOGhDA9leCjDQxkeakz4O+UsMPyI36too8PvHtufn398GTq0ZjU2/OF52T5uP3wdOLRmNTb8/vOXHx77D61ZecZDjZ7j90/O8SXyrh7K8FAplnP3K2/uMvPTJ2iS3NwdnheGz8rdy0//+tMs59YP34Xv+aSg4kwQ/rSc2/z60TM+HxOEPy7nFs3D5nI9Z/j5xM/xtw+tWRkeyvBQhocavZx7Oq3dvLkry+gzvnn25qahNavxl/r9p9VNQ2tWzvFQhocyPJThoQwPZXgow0MZHsrwUIaHMjyU4aEMD2V4KMNDGR7K8FCGhzI8lOGhDA9leCjDQxkeyvBQhocyPJThody2HMpNjKHcthzKMx7KbcuhvKuHMjyUyzkob+6gApZzblteAs94KJdzUN7VQxkeyvBQhody23Ioty2HcttyKOd4KMNDGR7K8FCGr5JfMco0xZcK3zy04vR4O4Tha+QZD+UZD+UZT+Vdvd5heCjDQxkeyvBQhocyPJThoQwPZXgow0MZHsrwEOcv2xie4eKFWsNPZOatYQw/kx5vjZj2zzf8NOYO7xw/k9nDnzP8RHLb/s3wUG5pCuUGh1B+QwWUZzyUW5pel9vNeDLe1V+V3fI7mYDwNW1bbvh3HZdzD5tqL/WGf8/h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" alt="plot of chunk unnamed-chunk-4"/> </p>
+<pre><code class="r">opts_chunk$get(&quot;results&quot;)
+</code></pre>
+
+<pre><code>## [1] &quot;markup&quot;
+</code></pre>
+
+<pre><code class="r">opts_chunk$set(results = &quot;asis&quot;)
+opts_chunk$get(&quot;results&quot;)
+</code></pre>
+
+<pre><code>## [1] &quot;asis&quot;
+</code></pre>
+
+<pre><code class="r">opts_chunk$set(fig.width = 7, fig.height = 5)
+opts_chunk$get()
+</code></pre>
+
+<pre><code>## $eval
+## [1] TRUE
+## 
+## $echo
+## [1] TRUE
+## 
+## $results
+## [1] &quot;asis&quot;
+## 
+## $tidy
+## [1] TRUE
+## 
+## $cache
+## [1] FALSE
+## 
+## $dependson
+## NULL
+## 
+## $cache.path
+## [1] &quot;cache/&quot;
+## 
+## $cache.vars
+## NULL
+## 
+## $ref.label
+## NULL
+## 
+## $child
+## NULL
+## 
+## $engine
+## [1] &quot;R&quot;
+## 
+## $prompt
+## [1] FALSE
+## 
+## $comment
+## [1] &quot;##&quot;
+## 
+## $autodep
+## [1] FALSE
+## 
+## $fig.keep
+## [1] &quot;high&quot;
+## 
+## $fig.show
+## [1] &quot;asis&quot;
+## 
+## $fig.align
+## [1] &quot;default&quot;
+## 
+## $fig.path
+## [1] &quot;figure/&quot;
+## 
+## $fig.ext
+## NULL
+## 
+## $dev
+## [1] &quot;png&quot;
+## 
+## $dpi
+## [1] 72
+## 
+## $dev.args
+## NULL
+## 
+## $fig.width
+## [1] 7
+## 
+## $fig.height
+## [1] 5
+## 
+## $fig.env
+## [1] &quot;figure&quot;
+## 
+## $fig.cap
+## NULL
+## 
+## $fig.scap
+## NULL
+## 
+## $fig.lp
+## [1] &quot;fig:&quot;
+## 
+## $fig.pos
+## [1] &quot;&quot;
+## 
+## $out.width
+## NULL
+## 
+## $out.height
+## NULL
+## 
+## $out.extra
+## NULL
+## 
+## $resize.width
+## NULL
+## 
+## $resize.height
+## NULL
+## 
+## $external
+## [1] TRUE
+## 
+## $sanitize
+## [1] FALSE
+## 
+## $purl
+## [1] TRUE
+## 
+## $highlight
+## [1] TRUE
+## 
+## $size
+## [1] &quot;normalsize&quot;
+## 
+## $warning
+## [1] TRUE
+## 
+## $error
+## [1] TRUE
+## 
+## $message
+## [1] TRUE
+## 
+## $background
+## [1] &quot;#F7F7F7&quot;
+## 
+## $split
+## [1] FALSE
+## 
+## $include
+## [1] TRUE
+## 
+## $interval
+## [1] 1
+## 
+## $aniopts
+## [1] &quot;controls,loop&quot;
+</code></pre>
 
 </body>
 
