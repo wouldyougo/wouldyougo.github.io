@@ -1,0 +1,101 @@
+## Samples R 1
+### How to examples
+
+### Пример
+### Подключение требуемых пакетов
+```{r}
+require(quantmod)
+require(rCharts)
+suppressPackageStartupMessages(
+  require(googleVis)
+)
+```
+
+### Пример
+### Получение объекта DateTime POSIXct
+```{r}
+txt <- "Date  Time  value
+20010101 000000  0.833
+20010101 000500  0.814
+20010101 001000  0.794
+20010101 001500  0.772"
+print(txt)
+
+df <- read.table(text=txt, header=TRUE, 
+                 colClasses=c("character", "character", "numeric"))
+df$DateTime <- as.POSIXct(paste(df$Date, df$Time), format="%Y%m%d %H%M%S")
+```
+
+### Пример
+### Посмотреть датафрейм (в отдельном окне)
+```{r}
+## Посмотреть датафрейм
+print(df)
+```
+```{r}
+## посмотреть датафрейм в отдельном окне
+## This code block are displayed in a fixed-width font but not evaulated
+```
+```
+View(df)
+```
+
+### Пример
+### Опубликовать rCharts на rpubs или gist
+```{r eval=FALSE}
+require(RJSONIO)
+require(rCharts)
+names(iris) = gsub("\\.", "", names(iris))
+r1 <- rPlot(SepalLength ~ SepalWidth | Species, data = iris, 
+            color = 'Species', type = 'point')
+#r1$publish('Scatterplot', host = 'gist')
+r1$publish('Scatterplot', host = 'rpubs')
+```
+
+### Пример
+### При возникновении ошибки
+```
+## Error: SSL certificate problem, verify that the CA cert is OK. Details:
+## error:14090086:SSL routines:SSL3_GET_SERVER_CERTIFICATE:certificate verify failed
+```
+```{r eval=FALSE}
+## Можно добавить строку в файл Rprofile 
+## c:\Program Files\R\R-3.0.2\library\base\R\Rprofile
+options(rpubs.upload.method = "internal")
+
+## другой вариант с помощью RCurl
+library(RCurl) 
+# Set SSL certs globally
+options(RCurlOptions = list(cainfo = system.file("CurlSSL", "cacert.pem", package = "RCurl")))
+```
+
+### Пример
+### reproduce the post
+```{r eval=FALSE}
+library(slidify)
+author("mydeck")
+slidify("index.Rmd")
+system('open index.html')
+publish('mydeck', host = 'dropbox')
+```
+
+
+### Пример
+### Настройка chunk options
+```{r eval=TRUE}
+library(knitr)
+# 
+opts_chunk$get()
+opts_chunk$get("results")
+opts_chunk$set(results = 'asis')
+opts_chunk$get("results")
+opts_chunk$set(fig.width=7, fig.height=5)
+```
+
+```
+opts_chunk$get()
+для отключения символов комментария comment установить в NA
+knitr::opts_chunk$set(comment = NA, results = 'asis')
+или еще проще:
+{r comment = NA, results = 'asis', message = F}
+```

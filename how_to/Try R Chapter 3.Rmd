@@ -1,0 +1,25 @@
+## Try R Chapter 2
+
+### Matrices
+
+### Пример
+### Matrices
+```{r}
+matrix(0, 3, 4)
+
+# ---
+a <- 1:12
+print(a)
+matrix(a, 3, 4)
+
+# ---
+plank <- 1:8
+plank
+
+# ---
+dim(plank) <- c(2, 4)
+print(plank)
+
+# ---
+matrix(1,5,5)
+```
