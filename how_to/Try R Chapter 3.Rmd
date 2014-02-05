@@ -1,4 +1,4 @@
-## Try R Chapter 2
+## Try R Chapter 3
 
 ### Matrices
 
@@ -22,4 +22,32 @@ print(plank)
 
 # ---
 matrix(1,5,5)
+```
+
+### Пример
+### Matrix Access
+```{r}
+print(plank)
+plank[2, 3]
+plank[1,4]
+plank[1, 4] <- 0
+plank[2,]
+plank[, 4]
+plank[, 2:4]
+```
+
+### Пример
+### Matrix Plotting
+```{r}
+elevation <- matrix(1, 10, 10)
+elevation[4, 6] <- 0
+elevation
+contour(elevation)
+persp(elevation)
+persp(elevation, expand=0.2)
+# ---
+contour(volcano)
+persp(volcano, expand=0.2)
+# ---
+image(volcano)
 ```
