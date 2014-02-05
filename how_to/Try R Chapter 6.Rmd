@@ -1,0 +1,54 @@
+## Try R Chapter 6
+
+### Data Frames
+
+### Пример
+### Data Frames
+```{r} 
+chests <- c('gold', 'silver', 'gems', 'gold', 'gems')
+types <- factor(chests)
+# ---
+print(chests)
+print(types)
+levels(types)
+# ---
+weights <- c(300, 200, 100, 250, 150)
+prices <- c(9000, 5000, 12000, 7500, 18000)
+# ---
+print(weights)
+print(prices)
+# ---
+treasure <- data.frame(weights, prices, types)
+print(treasure)
+```
+
+### Пример
+### Data Frame Access
+```{r} 
+treasure[[2]]
+treasure[["weights"]]
+treasure$prices
+treasure[["types"]]
+# ---
+```
+
+### Пример
+### Loading Data Frames
+```{r} 
+#list.files()
+read.csv("targets.csv")
+read.csv("targets.csv", as.is = TRUE)
+read.csv("targets.csv", as.is = TRUE, sep=";")
+# ---
+read.table("infantry.txt", sep="\t")
+read.table("infantry.txt", sep="\t", header=TRUE)
+
+```
+### Пример
+### Merging Data Frames
+```{r} 
+targets <- read.csv("targets.csv")
+infantry <- read.table("infantry.txt", sep="\t", header=TRUE)
+# ---
+merge(x = targets, y = infantry)
+```
