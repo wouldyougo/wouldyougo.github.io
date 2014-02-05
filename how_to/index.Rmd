@@ -15,6 +15,8 @@ R examples
 * [Try R Chapter 6](Try R Chapter 5.html).
 
 #### Samples R
-* [Samples R 1](Samples 1.html).
-* [Samples R 2](Samples 2.html).
+* [Samples R 0](Samples R 0.html).
+* [Samples R 1](Samples R 1.html).
+* [Samples R 2](Samples R 2.html).
+* [Samples R 3](Samples R 3.html).
 

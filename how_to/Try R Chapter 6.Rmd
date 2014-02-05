@@ -47,8 +47,25 @@ read.table("infantry.txt", sep="\t", header=TRUE)
 ### Пример
 ### Merging Data Frames
 ```{r} 
-targets <- read.csv("targets.csv")
+targets <- read.csv("targets.csv", as.is = TRUE, sep=";")
 infantry <- read.table("infantry.txt", sep="\t", header=TRUE)
 # ---
-merge(x = targets, y = infantry)
+mrg <- merge(x = targets, y = infantry)
+mrg
+```
+
+### Пример
+### cor.test
+```{r} 
+#targets <- read.csv("targets.csv", as.is = TRUE, sep=";")
+#infantry <- read.table("infantry.txt", sep="\t", header=TRUE)
+#mrg <- merge(x = targets, y = infantry)
+#mrg
+# ---
+cor.test(mrg$Population,mrg$Infantry)
+# ---
+line <- lm(mrg$Infantry~mrg$Population)
+line
+plot(mrg$Population, mrg$Infantry)
+abline(line)
 ```

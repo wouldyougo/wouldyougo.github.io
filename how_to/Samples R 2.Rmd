@@ -1,0 +1,22 @@
+### Samples R 2
+
+## How to examples
+
+### Пример
+### Подключение требуемых пакетов
+```{r}
+require(quantmod)
+require(rCharts)
+suppressPackageStartupMessages(
+  require(googleVis)
+)
+```
+
+### Пример
+### Посмотреть датафрейм (в отдельном окне)
+```
+## Посмотреть датафрейм
+print(df)
+### Посмотреть датафрейм в отдельном окне
+View(df)
+```
