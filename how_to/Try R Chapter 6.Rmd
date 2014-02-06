@@ -36,19 +36,19 @@ treasure[["types"]]
 ### Loading Data Frames
 ```{r} 
 #list.files()
-read.csv("targets.csv")
-read.csv("targets.csv", as.is = TRUE)
-read.csv("targets.csv", as.is = TRUE, sep=";")
+read.csv("Data Try R/targets.csv")
+read.csv("Data Try R/targets.csv", as.is = TRUE)
+read.csv("Data Try R/targets.csv", as.is = TRUE, sep=";")
 # ---
-read.table("infantry.txt", sep="\t")
-read.table("infantry.txt", sep="\t", header=TRUE)
+read.table("Data Try R/infantry.txt", sep="\t")
+read.table("Data Try R/infantry.txt", sep="\t", header=TRUE)
 
 ```
 ### Пример
 ### Merging Data Frames
 ```{r} 
-targets <- read.csv("targets.csv", as.is = TRUE, sep=";")
-infantry <- read.table("infantry.txt", sep="\t", header=TRUE)
+targets <- read.csv("Data Try R/targets.csv", as.is = TRUE, sep=";")
+infantry <- read.table("Data Try R/infantry.txt", sep="\t", header=TRUE)
 # ---
 mrg <- merge(x = targets, y = infantry)
 mrg
@@ -57,8 +57,8 @@ mrg
 ### Пример
 ### cor.test
 ```{r} 
-#targets <- read.csv("targets.csv", as.is = TRUE, sep=";")
-#infantry <- read.table("infantry.txt", sep="\t", header=TRUE)
+#targets <- read.csv("Data Try R/targets.csv", as.is = TRUE, sep=";")
+#infantry <- read.table("Data Try R/infantry.txt", sep="\t", header=TRUE)
 #mrg <- merge(x = targets, y = infantry)
 #mrg
 # ---
