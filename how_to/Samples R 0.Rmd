@@ -54,10 +54,10 @@ opts_chunk$get("results")
 opts_chunk$set(fig.width=7, fig.height=5)
 ```
 
+### Пример
+### для отключения символов комментария comment установить в NA
 ```
-opts_chunk$get()
-для отключения символов комментария comment установить в NA
 knitr::opts_chunk$set(comment = NA, results = 'asis')
-или еще проще:
+#или еще проще:
 {r comment = NA, results = 'asis', message = F}
 ```

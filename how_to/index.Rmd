@@ -1,5 +1,9 @@
-R examples
-========================================================
+### R examples
+
+#### RStudio
+* [RStudio](http://www.rstudio.com/)
+* [RStudio Support](https://support.rstudio.com/hc/en-us)
+* [RStudio Documentation](https://support.rstudio.com/hc/en-us/categories/200035113-Documentation)
 
 #### Markdown
 * [Using Equations with Markdown](http://www.rstudio.com/ide/docs/authoring/using_markdown_equations)
@@ -9,9 +13,8 @@ R examples
 #### Google's R Style Guide
 * [Google's R Style Guide](http://google-styleguide.googlecode.com/svn/trunk/Rguide.xml)
 
-
 #### Try R
-* [Try R Chapter 0](Try R Chapter 8.html). Install packages
+* [Try R Chapter 0](Try R Chapter 0.html). Install packages
 * [Try R Chapter 1](Try R Chapter 1.html). Help
 * [Try R Chapter 2](Try R Chapter 2.html). Vectors
 * [Try R Chapter 3](Try R Chapter 3.html). Matrices
@@ -25,4 +28,3 @@ R examples
 * [Samples R 1](Samples R 1.html). Install packages
 * [Samples R 2](Samples R 2.html). How to examples
 * [Samples R 3](Samples R 3.html). Some Real World Samples
-

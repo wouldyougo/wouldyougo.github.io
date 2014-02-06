@@ -41,3 +41,21 @@ browseVignettes(package = "psych")
 # Displaying examples for the min function
 example(min) 
 ```
+
+### Пример
+### library(knitr)
+```{r eval=FALSE}
+library(knitr)
+library(help = "knitr")
+vignette(package = "knitr")
+browseVignettes(package = "knitr")
+```
+
+### Пример
+### knitr
+```{r eval=FALSE}
+#library(knitr)
+#library(markdown)
+knit("index.Rmd")
+markdownToHTML("index.md", "index.html")
+```

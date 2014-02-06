@@ -60,9 +60,18 @@ a + b
 a-b
 a == c(1, 99, 3)
 a < b
+```
+
+### Пример
+### Functions
+```{r}
 sin(a)
 sqrt(a)
+# ---
+rep(sqrt(16), times = 3)
+sum(1, 3, 5)
 ```
+
 
 ### Пример
 ### NA Values
