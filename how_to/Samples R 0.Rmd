@@ -1,6 +1,6 @@
 ## Samples R 0
 
-## trouble solutions 
+## trouble solutions
 
 ### Пример
 ### Опубликовать rCharts на rpubs или gist
