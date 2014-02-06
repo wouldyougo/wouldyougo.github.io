@@ -15,8 +15,8 @@ R examples
 * [Try R Chapter 6](Try R Chapter 6.html). Data Frames
 
 #### Samples R
-* [Samples R 0](Samples R 0.html). Install packages
-* [Samples R 1](Samples R 1.html). Trouble solutions
+* [Samples R 0](Samples R 0.html). Trouble solutions
+* [Samples R 1](Samples R 1.html). Install packages
 * [Samples R 2](Samples R 2.html). How to examples
 * [Samples R 3](Samples R 3.html). Some Real World Samples
 

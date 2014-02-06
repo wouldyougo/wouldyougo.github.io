@@ -179,63 +179,224 @@ hljs.initHighlightingOnLoad();
 </head>
 
 <body>
-<h3>Samples R 0</h3>
+<h2>Samples R 0</h2>
 
-<h2>install packages</h2>
-
-<h3>Пример</h3>
-
-<h3>install.packages</h3>
-
-<pre><code class="r">### library=&#39;C:/Users/user/Documents/R/win-library/3.0&#39;
-install.packages(&quot;quantmod&quot;)
-install.packages(&quot;knitr&quot;)
-</code></pre>
+<h2>trouble solutions</h2>
 
 <h3>Пример</h3>
 
-<h3>Install devtools</h3>
+<h3>Опубликовать rCharts на rpubs или gist</h3>
 
-<pre><code class="r">install.packages(&quot;devtools&quot;)
-require(devtools)
-# Please download and install Rtools 3.1 from
-# http://cran.r-project.org/bin/windows/Rtools/ and then run find_rtools().
-find_rtools()
-require(devtools)
-</code></pre>
-
-<h3>Пример</h3>
-
-<h3>Install rCharts</h3>
-
-<pre><code class="r"># You can install rCharts from github using the devtools package
-require(devtools)
-# install_github(&#39;rCharts&#39;, &#39;ramnathv&#39;)
-install_github(&quot;rCharts&quot;, &quot;ramnathv&quot;, ref = &quot;dev&quot;)
+<pre><code class="r">require(RJSONIO)
 require(rCharts)
+names(iris) = gsub(&quot;\\.&quot;, &quot;&quot;, names(iris))
+r1 &lt;- rPlot(SepalLength ~ SepalWidth | Species, data = iris, color = &quot;Species&quot;, 
+    type = &quot;point&quot;)
+# r1$publish(&#39;Scatterplot&#39;, host = &#39;gist&#39;)
+r1$publish(&quot;Scatterplot&quot;, host = &quot;rpubs&quot;)
 </code></pre>
 
 <h3>Пример</h3>
 
-<h3>Install googleVis</h3>
+<h3>При возникновении ошибки</h3>
 
-<pre><code class="r">install.packages(&quot;RJSONIO&quot;)
-# install.packages(&#39;Z:/R&amp;D/Dev Programs/De_ R/Packages/RJSONIO_1.0-3.zip&#39;,
-# repos = NULL)
-require(RJSONIO)
-install.packages(&quot;googleVis&quot;)
-# require(googleVis)
-suppressPackageStartupMessages(require(googleVis))
+<pre><code>## Error: SSL certificate problem, verify that the CA cert is OK. Details:
+## error:14090086:SSL routines:SSL3_GET_SERVER_CERTIFICATE:certificate verify failed
+</code></pre>
+
+<pre><code class="r">## Можно добавить строку в файл Rprofile c:\Program
+## Files\R\R-3.0.2\library\base\R\Rprofile
+options(rpubs.upload.method = &quot;internal&quot;)
+
+## другой вариант с помощью RCurl
+library(RCurl)
+# Set SSL certs globally
+options(RCurlOptions = list(cainfo = system.file(&quot;CurlSSL&quot;, &quot;cacert.pem&quot;, package = &quot;RCurl&quot;)))
 </code></pre>
 
 <h3>Пример</h3>
 
-<h3>Install Slidify</h3>
+<h3>reproduce the post</h3>
 
-<pre><code class="r">require(devtools)
-install_github(&quot;slidify&quot;, &quot;ramnathv&quot;)
-install_github(&quot;slidifyLibraries&quot;, &quot;ramnathv&quot;)
-library(slidify)
+<pre><code class="r">library(slidify)
+author(&quot;mydeck&quot;)
+slidify(&quot;index.Rmd&quot;)
+system(&quot;open index.html&quot;)
+publish(&quot;mydeck&quot;, host = &quot;dropbox&quot;)
+</code></pre>
+
+<h3>Пример</h3>
+
+<h3>Настройка chunk options</h3>
+
+<pre><code class="r">library(knitr)
+# 
+opts_chunk$get()
+</code></pre>
+
+<pre><code>## $eval
+## [1] TRUE
+## 
+## $echo
+## [1] TRUE
+## 
+## $results
+## [1] &quot;markup&quot;
+## 
+## $tidy
+## [1] TRUE
+## 
+## $cache
+## [1] FALSE
+## 
+## $dependson
+## NULL
+## 
+## $cache.path
+## [1] &quot;cache/&quot;
+## 
+## $cache.vars
+## NULL
+## 
+## $ref.label
+## NULL
+## 
+## $child
+## NULL
+## 
+## $engine
+## [1] &quot;R&quot;
+## 
+## $prompt
+## [1] FALSE
+## 
+## $comment
+## [1] &quot;##&quot;
+## 
+## $autodep
+## [1] FALSE
+## 
+## $fig.keep
+## [1] &quot;high&quot;
+## 
+## $fig.show
+## [1] &quot;asis&quot;
+## 
+## $fig.align
+## [1] &quot;default&quot;
+## 
+## $fig.path
+## [1] &quot;figure/&quot;
+## 
+## $fig.ext
+## NULL
+## 
+## $dev
+## [1] &quot;png&quot;
+## 
+## $dpi
+## [1] 72
+## 
+## $dev.args
+## NULL
+## 
+## $fig.width
+## [1] 7
+## 
+## $fig.height
+## [1] 7
+## 
+## $fig.env
+## [1] &quot;figure&quot;
+## 
+## $fig.cap
+## NULL
+## 
+## $fig.scap
+## NULL
+## 
+## $fig.lp
+## [1] &quot;fig:&quot;
+## 
+## $fig.pos
+## [1] &quot;&quot;
+## 
+## $out.width
+## NULL
+## 
+## $out.height
+## NULL
+## 
+## $out.extra
+## NULL
+## 
+## $resize.width
+## NULL
+## 
+## $resize.height
+## NULL
+## 
+## $external
+## [1] TRUE
+## 
+## $sanitize
+## [1] FALSE
+## 
+## $purl
+## [1] TRUE
+## 
+## $highlight
+## [1] TRUE
+## 
+## $size
+## [1] &quot;normalsize&quot;
+## 
+## $warning
+## [1] TRUE
+## 
+## $error
+## [1] TRUE
+## 
+## $message
+## [1] TRUE
+## 
+## $background
+## [1] &quot;#F7F7F7&quot;
+## 
+## $split
+## [1] FALSE
+## 
+## $include
+## [1] TRUE
+## 
+## $interval
+## [1] 1
+## 
+## $aniopts
+## [1] &quot;controls,loop&quot;
+</code></pre>
+
+<pre><code class="r">opts_chunk$get(&quot;results&quot;)
+</code></pre>
+
+<pre><code>## [1] &quot;markup&quot;
+</code></pre>
+
+<pre><code class="r">opts_chunk$set(results = &quot;asis&quot;)
+opts_chunk$get(&quot;results&quot;)
+</code></pre>
+
+<pre><code>## [1] &quot;asis&quot;
+</code></pre>
+
+<pre><code class="r">opts_chunk$set(fig.width = 7, fig.height = 5)
+</code></pre>
+
+<pre><code>opts_chunk$get()
+для отключения символов комментария comment установить в NA
+knitr::opts_chunk$set(comment = NA, results = &#39;asis&#39;)
+или еще проще:
+{r comment = NA, results = &#39;asis&#39;, message = F}
 </code></pre>
 
 </body>
