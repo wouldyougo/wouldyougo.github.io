@@ -1,11 +1,18 @@
 ### Try R Chapter 6
 
-## Data Files
+## Files
+
+### Пример
+### Files
+```
+list.files()          # список файлов в текущей директории
+setwd("how_to")       # установить текущую директорию
+source("example1.R")
+```
 
 ### Пример
 ### Loading Data From csv Files
 ```{r} 
-#list.files()
 # Need to either double up the backslashes...
 read.csv("Data Try R\\targets.csv")
 # Or replace with forward slashes
@@ -34,9 +41,9 @@ sn.csv
 
 ### Пример
 ### Loading Data From SPSS Files
+#### Using package "foreign"
 ```{r} 
-# Using package "foreign"
-#install.packages("foreign")
+# install.packages("foreign")
 library(foreign)
 sn.spss <- read.spss("Data Try R/social_network.sav", to.data.frame=T, use.value.labels=T)
 str(sn.spss)

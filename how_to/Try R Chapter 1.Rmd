@@ -1,63 +1,43 @@
 ### Try R Chapter 1
 
-## In this first chapter, we'll cover basic R expressions
+## Help
 
 ### Пример
-### Expressions
-```{r}
-# 
-1+2
-2*3
-"Строки в двойных кавычках!"
-```
-
-### Пример
-### Logical Values
-```{r}
-# 
-3 < 5
-3 == 4
-TRUE == T
-```
-
-### Пример
-### Variables
-```{r}
-# 
-x <- 24
-x / 2
-x
-x <- "Строки в двойных кавычках!"
-x
-x <- TRUE
-```
-
-### Пример
-### Functions
-```{r}
-# 
-sum(1, 3, 5)
-sqrt(16)
-rep(sqrt(16), times = 3)
-
-```
-
-### Пример
-### Help & Examples
-```
+### Help
+```{r eval=FALSE}
 help(sum)
 help(rep)
-Displaying examples for the min function:
-example(min)
 help(source)
 ```
 
 ### Пример
-### Files
+### Documentation
+```{r eval=FALSE}
+# Brings up documentation in editor window
+library(help = "psych") 
 ```
-#список файлов в текущей директории
-list.files()
-#установить текущую директорию
-setwd("how_to")
-source("example1.R")
+
+### Пример
+### Vignettes
+```{r eval=FALSE}
+# Brings up list of all vignettes
+vignette()  
+# Brings up list of vignettes (examples) in editor window
+vignette(package = "psych")  
+```
+
+### Пример
+### Vignettes in HTML
+```{r eval=FALSE}
+# HTML for all vignettes
+browseVignettes()  
+# Open web page with hyperlinks for vignette PDFs etc.
+browseVignettes(package = "psych")
+```
+
+### Пример
+### Displaying examples
+```{r} 
+# Displaying examples for the min function
+example(min) 
 ```

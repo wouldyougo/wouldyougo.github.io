@@ -1,0 +1,52 @@
+### Try R Chapter 0
+
+## Install packages
+
+### Пример
+### Lists of packages
+```{r eval=FALSE} 
+# Opens CRAN Task Views in browser
+browseURL("http://cran.r-project.org/web/views/")
+# Opens "Available CRAN Packages By Name" (from UCLA mirror)
+browseURL("http://cran.stat.ucla.edu/web/packages/available_packages_by_name.html")
+library()  # Brings up editor list of available packages
+```
+* [Opens CRAN Task Views in browser]("http://cran.r-project.org/web/views/").
+* [Opens "Available CRAN Packages By Name" (from UCLA mirror)]("http://cran.stat.ucla.edu/web/packages/available_packages_by_name.html")
+
+### Пример
+### Shows packages that are currently active
+```{r} 
+search()  # Shows packages that are currently active
+```
+
+### Пример
+### install.packages
+```{r eval=FALSE}
+# Downloads package from CRAN and installs in R
+install.packages("psych")
+```
+
+### Пример
+### Make package available
+```{r} 
+# Make package available; preferred for loading in scripts
+library("psych")
+# Preferred for loading in functions and packages
+require("psych")
+```
+
+### Пример
+### Update packages
+```{r eval=FALSE}
+# In RStudio, Tools > Check for Package Updates
+update.packages()  # Checks for updates; do periodically
+```
+
+### Пример
+### Removing packages
+```{r eval=FALSE}
+# By default, all installed packages are removed when R quits
+# Can also manually uncheck in Packages window
+detach("package:psych", unload=TRUE) # Or can use this code
+```

@@ -11,12 +11,13 @@ R examples
 
 
 #### Try R
-* [Try R Chapter 1](Try R Chapter 1.html). Basic R expressions
+* [Try R Chapter 0](Try R Chapter 8.html). Install packages
+* [Try R Chapter 1](Try R Chapter 1.html). Help
 * [Try R Chapter 2](Try R Chapter 2.html). Vectors
 * [Try R Chapter 3](Try R Chapter 3.html). Matrices
 * [Try R Chapter 4](Try R Chapter 4.html). Summary Statistics
 * [Try R Chapter 5](Try R Chapter 5.html). Factors
-* [Try R Chapter 6](Try R Chapter 6.html). Data Files
+* [Try R Chapter 6](Try R Chapter 6.html). Files
 * [Try R Chapter 7](Try R Chapter 7.html). Data Frames
 
 #### Samples R

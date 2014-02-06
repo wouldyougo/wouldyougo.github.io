@@ -13,14 +13,6 @@ suppressPackageStartupMessages(
 ```
 
 ### Пример
-### Посмотреть датафрейм (в отдельном окне)
-```
-ls()      # List objects
-print(df) # Посмотреть датафрейм
-View(df)  # Посмотреть датафрейм в отдельном окне
-```
-
-### Пример
 ### add required assets such as CSS and JS libraries
 ```{r comment = NA, results = 'asis', message = F}
 ## load the package

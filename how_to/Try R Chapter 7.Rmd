@@ -33,14 +33,29 @@ treasure[["types"]]
 ```
 
 ### Пример
+### List objects
+```{r} 
+# List objects
+ls()
+```
+
+### Пример
 ### Merging Data Frames
 ```{r} 
 targets <- read.csv("Data Try R/targets.csv", as.is = TRUE, sep=";")
 infantry <- read.table("Data Try R/infantry.txt", sep="\t", header=TRUE)
 # ---
 mrg <- merge(x = targets, y = infantry)
-mrg
+mrg # Посмотреть датафрейм
 ```
+
+### Пример
+### Посмотреть датафрейм (в отдельном окне)
+```
+print(mrg)  # Посмотреть датафрейм
+View(df)    # Посмотреть датафрейм в отдельном окне
+```
+
 
 ### Пример
 ### cor.test

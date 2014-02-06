@@ -5,7 +5,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 <meta http-equiv="x-ua-compatible" content="IE=9" >
 
-<title>Try R Chapter 6</title>
+<title>Try R Chapter 0</title>
 
 <style type="text/css">
 body, td {
@@ -179,353 +179,72 @@ hljs.initHighlightingOnLoad();
 </head>
 
 <body>
-<h3>Try R Chapter 6</h3>
+<h3>Try R Chapter 0</h3>
 
-<h2>Files</h2>
-
-<h3>Пример</h3>
-
-<h3>Files</h3>
-
-<pre><code>list.files()          # список файлов в текущей директории
-setwd(&quot;how_to&quot;)       # установить текущую директорию
-source(&quot;example1.R&quot;)
-</code></pre>
+<h2>Install packages</h2>
 
 <h3>Пример</h3>
 
-<h3>Loading Data From csv Files</h3>
+<h3>Lists of packages</h3>
 
-<pre><code class="r"># Need to either double up the backslashes...
-read.csv(&quot;Data Try R\\targets.csv&quot;)
+<pre><code class="r"># Opens CRAN Task Views in browser
+browseURL(&quot;http://cran.r-project.org/web/views/&quot;)
+# Opens &#39;Available CRAN Packages By Name&#39; (from UCLA mirror)
+browseURL(&quot;http://cran.stat.ucla.edu/web/packages/available_packages_by_name.html&quot;)
+library()  # Brings up editor list of available packages
 </code></pre>
 
-<pre><code>##      Port.Population.Worth
-## 1    Cartagena;35000;10000
-## 2  Porto Bello;49000;15000
-## 3      Havana;140000;50000
-## 4 Panama City;105000;35000
+<ul>
+<li><a href="%22http://cran.r-project.org/web/views/%22">Opens CRAN Task Views in browser</a>.</li>
+<li><a href="%22http://cran.stat.ucla.edu/web/packages/available_packages_by_name.html%22">Opens &ldquo;Available CRAN Packages By Name&rdquo; (from UCLA mirror)</a></li>
+</ul>
+
+<h3>Пример</h3>
+
+<h3>Shows packages that are currently active</h3>
+
+<pre><code class="r">search()  # Shows packages that are currently active
 </code></pre>
 
-<pre><code class="r"># Or replace with forward slashes
-read.csv(&quot;Data Try R/targets.csv&quot;)
-</code></pre>
-
-<pre><code>##      Port.Population.Worth
-## 1    Cartagena;35000;10000
-## 2  Porto Bello;49000;15000
-## 3      Havana;140000;50000
-## 4 Panama City;105000;35000
-</code></pre>
-
-<pre><code class="r">read.csv(&quot;Data Try R/targets.csv&quot;, as.is = TRUE)
-</code></pre>
-
-<pre><code>##      Port.Population.Worth
-## 1    Cartagena;35000;10000
-## 2  Porto Bello;49000;15000
-## 3      Havana;140000;50000
-## 4 Panama City;105000;35000
-</code></pre>
-
-<pre><code class="r">read.csv(&quot;Data Try R/targets.csv&quot;, as.is = TRUE, sep = &quot;;&quot;)
-</code></pre>
-
-<pre><code>##          Port Population Worth
-## 1   Cartagena      35000 10000
-## 2 Porto Bello      49000 15000
-## 3      Havana     140000 50000
-## 4 Panama City     105000 35000
-</code></pre>
-
-<pre><code class="r">read.csv(&quot;Data Try R/targets.csv&quot;, as.is = TRUE, sep = &quot;;&quot;, header = T)
-</code></pre>
-
-<pre><code>##          Port Population Worth
-## 1   Cartagena      35000 10000
-## 2 Porto Bello      49000 15000
-## 3      Havana     140000 50000
-## 4 Panama City     105000 35000
+<pre><code>##  [1] &quot;.GlobalEnv&quot;        &quot;package:knitr&quot;     &quot;package:stats&quot;    
+##  [4] &quot;package:graphics&quot;  &quot;package:grDevices&quot; &quot;package:utils&quot;    
+##  [7] &quot;package:datasets&quot;  &quot;package:methods&quot;   &quot;Autoloads&quot;        
+## [10] &quot;package:base&quot;
 </code></pre>
 
 <h3>Пример</h3>
 
-<h3>Loading Data From txt Files</h3>
+<h3>install.packages</h3>
 
-<pre><code class="r"># list.files()
-read.table(&quot;Data Try R/infantry.txt&quot;, sep = &quot;\t&quot;)
-</code></pre>
-
-<pre><code>##            V1       V2
-## 1        Port Infantry
-## 2 Porto Bello      700
-## 3   Cartagena      500
-## 4 Panama City     1500
-## 5      Havana     2000
-</code></pre>
-
-<pre><code class="r">read.table(&quot;Data Try R/infantry.txt&quot;, sep = &quot;\t&quot;, header = TRUE)
-</code></pre>
-
-<pre><code>##          Port Infantry
-## 1 Porto Bello      700
-## 2   Cartagena      500
-## 3 Panama City     1500
-## 4      Havana     2000
+<pre><code class="r"># Downloads package from CRAN and installs in R
+install.packages(&quot;psych&quot;)
 </code></pre>
 
 <h3>Пример</h3>
 
-<h3>Loading Data From csv Files</h3>
+<h3>Make package available</h3>
 
-<pre><code class="r">sn.csv &lt;- read.csv(&quot;Data Try R/social_network.csv&quot;, header = T)
-str(sn.csv)
-</code></pre>
-
-<pre><code>## &#39;data.frame&#39;:    202 obs. of  5 variables:
-##  $ ID    : int  1 2 3 4 5 6 7 8 9 10 ...
-##  $ Gender: Factor w/ 3 levels &quot;&quot;,&quot;female&quot;,&quot;male&quot;: 3 2 3 2 3 2 2 3 2 2 ...
-##  $ Age   : int  24 26 54 42 54 21 NA 63 25 21 ...
-##  $ Site  : Factor w/ 6 levels &quot;Facebook&quot;,&quot;LinkedIn&quot;,..: 4 1 1 1 4 1 4 4 4 1 ...
-##  $ Times : int  0 20 2 7 NA 3 NA 0 NA 14 ...
-</code></pre>
-
-<pre><code class="r">sn.csv
-</code></pre>
-
-<pre><code>##      ID Gender Age     Site Times
-## 1     1   male  24     None     0
-## 2     2 female  26 Facebook    20
-## 3     3   male  54 Facebook     2
-## 4     4 female  42 Facebook     7
-## 5     5   male  54     None    NA
-## 6     6 female  21 Facebook     3
-## 7     7 female  NA     None    NA
-## 8     8   male  63     None     0
-## 9     9 female  25     None    NA
-## 10   10 female  21 Facebook    14
-## 11   11 female  18 Facebook    15
-## 12   12 female  18  MySpace     6
-## 13   13   male  19    Other     1
-## 14   14 female  NA  MySpace   200
-## 15   15 female  52     None     0
-## 16   16 female  28  MySpace     3
-## 17   17   male  21 Facebook    10
-## 18   18   male  18     None    NA
-## 19   19 female  24    Other     7
-## 20   20 female   6 LinkedIn    NA
-## 21   21 female  26 Facebook     1
-## 22   22   male  28 Facebook     7
-## 23   23 female  39 Facebook    15
-## 24   24   male  55     None    NA
-## 25   25 female  26 Facebook    10
-## 26   26 female  44     None     0
-## 27   27 female  29 Facebook    10
-## 28   28   male  28     None    NA
-## 29   29   male  45    Other     5
-## 30   30   male  17 Facebook   704
-## 31   31 female  23 Facebook    15
-## 32   32 female  46     None     0
-## 33   33 female  22  MySpace    40
-## 34   34   male  12  MySpace    12
-## 35   35 female  15 Facebook     1
-## 36   36   male  55     None    NA
-## 37   37   male  22 Facebook     4
-## 38   38   male  NA     None     0
-## 39   39   male  39  MySpace     1
-## 40   40 female  37  MySpace    NA
-## 41   41 female  28 Facebook    25
-## 42   42 female  23 Facebook    10
-## 43   43 female  25    Other    NA
-## 44   44   male  43    Other     2
-## 45   45   male  31 Facebook     5
-## 46   46   male  70 Facebook    40
-## 47   47 female  41  MySpace     7
-## 48   48   male  64 Facebook     1
-## 49   49   male  30 Facebook    15
-## 50   50   male  41 Facebook    12
-## 51   51   male  25     None     0
-## 52   52 female  17  MySpace    20
-## 53   53 female  28  MySpace   100
-## 54   54   male  18 Facebook    25
-## 55   55   male  58     None    NA
-## 56   56   male  33 Facebook     7
-## 57   57 female  15    Other    NA
-## 58   58 female  20     None     0
-## 59   59 female  23 Facebook    12
-## 60   60   male  45     None     0
-## 61   61 female  21 Facebook    10
-## 62   62         NA Facebook     6
-## 63   63   male  57 Facebook     3
-## 64   64   male  24 Facebook    12
-## 65   65   male  55 Facebook     1
-## 66   66   male  NA Facebook     7
-## 67   67 female  20 Facebook    40
-## 68   68   male  63 Facebook     3
-## 69   69   male  18 Facebook     7
-## 70   70   male  45 Facebook    15
-## 71   71   male  38     None     0
-## 72   72 female  39     None    NA
-## 73   73 female  39     None     0
-## 74   74 female  18     None    NA
-## 75   75 female  22 Facebook    21
-## 76   76 female  56 Facebook    25
-## 77   77 female  27 Facebook     5
-## 78   78 female  24 Facebook     2
-## 79   79 female  20 Facebook    21
-## 80   80 female  21 Facebook     4
-## 81   81   male  17 Facebook    NA
-## 82   82 female  27 Facebook    10
-## 83   83 female  NA     None    NA
-## 84   84 female  48     None     0
-## 85   85   male  30 Facebook     3
-## 86   86 female  36     None     0
-## 87   87 female  NA Facebook    55
-## 88   88 female  19  MySpace     7
-## 89   89   male  21     None    NA
-## 90   90   male  45     None    NA
-## 91   91   male  NA Facebook     1
-## 92   92   male  45     None     0
-## 93   93   male  14  MySpace     3
-## 94   94   male  30 Facebook     1
-## 95   95 female  54  MySpace     1
-## 96   96   male  25 Facebook    10
-## 97   97   male  33 Facebook    15
-## 98   98   male  NA     None     1
-## 99   99   male  29     None    NA
-## 100 100   male  26 Facebook     1
-## 101 101 female  30 Facebook     3
-## 102 102 female  33  Twitter   100
-## 103 103   male  46     None     1
-## 104 104   male  22 Facebook     2
-## 105 105 female  47     None     0
-## 106 106 female  36 Facebook    20
-## 107 107   male  37     None     0
-## 108 108 female  22 Facebook    20
-## 109 109   male  18 Facebook     7
-## 110 110 female  50     None     0
-## 111 111   male  32    Other     1
-## 112 112   male  47     None    NA
-## 113 113   male  24     None     0
-## 114 114 female  33  MySpace     8
-## 115 115 female  31     None     0
-## 116 116   male  18 Facebook     6
-## 117 117   male  34 Facebook     5
-## 118 118   male  19     None     0
-## 119 119 female  24 Facebook     5
-## 120 120   male  NA     None     0
-## 121 121   male  26     None     0
-## 122 122 female  27    Other     4
-## 123 123 female  46     None    NA
-## 124 124 female  49 Facebook     1
-## 125 125 female  20 Facebook     7
-## 126 126   male  57     None     0
-## 127 127 female  21 Facebook     8
-## 128 128   male  30 Facebook    10
-## 129 129   male  22 Facebook     4
-## 130 130 female  39 Facebook     3
-## 131 131 female  23  MySpace     2
-## 132 132 female  19 Facebook     7
-## 133 133 female  28     None    NA
-## 134 134 female  37     None    NA
-## 135 135   male  47  MySpace     4
-## 136 136 female  26  MySpace     5
-## 137 137   male  17 Facebook    14
-## 138 138 female  23  MySpace     2
-## 139 139 female  32 Facebook     7
-## 140 140   male  20 Facebook     7
-## 141 141 female  50     None    NA
-## 142 142 female  18 Facebook    25
-## 143 143   male  NA     None     0
-## 144 144   male  44 Facebook     2
-## 145 145   male  34 Facebook    30
-## 146 146   male  44     None     3
-## 147 147   male  20     None     0
-## 148 148   male  40 Facebook     3
-## 149 149   male  19 Facebook     4
-## 150 150 female  42     None    40
-## 151 151 female  39 Facebook    10
-## 152 152   male  16  Twitter    42
-## 153 153   male  29 Facebook     5
-## 154 154   male  40  Twitter    12
-## 155 155   male  18 Facebook    35
-## 156 156 female  19     None     0
-## 157 157   male  39     None     0
-## 158 158   male  18 Facebook    21
-## 159 159 female  15     None     0
-## 160 160   male  43 Facebook     5
-## 161 161   male  50     None    NA
-## 162 162   male  NA     None     0
-## 163 163 female  28     None    NA
-## 164 164 female  20  MySpace     2
-## 165 165 female  21  MySpace    10
-## 166 166 female  21 Facebook     3
-## 167 167   male  45     None     0
-## 168 168 female  19 Facebook     2
-## 169 169   male  19 Facebook   100
-## 170 170   male  25 Facebook    25
-## 171 171   male  38 Facebook     1
-## 172 172   male  28     None    NA
-## 173 173 female  21     None     0
-## 174 174 female  20 Facebook    10
-## 175 175   male  30     None     0
-## 176 176   male  50     None     0
-## 177 177   male  48     None     2
-## 178 178   male  32     None     0
-## 179 179 female  59    Other     1
-## 180 180 female  17  MySpace     3
-## 181 181   male  27     None    NA
-## 182 182 female  27     None     3
-## 183 183 female  18 Facebook    30
-## 184 184 female  29 Facebook     7
-## 185 185 female  45     None     0
-## 186 186   male  39     None     0
-## 187 187   male  40     None     0
-## 188 188   male  38    Other     7
-## 189 189 female  24  MySpace     2
-## 190 190 female  31 Facebook     7
-## 191 191   male  51 LinkedIn     2
-## 192 192   male  43     None    NA
-## 193 193   male  39 Facebook     2
-## 194 194 female  27     None    NA
-## 195 195 female  19 Facebook    35
-## 196 196   male  48 LinkedIn    25
-## 197 197   male  26    Other    10
-## 198 198 female  22 Facebook     5
-## 199 199   male  39     None    NA
-## 200 200   male  22     None     5
-## 201 201 female  28 Facebook     3
-## 202 202 female  17 Facebook     8
+<pre><code class="r"># Make package available; preferred for loading in scripts
+library(&quot;psych&quot;)
+# Preferred for loading in functions and packages
+require(&quot;psych&quot;)
 </code></pre>
 
 <h3>Пример</h3>
 
-<h3>Loading Data From SPSS Files</h3>
+<h3>Update packages</h3>
 
-<h4>Using package &ldquo;foreign&rdquo;</h4>
-
-<pre><code class="r"># install.packages(&#39;foreign&#39;)
-library(foreign)
-sn.spss &lt;- read.spss(&quot;Data Try R/social_network.sav&quot;, to.data.frame = T, use.value.labels = T)
+<pre><code class="r"># In RStudio, Tools &gt; Check for Package Updates
+update.packages()  # Checks for updates; do periodically
 </code></pre>
 
-<pre><code>## Warning: Data Try R/social_network.sav: Unrecognized record type 7,
-## subtype 18 encountered in system file
-</code></pre>
+<h3>Пример</h3>
 
-<pre><code class="r">str(sn.spss)
-</code></pre>
+<h3>Removing packages</h3>
 
-<pre><code>## &#39;data.frame&#39;:    202 obs. of  6 variables:
-##  $ ID    : num  1 2 3 4 5 6 7 8 9 10 ...
-##  $ Gender: Factor w/ 3 levels &quot;           &quot;,..: 3 2 3 2 3 2 2 3 2 2 ...
-##  $ Female: Factor w/ 2 levels &quot;Male&quot;,&quot;Female&quot;: 1 2 1 2 1 2 2 1 2 2 ...
-##  $ Age   : num  24 26 54 42 54 21 NA 63 25 21 ...
-##  $ Site  : Factor w/ 6 levels &quot;Facebook   &quot;,..: 4 1 1 1 4 1 4 4 4 1 ...
-##  $ Times : num  0 20 2 7 NA 3 NA 0 NA 14 ...
-##  - attr(*, &quot;variable.labels&quot;)= Named chr  &quot;&quot; &quot;Gender of Participant&quot; &quot;Is Participant Female?&quot; &quot;Age of Participant&quot; ...
-##   ..- attr(*, &quot;names&quot;)= chr  &quot;ID&quot; &quot;Gender&quot; &quot;Female&quot; &quot;Age&quot; ...
-##  - attr(*, &quot;codepage&quot;)= int 1252
+<pre><code class="r"># By default, all installed packages are removed when R quits Can also
+# manually uncheck in Packages window
+detach(&quot;package:psych&quot;, unload = TRUE)  # Or can use this code
 </code></pre>
 
 </body>
