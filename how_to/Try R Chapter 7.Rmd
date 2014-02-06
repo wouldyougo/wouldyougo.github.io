@@ -1,0 +1,59 @@
+### Try R Chapter 7
+
+## Data Frames
+
+### Пример
+### Data Frames
+```{r} 
+chests <- c('gold', 'silver', 'gems', 'gold', 'gems')
+types <- factor(chests)
+# ---
+print(chests)
+print(types)
+levels(types)
+# ---
+weights <- c(300, 200, 100, 250, 150)
+prices <- c(9000, 5000, 12000, 7500, 18000)
+# ---
+print(weights)
+print(prices)
+# ---
+treasure <- data.frame(weights, prices, types)
+print(treasure)
+```
+
+### Пример
+### Data Frame Access
+```{r} 
+treasure[[2]]
+treasure[["weights"]]
+treasure$prices
+treasure[["types"]]
+# ---
+```
+
+### Пример
+### Merging Data Frames
+```{r} 
+targets <- read.csv("Data Try R/targets.csv", as.is = TRUE, sep=";")
+infantry <- read.table("Data Try R/infantry.txt", sep="\t", header=TRUE)
+# ---
+mrg <- merge(x = targets, y = infantry)
+mrg
+```
+
+### Пример
+### cor.test
+```{r} 
+#targets <- read.csv("Data Try R/targets.csv", as.is = TRUE, sep=";")
+#infantry <- read.table("Data Try R/infantry.txt", sep="\t", header=TRUE)
+#mrg <- merge(x = targets, y = infantry)
+#mrg
+# ---
+cor.test(mrg$Population,mrg$Infantry)
+# ---
+line <- lm(mrg$Infantry~mrg$Population)
+line
+plot(mrg$Population, mrg$Infantry)
+abline(line)
+```

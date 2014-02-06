@@ -1,6 +1,6 @@
-## Try R Chapter 1
+### Try R Chapter 1
 
-### In this first chapter, we'll cover basic R expressions
+## In this first chapter, we'll cover basic R expressions
 
 ### Пример
 ### Expressions

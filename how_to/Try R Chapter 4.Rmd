@@ -1,6 +1,6 @@
-## Try R Chapter 4
+### Try R Chapter 4
 
-### Summary Statistics
+## Summary Statistics
 
 ### Пример
 ### Mean

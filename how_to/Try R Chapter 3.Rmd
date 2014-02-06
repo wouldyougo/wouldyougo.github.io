@@ -1,6 +1,6 @@
-## Try R Chapter 3
+### Try R Chapter 3
 
-### Matrices
+## Matrices
 
 ### Пример
 ### Matrices

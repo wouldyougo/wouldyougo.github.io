@@ -5,7 +5,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 <meta http-equiv="x-ua-compatible" content="IE=9" >
 
-<title>Try R Chapter 6</title>
+<title>Try R Chapter 7</title>
 
 <style type="text/css">
 body, td {
@@ -179,343 +179,157 @@ hljs.initHighlightingOnLoad();
 </head>
 
 <body>
-<h2>Try R Chapter 6</h2>
+<h2>Try R Chapter 7</h2>
 
-<h3>Data Files</h3>
-
-<h3>Пример</h3>
-
-<h3>Loading Data From csv Files</h3>
-
-<pre><code class="r"># list.files() Need to either double up the backslashes...
-read.csv(&quot;Data Try R\\targets.csv&quot;)
-</code></pre>
-
-<pre><code>##      Port.Population.Worth
-## 1    Cartagena;35000;10000
-## 2  Porto Bello;49000;15000
-## 3      Havana;140000;50000
-## 4 Panama City;105000;35000
-</code></pre>
-
-<pre><code class="r"># Or replace with forward slashes
-read.csv(&quot;Data Try R/targets.csv&quot;)
-</code></pre>
-
-<pre><code>##      Port.Population.Worth
-## 1    Cartagena;35000;10000
-## 2  Porto Bello;49000;15000
-## 3      Havana;140000;50000
-## 4 Panama City;105000;35000
-</code></pre>
-
-<pre><code class="r">read.csv(&quot;Data Try R/targets.csv&quot;, as.is = TRUE)
-</code></pre>
-
-<pre><code>##      Port.Population.Worth
-## 1    Cartagena;35000;10000
-## 2  Porto Bello;49000;15000
-## 3      Havana;140000;50000
-## 4 Panama City;105000;35000
-</code></pre>
-
-<pre><code class="r">read.csv(&quot;Data Try R/targets.csv&quot;, as.is = TRUE, sep = &quot;;&quot;)
-</code></pre>
-
-<pre><code>##          Port Population Worth
-## 1   Cartagena      35000 10000
-## 2 Porto Bello      49000 15000
-## 3      Havana     140000 50000
-## 4 Panama City     105000 35000
-</code></pre>
-
-<pre><code class="r">read.csv(&quot;Data Try R/targets.csv&quot;, as.is = TRUE, sep = &quot;;&quot;, header = T)
-</code></pre>
-
-<pre><code>##          Port Population Worth
-## 1   Cartagena      35000 10000
-## 2 Porto Bello      49000 15000
-## 3      Havana     140000 50000
-## 4 Panama City     105000 35000
-</code></pre>
+<h3>Data Frames</h3>
 
 <h3>Пример</h3>
 
-<h3>Loading Data From txt Files</h3>
+<h3>Data Frames</h3>
 
-<pre><code class="r"># list.files()
-read.table(&quot;Data Try R/infantry.txt&quot;, sep = &quot;\t&quot;)
+<pre><code class="r">chests &lt;- c(&quot;gold&quot;, &quot;silver&quot;, &quot;gems&quot;, &quot;gold&quot;, &quot;gems&quot;)
+types &lt;- factor(chests)
+# ---
+print(chests)
 </code></pre>
 
-<pre><code>##            V1       V2
-## 1        Port Infantry
-## 2 Porto Bello      700
-## 3   Cartagena      500
-## 4 Panama City     1500
-## 5      Havana     2000
+<pre><code>## [1] &quot;gold&quot;   &quot;silver&quot; &quot;gems&quot;   &quot;gold&quot;   &quot;gems&quot;
 </code></pre>
 
-<pre><code class="r">read.table(&quot;Data Try R/infantry.txt&quot;, sep = &quot;\t&quot;, header = TRUE)
+<pre><code class="r">print(types)
 </code></pre>
 
-<pre><code>##          Port Infantry
-## 1 Porto Bello      700
-## 2   Cartagena      500
-## 3 Panama City     1500
-## 4      Havana     2000
+<pre><code>## [1] gold   silver gems   gold   gems  
+## Levels: gems gold silver
+</code></pre>
+
+<pre><code class="r">levels(types)
+</code></pre>
+
+<pre><code>## [1] &quot;gems&quot;   &quot;gold&quot;   &quot;silver&quot;
+</code></pre>
+
+<pre><code class="r"># ---
+weights &lt;- c(300, 200, 100, 250, 150)
+prices &lt;- c(9000, 5000, 12000, 7500, 18000)
+# ---
+print(weights)
+</code></pre>
+
+<pre><code>## [1] 300 200 100 250 150
+</code></pre>
+
+<pre><code class="r">print(prices)
+</code></pre>
+
+<pre><code>## [1]  9000  5000 12000  7500 18000
+</code></pre>
+
+<pre><code class="r"># ---
+treasure &lt;- data.frame(weights, prices, types)
+print(treasure)
+</code></pre>
+
+<pre><code>##   weights prices  types
+## 1     300   9000   gold
+## 2     200   5000 silver
+## 3     100  12000   gems
+## 4     250   7500   gold
+## 5     150  18000   gems
 </code></pre>
 
 <h3>Пример</h3>
 
-<h3>Loading Data From csv Files</h3>
+<h3>Data Frame Access</h3>
 
-<pre><code class="r">sn.csv &lt;- read.csv(&quot;Data Try R/social_network.csv&quot;, header = T)
-str(sn.csv)
+<pre><code class="r">treasure[[2]]
 </code></pre>
 
-<pre><code>## &#39;data.frame&#39;:    202 obs. of  5 variables:
-##  $ ID    : int  1 2 3 4 5 6 7 8 9 10 ...
-##  $ Gender: Factor w/ 3 levels &quot;&quot;,&quot;female&quot;,&quot;male&quot;: 3 2 3 2 3 2 2 3 2 2 ...
-##  $ Age   : int  24 26 54 42 54 21 NA 63 25 21 ...
-##  $ Site  : Factor w/ 6 levels &quot;Facebook&quot;,&quot;LinkedIn&quot;,..: 4 1 1 1 4 1 4 4 4 1 ...
-##  $ Times : int  0 20 2 7 NA 3 NA 0 NA 14 ...
+<pre><code>## [1]  9000  5000 12000  7500 18000
 </code></pre>
 
-<pre><code class="r">sn.csv
+<pre><code class="r">treasure[[&quot;weights&quot;]]
 </code></pre>
 
-<pre><code>##      ID Gender Age     Site Times
-## 1     1   male  24     None     0
-## 2     2 female  26 Facebook    20
-## 3     3   male  54 Facebook     2
-## 4     4 female  42 Facebook     7
-## 5     5   male  54     None    NA
-## 6     6 female  21 Facebook     3
-## 7     7 female  NA     None    NA
-## 8     8   male  63     None     0
-## 9     9 female  25     None    NA
-## 10   10 female  21 Facebook    14
-## 11   11 female  18 Facebook    15
-## 12   12 female  18  MySpace     6
-## 13   13   male  19    Other     1
-## 14   14 female  NA  MySpace   200
-## 15   15 female  52     None     0
-## 16   16 female  28  MySpace     3
-## 17   17   male  21 Facebook    10
-## 18   18   male  18     None    NA
-## 19   19 female  24    Other     7
-## 20   20 female   6 LinkedIn    NA
-## 21   21 female  26 Facebook     1
-## 22   22   male  28 Facebook     7
-## 23   23 female  39 Facebook    15
-## 24   24   male  55     None    NA
-## 25   25 female  26 Facebook    10
-## 26   26 female  44     None     0
-## 27   27 female  29 Facebook    10
-## 28   28   male  28     None    NA
-## 29   29   male  45    Other     5
-## 30   30   male  17 Facebook   704
-## 31   31 female  23 Facebook    15
-## 32   32 female  46     None     0
-## 33   33 female  22  MySpace    40
-## 34   34   male  12  MySpace    12
-## 35   35 female  15 Facebook     1
-## 36   36   male  55     None    NA
-## 37   37   male  22 Facebook     4
-## 38   38   male  NA     None     0
-## 39   39   male  39  MySpace     1
-## 40   40 female  37  MySpace    NA
-## 41   41 female  28 Facebook    25
-## 42   42 female  23 Facebook    10
-## 43   43 female  25    Other    NA
-## 44   44   male  43    Other     2
-## 45   45   male  31 Facebook     5
-## 46   46   male  70 Facebook    40
-## 47   47 female  41  MySpace     7
-## 48   48   male  64 Facebook     1
-## 49   49   male  30 Facebook    15
-## 50   50   male  41 Facebook    12
-## 51   51   male  25     None     0
-## 52   52 female  17  MySpace    20
-## 53   53 female  28  MySpace   100
-## 54   54   male  18 Facebook    25
-## 55   55   male  58     None    NA
-## 56   56   male  33 Facebook     7
-## 57   57 female  15    Other    NA
-## 58   58 female  20     None     0
-## 59   59 female  23 Facebook    12
-## 60   60   male  45     None     0
-## 61   61 female  21 Facebook    10
-## 62   62         NA Facebook     6
-## 63   63   male  57 Facebook     3
-## 64   64   male  24 Facebook    12
-## 65   65   male  55 Facebook     1
-## 66   66   male  NA Facebook     7
-## 67   67 female  20 Facebook    40
-## 68   68   male  63 Facebook     3
-## 69   69   male  18 Facebook     7
-## 70   70   male  45 Facebook    15
-## 71   71   male  38     None     0
-## 72   72 female  39     None    NA
-## 73   73 female  39     None     0
-## 74   74 female  18     None    NA
-## 75   75 female  22 Facebook    21
-## 76   76 female  56 Facebook    25
-## 77   77 female  27 Facebook     5
-## 78   78 female  24 Facebook     2
-## 79   79 female  20 Facebook    21
-## 80   80 female  21 Facebook     4
-## 81   81   male  17 Facebook    NA
-## 82   82 female  27 Facebook    10
-## 83   83 female  NA     None    NA
-## 84   84 female  48     None     0
-## 85   85   male  30 Facebook     3
-## 86   86 female  36     None     0
-## 87   87 female  NA Facebook    55
-## 88   88 female  19  MySpace     7
-## 89   89   male  21     None    NA
-## 90   90   male  45     None    NA
-## 91   91   male  NA Facebook     1
-## 92   92   male  45     None     0
-## 93   93   male  14  MySpace     3
-## 94   94   male  30 Facebook     1
-## 95   95 female  54  MySpace     1
-## 96   96   male  25 Facebook    10
-## 97   97   male  33 Facebook    15
-## 98   98   male  NA     None     1
-## 99   99   male  29     None    NA
-## 100 100   male  26 Facebook     1
-## 101 101 female  30 Facebook     3
-## 102 102 female  33  Twitter   100
-## 103 103   male  46     None     1
-## 104 104   male  22 Facebook     2
-## 105 105 female  47     None     0
-## 106 106 female  36 Facebook    20
-## 107 107   male  37     None     0
-## 108 108 female  22 Facebook    20
-## 109 109   male  18 Facebook     7
-## 110 110 female  50     None     0
-## 111 111   male  32    Other     1
-## 112 112   male  47     None    NA
-## 113 113   male  24     None     0
-## 114 114 female  33  MySpace     8
-## 115 115 female  31     None     0
-## 116 116   male  18 Facebook     6
-## 117 117   male  34 Facebook     5
-## 118 118   male  19     None     0
-## 119 119 female  24 Facebook     5
-## 120 120   male  NA     None     0
-## 121 121   male  26     None     0
-## 122 122 female  27    Other     4
-## 123 123 female  46     None    NA
-## 124 124 female  49 Facebook     1
-## 125 125 female  20 Facebook     7
-## 126 126   male  57     None     0
-## 127 127 female  21 Facebook     8
-## 128 128   male  30 Facebook    10
-## 129 129   male  22 Facebook     4
-## 130 130 female  39 Facebook     3
-## 131 131 female  23  MySpace     2
-## 132 132 female  19 Facebook     7
-## 133 133 female  28     None    NA
-## 134 134 female  37     None    NA
-## 135 135   male  47  MySpace     4
-## 136 136 female  26  MySpace     5
-## 137 137   male  17 Facebook    14
-## 138 138 female  23  MySpace     2
-## 139 139 female  32 Facebook     7
-## 140 140   male  20 Facebook     7
-## 141 141 female  50     None    NA
-## 142 142 female  18 Facebook    25
-## 143 143   male  NA     None     0
-## 144 144   male  44 Facebook     2
-## 145 145   male  34 Facebook    30
-## 146 146   male  44     None     3
-## 147 147   male  20     None     0
-## 148 148   male  40 Facebook     3
-## 149 149   male  19 Facebook     4
-## 150 150 female  42     None    40
-## 151 151 female  39 Facebook    10
-## 152 152   male  16  Twitter    42
-## 153 153   male  29 Facebook     5
-## 154 154   male  40  Twitter    12
-## 155 155   male  18 Facebook    35
-## 156 156 female  19     None     0
-## 157 157   male  39     None     0
-## 158 158   male  18 Facebook    21
-## 159 159 female  15     None     0
-## 160 160   male  43 Facebook     5
-## 161 161   male  50     None    NA
-## 162 162   male  NA     None     0
-## 163 163 female  28     None    NA
-## 164 164 female  20  MySpace     2
-## 165 165 female  21  MySpace    10
-## 166 166 female  21 Facebook     3
-## 167 167   male  45     None     0
-## 168 168 female  19 Facebook     2
-## 169 169   male  19 Facebook   100
-## 170 170   male  25 Facebook    25
-## 171 171   male  38 Facebook     1
-## 172 172   male  28     None    NA
-## 173 173 female  21     None     0
-## 174 174 female  20 Facebook    10
-## 175 175   male  30     None     0
-## 176 176   male  50     None     0
-## 177 177   male  48     None     2
-## 178 178   male  32     None     0
-## 179 179 female  59    Other     1
-## 180 180 female  17  MySpace     3
-## 181 181   male  27     None    NA
-## 182 182 female  27     None     3
-## 183 183 female  18 Facebook    30
-## 184 184 female  29 Facebook     7
-## 185 185 female  45     None     0
-## 186 186   male  39     None     0
-## 187 187   male  40     None     0
-## 188 188   male  38    Other     7
-## 189 189 female  24  MySpace     2
-## 190 190 female  31 Facebook     7
-## 191 191   male  51 LinkedIn     2
-## 192 192   male  43     None    NA
-## 193 193   male  39 Facebook     2
-## 194 194 female  27     None    NA
-## 195 195 female  19 Facebook    35
-## 196 196   male  48 LinkedIn    25
-## 197 197   male  26    Other    10
-## 198 198 female  22 Facebook     5
-## 199 199   male  39     None    NA
-## 200 200   male  22     None     5
-## 201 201 female  28 Facebook     3
-## 202 202 female  17 Facebook     8
+<pre><code>## [1] 300 200 100 250 150
+</code></pre>
+
+<pre><code class="r">treasure$prices
+</code></pre>
+
+<pre><code>## [1]  9000  5000 12000  7500 18000
+</code></pre>
+
+<pre><code class="r">treasure[[&quot;types&quot;]]
+</code></pre>
+
+<pre><code>## [1] gold   silver gems   gold   gems  
+## Levels: gems gold silver
+</code></pre>
+
+<pre><code class="r"># ---
 </code></pre>
 
 <h3>Пример</h3>
 
-<h3>Loading Data From SPSS Files</h3>
+<h3>Merging Data Frames</h3>
 
-<pre><code class="r"># Using package &#39;foreign&#39; install.packages(&#39;foreign&#39;)
-library(foreign)
-sn.spss &lt;- read.spss(&quot;Data Try R/social_network.sav&quot;, to.data.frame = T, use.value.labels = T)
+<pre><code class="r">targets &lt;- read.csv(&quot;Data Try R/targets.csv&quot;, as.is = TRUE, sep = &quot;;&quot;)
+infantry &lt;- read.table(&quot;Data Try R/infantry.txt&quot;, sep = &quot;\t&quot;, header = TRUE)
+# ---
+mrg &lt;- merge(x = targets, y = infantry)
+mrg
 </code></pre>
 
-<pre><code>## Warning: Data Try R/social_network.sav: Unrecognized record type 7,
-## subtype 18 encountered in system file
+<pre><code>##          Port Population Worth Infantry
+## 1   Cartagena      35000 10000      500
+## 2      Havana     140000 50000     2000
+## 3 Panama City     105000 35000     1500
+## 4 Porto Bello      49000 15000      700
 </code></pre>
 
-<pre><code class="r">str(sn.spss)
+<h3>Пример</h3>
+
+<h3>cor.test</h3>
+
+<pre><code class="r"># targets &lt;- read.csv(&#39;Data Try R/targets.csv&#39;, as.is = TRUE, sep=&#39;;&#39;)
+# infantry &lt;- read.table(&#39;Data Try R/infantry.txt&#39;, sep=&#39;\t&#39;, header=TRUE)
+# mrg &lt;- merge(x = targets, y = infantry) mrg ---
+cor.test(mrg$Population, mrg$Infantry)
 </code></pre>
 
-<pre><code>## &#39;data.frame&#39;:    202 obs. of  6 variables:
-##  $ ID    : num  1 2 3 4 5 6 7 8 9 10 ...
-##  $ Gender: Factor w/ 3 levels &quot;           &quot;,..: 3 2 3 2 3 2 2 3 2 2 ...
-##  $ Female: Factor w/ 2 levels &quot;Male&quot;,&quot;Female&quot;: 1 2 1 2 1 2 2 1 2 2 ...
-##  $ Age   : num  24 26 54 42 54 21 NA 63 25 21 ...
-##  $ Site  : Factor w/ 6 levels &quot;Facebook   &quot;,..: 4 1 1 1 4 1 4 4 4 1 ...
-##  $ Times : num  0 20 2 7 NA 3 NA 0 NA 14 ...
-##  - attr(*, &quot;variable.labels&quot;)= Named chr  &quot;&quot; &quot;Gender of Participant&quot; &quot;Is Participant Female?&quot; &quot;Age of Participant&quot; ...
-##   ..- attr(*, &quot;names&quot;)= chr  &quot;ID&quot; &quot;Gender&quot; &quot;Female&quot; &quot;Age&quot; ...
-##  - attr(*, &quot;codepage&quot;)= int 1252
+<pre><code>## 
+##  Pearson&#39;s product-moment correlation
+## 
+## data:  mrg$Population and mrg$Infantry
+## t = Inf, df = 2, p-value &lt; 2.2e-16
+## alternative hypothesis: true correlation is not equal to 0
+## 95 percent confidence interval:
+##  1 1
+## sample estimates:
+## cor 
+##   1
 </code></pre>
+
+<pre><code class="r"># ---
+line &lt;- lm(mrg$Infantry ~ mrg$Population)
+line
+</code></pre>
+
+<pre><code>## 
+## Call:
+## lm(formula = mrg$Infantry ~ mrg$Population)
+## 
+## Coefficients:
+##    (Intercept)  mrg$Population  
+##       2.27e-13        1.43e-02
+</code></pre>
+
+<pre><code class="r">plot(mrg$Population, mrg$Infantry)
+abline(line)
+</code></pre>
+
+<p><img src="data:image/png;base64,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" alt="plot of chunk unnamed-chunk-4"/> </p>
 
 </body>
 

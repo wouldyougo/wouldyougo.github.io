@@ -1,6 +1,6 @@
-## Try R Chapter 2
+### Try R Chapter 2
 
-### Vectors
+## Vectors
 
 ### Пример
 ### Vectors

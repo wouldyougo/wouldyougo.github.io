@@ -1,71 +1,43 @@
-## Try R Chapter 6
+### Try R Chapter 6
 
-### Data Frames
-
-### Пример
-### Data Frames
-```{r} 
-chests <- c('gold', 'silver', 'gems', 'gold', 'gems')
-types <- factor(chests)
-# ---
-print(chests)
-print(types)
-levels(types)
-# ---
-weights <- c(300, 200, 100, 250, 150)
-prices <- c(9000, 5000, 12000, 7500, 18000)
-# ---
-print(weights)
-print(prices)
-# ---
-treasure <- data.frame(weights, prices, types)
-print(treasure)
-```
+## Data Files
 
 ### Пример
-### Data Frame Access
-```{r} 
-treasure[[2]]
-treasure[["weights"]]
-treasure$prices
-treasure[["types"]]
-# ---
-```
-
-### Пример
-### Loading Data Frames
+### Loading Data From csv Files
 ```{r} 
 #list.files()
+# Need to either double up the backslashes...
+read.csv("Data Try R\\targets.csv")
+# Or replace with forward slashes
 read.csv("Data Try R/targets.csv")
 read.csv("Data Try R/targets.csv", as.is = TRUE)
 read.csv("Data Try R/targets.csv", as.is = TRUE, sep=";")
-# ---
+read.csv("Data Try R/targets.csv", as.is = TRUE, sep=";", header = T)
+```
+
+### Пример
+### Loading Data From txt Files
+```{r} 
+#list.files()
 read.table("Data Try R/infantry.txt", sep="\t")
 read.table("Data Try R/infantry.txt", sep="\t", header=TRUE)
 
 ```
+
 ### Пример
-### Merging Data Frames
+### Loading Data From csv Files
 ```{r} 
-targets <- read.csv("Data Try R/targets.csv", as.is = TRUE, sep=";")
-infantry <- read.table("Data Try R/infantry.txt", sep="\t", header=TRUE)
-# ---
-mrg <- merge(x = targets, y = infantry)
-mrg
+sn.csv <- read.csv("Data Try R/social_network.csv", header = T)
+str(sn.csv)
+sn.csv
 ```
 
 ### Пример
-### cor.test
+### Loading Data From SPSS Files
 ```{r} 
-#targets <- read.csv("Data Try R/targets.csv", as.is = TRUE, sep=";")
-#infantry <- read.table("Data Try R/infantry.txt", sep="\t", header=TRUE)
-#mrg <- merge(x = targets, y = infantry)
-#mrg
-# ---
-cor.test(mrg$Population,mrg$Infantry)
-# ---
-line <- lm(mrg$Infantry~mrg$Population)
-line
-plot(mrg$Population, mrg$Infantry)
-abline(line)
+# Using package "foreign"
+#install.packages("foreign")
+library(foreign)
+sn.spss <- read.spss("Data Try R/social_network.sav", to.data.frame=T, use.value.labels=T)
+str(sn.spss)
 ```
