@@ -25,20 +25,14 @@
 * [R Color Chart](http://research.stowers-institute.org/efg/R/Color/Chart/)
 
 #### Try R
-* [Try R Chapter 0](Try R Chapter 0.html). Install packages
-* [Try R Chapter 1](Try R Chapter 1.html). Help
-* [Try R Chapter 2](Try R Chapter 2.html). Vectors
-* [Try R Chapter 3](Try R Chapter 3.html). Matrices
-* [Try R Chapter 4](Try R Chapter 4.html). Summary Statistics
-* [Try R Chapter 5](Try R Chapter 5.html). Factors
-* [Try R Chapter 6](Try R Chapter 6.html). Files
-* [Try R Chapter 7](Try R Chapter 7.html). Data Frames
-
-#### Some Real World Samples
-* [Samples R 0](Samples R 0.html). Trouble solutions
-* [Samples R 1](Samples R 1.html). Install packages
-* [Samples R 2](Samples R 2.html). DateTime POSIXct
-* [Samples R 3](Samples R 3.html). rCharts add assets such as CSS and JS libraries  
+* [Try R Chapter 0](Try R tutorial/Try R Chapter 0.html). Install packages
+* [Try R Chapter 1](Try R tutorial/Try R Chapter 1.html). Help
+* [Try R Chapter 2](Try R tutorial/Try R Chapter 2.html). Vectors
+* [Try R Chapter 3](Try R tutorial/Try R Chapter 3.html). Matrices
+* [Try R Chapter 4](Try R tutorial/Try R Chapter 4.html). Summary Statistics
+* [Try R Chapter 5](Try R tutorial/Try R Chapter 5.html). Factors
+* [Try R Chapter 6](Try R tutorial/Try R Chapter 6.html). Files
+* [Try R Chapter 7](Try R tutorial/Try R Chapter 7.html). Data Frames
 
 #### Up and Running with R
 * [Example R 03_01](Up and Running with R/Example R 03_01.html). Creating bar charts
@@ -58,3 +52,9 @@
 * [Example R 06_04](Up and Running with R/Example R 06_04.html). Comparing means with the t-test
 * [Example R 06_05](Up and Running with R/Example R 06_05.html). Comparing means with ANOVA
 * [Example R 07_01](Up and Running with R/Example R 07_01.html). Links
+
+#### Some Real World Samples
+* [Samples R 0](R Samples/Samples R 0.html). Trouble solutions
+* [Samples R 1](R Samples/Samples R 1.html). Install packages
+* [Samples R 2](R Samples/Samples R 2.html). DateTime POSIXct
+* [Samples R 3](R Samples/Samples R 3.html). rCharts add assets such as CSS and JS libraries  
