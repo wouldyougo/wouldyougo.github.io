@@ -5,7 +5,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 <meta http-equiv="x-ua-compatible" content="IE=9" >
 
-<title>Samples R 1</title>
+<title>Пример</title>
 
 <style type="text/css">
 body, td {
@@ -179,72 +179,30 @@ hljs.initHighlightingOnLoad();
 </head>
 
 <body>
-<h3>Samples R 1</h3>
-
-<h2>install packages</h2>
-
 <h3>Пример</h3>
 
-<h3>install.packages</h3>
+<h3>Получение объекта DateTime POSIXct</h3>
 
-<pre><code class="r">### library=&#39;C:/Users/user/Documents/R/win-library/3.0&#39;
-install.packages(&quot;quantmod&quot;)
-install.packages(&quot;knitr&quot;)
+<pre><code class="r">txt &lt;- &quot;Date  Time  value\n20010101 000000  0.833\n20010101 000500  0.814\n20010101 001000  0.794\n20010101 001500  0.772&quot;
+print(txt)
 </code></pre>
 
-<h3>Пример</h3>
-
-<h3>Install devtools</h3>
-
-<pre><code class="r">install.packages(&quot;devtools&quot;)
-require(devtools)
-# Please download and install Rtools 3.1 from
-# http://cran.r-project.org/bin/windows/Rtools/ and then run find_rtools().
-find_rtools()
-require(devtools)
+<pre><code>## [1] &quot;Date  Time  value\n20010101 000000  0.833\n20010101 000500  0.814\n20010101 001000  0.794\n20010101 001500  0.772&quot;
 </code></pre>
 
-<h3>Пример</h3>
-
-<h3>Install rCharts</h3>
-
-<pre><code class="r"># You can install rCharts from github using the devtools package
-require(devtools)
-# install_github(&#39;rCharts&#39;, &#39;ramnathv&#39;)
-install_github(&quot;rCharts&quot;, &quot;ramnathv&quot;, ref = &quot;dev&quot;)
-require(rCharts)
+<pre><code class="r">
+df &lt;- read.table(text = txt, header = TRUE, colClasses = c(&quot;character&quot;, &quot;character&quot;, 
+    &quot;numeric&quot;))
+df$DateTime &lt;- as.POSIXct(paste(df$Date, df$Time), format = &quot;%Y%m%d %H%M%S&quot;)
+## Посмотреть датафрейм
+print(df)
 </code></pre>
 
-<h3>Пример</h3>
-
-<h3>Install googleVis</h3>
-
-<pre><code class="r">install.packages(&quot;RJSONIO&quot;)
-# install.packages(&#39;Z:/R&amp;D/Dev Programs/De_ R/Packages/RJSONIO_1.0-3.zip&#39;,
-# repos = NULL)
-require(RJSONIO)
-install.packages(&quot;googleVis&quot;)
-# require(googleVis)
-suppressPackageStartupMessages(require(googleVis))
-</code></pre>
-
-<h3>Пример</h3>
-
-<h3>Install Slidify</h3>
-
-<pre><code class="r">require(devtools)
-install_github(&quot;slidify&quot;, &quot;ramnathv&quot;)
-install_github(&quot;slidifyLibraries&quot;, &quot;ramnathv&quot;)
-library(slidify)
-</code></pre>
-
-<h3>Пример</h3>
-
-<h3>Подключение требуемых пакетов</h3>
-
-<pre><code class="r">require(quantmod)
-require(rCharts)
-suppressPackageStartupMessages(require(googleVis))
+<pre><code>##       Date   Time value            DateTime
+## 1 20010101 000000 0.833 2001-01-01 00:00:00
+## 2 20010101 000500 0.814 2001-01-01 00:05:00
+## 3 20010101 001000 0.794 2001-01-01 00:10:00
+## 4 20010101 001500 0.772 2001-01-01 00:15:00
 </code></pre>
 
 </body>

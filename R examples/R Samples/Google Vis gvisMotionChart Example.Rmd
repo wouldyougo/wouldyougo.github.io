@@ -1,0 +1,10 @@
+### Google Vis gvisMotionChart Example
+
+```{r comment = NA, results = 'asis'}
+#require(googleVis)
+suppressPackageStartupMessages(
+  require(googleVis))
+options(gvis.plot.tag = "chart")
+M1 <- gvisMotionChart(Fruits, idvar="Fruit", timevar="Year")
+plot(M1)
+```

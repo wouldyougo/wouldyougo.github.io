@@ -1,5 +1,3 @@
-### Samples R 3
-
 ### Пример
 ### rCharts add assets such as CSS and JS libraries
 ```{r comment = NA, results = 'asis', message = F}

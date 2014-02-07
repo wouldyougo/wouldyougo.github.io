@@ -53,8 +53,13 @@
 * [Example R 06_05](Up and Running with R/Example R 06_05.html). Comparing means with ANOVA
 * [Example R 07_01](Up and Running with R/Example R 07_01.html). Links
 
-#### Some Real World Samples
-* [Samples R 0](R Samples/Samples R 0.html). Trouble solutions
-* [Samples R 1](R Samples/Samples R 1.html). Install packages
-* [Samples R 2](R Samples/Samples R 2.html). DateTime POSIXct
-* [Samples R 3](R Samples/Samples R 3.html). rCharts add assets such as CSS and JS libraries  
+#### Some R Samples
+* [Example 0](R Samples/Settings.html). Settings
+* [Example 1](R Samples/Install packages.html). Install packages
+* [Example 2](R Samples/Markdown Minimal Example.html). Markdown Minimal Example
+* [Example 3](R Samples/DateTime POSIXct Example.html). DateTime POSIXct Example
+* [Example 4](R Samples/rCharts JS assets Example.html). rCharts JS assets Example
+* [Example 5](R Samples/rCharts rPlot Example.html). rCharts rPlot Example
+* [Example 6](R Samples/Google Vis gvisMotionChart Example.html). Google Vis gvisMotionChart Example
+
+
