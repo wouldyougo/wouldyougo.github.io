@@ -1,5 +1,3 @@
-# Up and Running with R
-# Ex04_02
 # Computing new variables
 
 # Create variable n1 with 1 million random normal values

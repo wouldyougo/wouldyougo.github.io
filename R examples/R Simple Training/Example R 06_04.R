@@ -1,5 +1,3 @@
-# Up and Running with R
-# Ex06_04
 # Comparing means with the t-test
 
 # Load data file about Google searches by state

@@ -1,5 +1,3 @@
-# Up and Running with R
-# Ex06_05
 # Comparing means with ANOVA
 
 # Load data file about Google searches by state

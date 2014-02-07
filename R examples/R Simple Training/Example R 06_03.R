@@ -1,5 +1,3 @@
-# Up and Running with R
-# Ex06_03
 # Creating crosstabs for categorical variables
 
 # Load data file about social networks

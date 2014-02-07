@@ -1,5 +1,3 @@
-# Up and Running with R
-# Ex03_04
 # Calculating frequencies
 
 # Create data frame "sn" from CSV file w/headers

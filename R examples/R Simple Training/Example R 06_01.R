@@ -1,5 +1,3 @@
-# Up and Running with R
-# Ex06_01
 # Calculating correlations
 
 # Load data file about Google searches by state

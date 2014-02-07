@@ -1,5 +1,3 @@
-# Up and Running with R
-# Ex05_04
 # Creating 3-D scatterplots
 
 # Load data file about Google searches by state

@@ -1,5 +1,3 @@
-# Up and Running with R
-# Ex03_03
 # Creating box plots for quantitative variables
 
 # Create data frame "sn" from CSV file w/headers

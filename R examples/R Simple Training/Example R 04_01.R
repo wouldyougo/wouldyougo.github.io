@@ -1,5 +1,3 @@
-# Up and Running with R
-# Ex04_01
 # Recoding variables
 
 # Create data frame "sn" from CSV file w/headers

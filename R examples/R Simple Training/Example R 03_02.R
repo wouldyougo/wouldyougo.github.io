@@ -1,5 +1,3 @@
-# Up and Running with R
-# Ex03_02
 # Creating histograms for quantitative variables
 
 # Create data frame "sn" from CSV file w/headers

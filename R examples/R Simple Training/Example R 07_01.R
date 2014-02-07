@@ -1,12 +1,3 @@
-# Up and Running with R
-# Ex07_01
-
-# COURSES ON lynda.com
-# ---------------------------------------------------------------------
-# Interactive Data Visualization with Processing
-# SPSS Statistics Essential Training
-# Courses on databases such as SQL, MySQL, or MongoDB
-
 # BOOKS
 # ---------------------------------------------------------------------
 # R in a Nutshell: A Desktop Quick Reference (2e) by Joseph Adler
@@ -39,10 +30,8 @@
 # Tutorial by Hadley Wickham, at 
 #   https://github.com/hadley/devtools/wiki/Rcpp 
 
-# EVENTS
+# COURSES ON lynda.com
 # ---------------------------------------------------------------------
-# useR! is an international conference that takes place in
-#   June or July of each year
-# Local R User Groups
-# See list at Revolution Analytics: 
-#   http://blog.revolutionanalytics.com/local-r-groups.html 
+# Interactive Data Visualization with Processing
+# SPSS Statistics Essential Training
+# Courses on databases such as SQL, MySQL, or MongoDB

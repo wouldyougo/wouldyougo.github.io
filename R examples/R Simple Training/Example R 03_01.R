@@ -1,5 +1,3 @@
-# Up and Running with R
-# Ex03_01
 # Creating bar charts for categorical variables
 
 # Create data frame "sn" from CSV file w/headers

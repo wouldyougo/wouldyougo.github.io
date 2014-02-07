@@ -1,5 +1,3 @@
-# Up and Running with R
-# Ex06_02
 # Computing a regression
 
 # Load data file about Google searches by state
