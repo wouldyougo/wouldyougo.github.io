@@ -50,3 +50,13 @@ update.packages()  # Checks for updates; do periodically
 # Can also manually uncheck in Packages window
 detach("package:psych", unload=TRUE) # Or can use this code
 ```
+
+### Пример
+### Подключение требуемых пакетов
+```{r eval=FALSE}
+require(quantmod)
+require(rCharts)
+suppressPackageStartupMessages(
+  require(googleVis)
+)
+```

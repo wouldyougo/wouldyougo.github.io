@@ -1,44 +1,18 @@
 ### Samples R 2
 
-## How to examples
-
 ### Пример
-### Подключение требуемых пакетов
+### Получение объекта DateTime POSIXct
 ```{r}
-require(quantmod)
-require(rCharts)
-suppressPackageStartupMessages(
-  require(googleVis)
-)
-```
+txt <- "Date  Time  value
+20010101 000000  0.833
+20010101 000500  0.814
+20010101 001000  0.794
+20010101 001500  0.772"
+print(txt)
 
-### Пример
-### add required assets such as CSS and JS libraries
-```{r comment = NA, results = 'asis', message = F}
-## load the package
-library(rCharts)
-
-## utility function to add required assets such as CSS and JS libraries
-add_lib_assets <- function(lib, cdn = F, css = NULL) {
-    assets = get_assets(get_lib(lib), cdn = cdn)
-    if (!is.null(css)) {
-        assets$css = c(assets$css, css)
-    }
-    styles <- lapply(assets$css, function(style) {
-        sprintf("<link rel='stylesheet' href=%s>", style)
-    })
-
-    scripts <- lapply(assets$jshead, function(script) {
-        sprintf("<script type='text/javascript' src=%s></script>", script)
-    })
-    cat(paste(c(styles, scripts), collapse = "\n"))
-}
-
-# get assets from online repositories
-add_lib_assets("NVD3", cdn = TRUE, css = "http://rawgithub.com/ramnathv/rCharts/master/inst/libraries/nvd3/css/rNVD3.css")
-add_lib_assets("Polycharts", cdn = TRUE)
-
-hair_eye_male <- subset(as.data.frame(HairEyeColor), Sex == "Male")
-n1 <- nPlot(Freq ~ Hair, group = "Eye", data = hair_eye_male, type = "multiBarChart")
-n1$print("nvd3mbar")
+df <- read.table(text=txt, header=TRUE, 
+                 colClasses=c("character", "character", "numeric"))
+df$DateTime <- as.POSIXct(paste(df$Date, df$Time), format="%Y%m%d %H%M%S")
+## Посмотреть датафрейм
+print(df)
 ```

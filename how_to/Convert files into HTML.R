@@ -28,11 +28,6 @@ knit("Samples R 0.Rmd")
 knit("Samples R 1.Rmd")
 knit("Samples R 2.Rmd")
 knit("Samples R 3.Rmd")
-knit("Samples R 4.Rmd")
-knit("Samples R 5.Rmd")
-knit("Samples R 6.Rmd")
-knit("Samples R 7.Rmd")
-
 
 markdownToHTML("Samples R 0.md", "Samples R 0.html")
 markdownToHTML("Samples R 1.md", "Samples R 1.html")

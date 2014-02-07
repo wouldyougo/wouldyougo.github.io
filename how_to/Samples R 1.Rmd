@@ -51,3 +51,13 @@ install_github("slidify", "ramnathv")
 install_github("slidifyLibraries", "ramnathv")
 library(slidify)
 ```
+
+### Пример
+### Подключение требуемых пакетов
+```{r eval=FALSE}
+require(quantmod)
+require(rCharts)
+suppressPackageStartupMessages(
+  require(googleVis)
+)
+```
