@@ -1,5 +1,3 @@
-# R Statistics Essential Training
-# Ex06_03
 # Creating scatterplots
 
 # Load data
@@ -28,7 +26,7 @@ lines(lowess (cars$speed, cars$dist),
 
 # "car" package ("Companion to Applied Regression")
 # Has many variations on scatterplots
-install.packages("car")
+#install.packages("car")
 help(package = "car")
 require(car)
 # "scatterplot" has marginal boxplots, smoothers, and quantile regression intervals

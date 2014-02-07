@@ -1,5 +1,3 @@
-# R Statistics Essential Training
-# Ex04_03
 # Computing composite variables
 
 # Create variable rn1 with 1 million random normal values

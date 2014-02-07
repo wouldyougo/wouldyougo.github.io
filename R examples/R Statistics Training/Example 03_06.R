@@ -1,5 +1,3 @@
-# R Statistics Essential Training
-# Ex03_06
 # Robust statistics for univariate analyses
 
 # See "A Brief Overview of Robust Statistics" by Olfa Nasraoui, at

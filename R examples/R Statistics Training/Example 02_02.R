@@ -1,5 +1,3 @@
-# R Statistics Essential Training
-# Ex02_02
 # Creating pie charts for categorical variables
 
 # LOAD DATASETS PACKAGE
@@ -71,4 +69,5 @@ par(oldpar)  # Restore old graphical parameters
 # rewritten; just ignore the warning messages for these.
 ?par
 
-rm(list = lm())  # Clean up
+# Clean up
+rm(list = ls())

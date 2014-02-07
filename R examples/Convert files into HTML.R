@@ -1,10 +1,15 @@
 #knitr — Weaves Rmd files into plain markdown (.md) files
 #markdown — Converts markdown files into HTML documents
+
 library(knitr)
 library(markdown)
 
 knit("index.Rmd")
 markdownToHTML("index.md", "index.html")
+
+#knit("Example 03_01.R", tangle=F)
+#markdownToHTML("Example 03_01.R", "Example 03_01.html")
+#??markdownToHTML
 
 knit("Try R Chapter 0.Rmd")
 knit("Try R Chapter 1.Rmd")

@@ -1,5 +1,3 @@
-# R Statistics Essential Training
-# Ex08_04
 # Creating 3-D scatterplots
 
 # Load data
@@ -9,7 +7,7 @@ iris[1:5, ]
 
 # Static 3D scatterplot
 # Install and load the "scatterplot3d" package
-install.packages("scatterplot3d")
+# install.packages("scatterplot3d")
 require("scatterplot3d")
 
 # Basic static 3D scatterplot
@@ -32,7 +30,7 @@ s3d$plane3d(plane)
 # NOTE: This will cause RStudio to crash when graphics 
 # window is closed. Instead, run this in the standard, 
 # console version of R.
-install.packages("rgl")
+#install.packages("rgl")
 require("rgl")
 require("RColorBrewer")
 plot3d(iris$Petal.Length,  # x variable

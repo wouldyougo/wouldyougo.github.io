@@ -1,5 +1,3 @@
-# R Statistics Essential Training
-# Ex01_05
 # Using R’s built-in datasets
 
 ?datasets
@@ -13,7 +11,7 @@ library(datasets)
 require(datasets)
 
 # To remove the datasets package
-detach(package:datasets)
+#detach(package:datasets)
 
 # To see a list of the available datasets
 data()

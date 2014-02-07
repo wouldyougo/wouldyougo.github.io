@@ -1,5 +1,3 @@
-# R Statistics Essential Training
-# Ex05_05_Solution
 # Analyzing data by subgroups
 
 # Load data

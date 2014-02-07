@@ -1,5 +1,3 @@
-# R Statistics Essential Training
-# Ex01_10
 # Exploring Color with RColorBrewer
 
 # Barplot
@@ -8,8 +6,8 @@ barplot(x)
 
 # RColorBrewer
 browseURL("http://colorbrewer2.org/")  # Uses Flash
-install.packages("RColorBrewer")
-help(package = "RColorBrewer")
+#install.packages("RColorBrewer")
+#help(package = "RColorBrewer")
 require("RColorBrewer")
 
 # Show all of the palettes in a graphics window

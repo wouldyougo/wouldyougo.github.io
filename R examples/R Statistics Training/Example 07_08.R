@@ -1,5 +1,3 @@
-# R Statistics Essential Training
-# Ex07_08
 # Computing robust statistics for bivariate associations
 
 # Robust regression: A sampling of packages
@@ -9,7 +7,7 @@ help(package = "MASS")  # See rlm ("robust linear model")
 help(package = "quantreg")  # Quantile regression
 
 # Example from "quantreg" package
-install.packages("quantreg")
+#install.packages("quantreg")
 require(quantreg)
 ?rq  # Help on "quantile regression" in quantreg package
 data(engel)
@@ -47,8 +45,8 @@ legend(3000, 1000,  # Plot legend
 
 # Clean up
 detach(engel)
-detach("package:robust", unload=TRUE)
 detach("package:quantreg", unload=TRUE)
-detach("package:MASS", unload=TRUE)
-detach("package:rrcov", unload=TRUE)
+#detach("package:MASS", unload=TRUE)
+#detach("package:robust", unload=TRUE)
+#detach("package:rrcov", unload=TRUE)
 rm(list = ls())  

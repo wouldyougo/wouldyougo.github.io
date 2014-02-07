@@ -1,5 +1,3 @@
-# R Statistics Essential Training
-# Ex02_08_Solution
 # Layering Plots
 
 # Create a single chart that shows Petal.Length 

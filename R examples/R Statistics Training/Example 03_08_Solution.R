@@ -1,5 +1,3 @@
-# R Statistics Essential Training
-# Ex03_08_Solution
 # Calculating Descriptive Statistics
 
 # Calculate the mean, SD, skewness, and kurtosis

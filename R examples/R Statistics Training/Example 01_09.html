@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<!-- saved from url=(0014)about:internet -->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta http-equiv="x-ua-compatible" content="IE=9" >
+
+<title></title>
+
+<style type="text/css">
+body, td {
+   font-family: sans-serif;
+   background-color: white;
+   font-size: 12px;
+   margin: 8px;
+}
+
+tt, code, pre {
+   font-family: 'DejaVu Sans Mono', 'Droid Sans Mono', 'Lucida Console', Consolas, Monaco, monospace;
+}
+
+h1 { 
+   font-size:2.2em; 
+}
+
+h2 { 
+   font-size:1.8em; 
+}
+
+h3 { 
+   font-size:1.4em; 
+}
+
+h4 { 
+   font-size:1.0em; 
+}
+
+h5 { 
+   font-size:0.9em; 
+}
+
+h6 { 
+   font-size:0.8em; 
+}
+
+a:visited {
+   color: rgb(50%, 0%, 50%);
+}
+
+pre {	
+   margin-top: 0;
+   max-width: 95%;
+   border: 1px solid #ccc;
+   white-space: pre-wrap;
+}
+
+pre code {
+   display: block; padding: 0.5em;
+}
+
+code.r, code.cpp {
+   background-color: #F8F8F8;
+}
+
+table, td, th {
+  border: none;
+}
+
+blockquote {
+   color:#666666;
+   margin:0;
+   padding-left: 1em;
+   border-left: 0.5em #EEE solid;
+}
+
+hr {
+   height: 0px;
+   border-bottom: none;
+   border-top-width: thin;
+   border-top-style: dotted;
+   border-top-color: #999999;
+}
+
+@media print {
+   * { 
+      background: transparent !important; 
+      color: black !important; 
+      filter:none !important; 
+      -ms-filter: none !important; 
+   }
+
+   body { 
+      font-size:12pt; 
+      max-width:100%; 
+   }
+       
+   a, a:visited { 
+      text-decoration: underline; 
+   }
+
+   hr { 
+      visibility: hidden;
+      page-break-before: always;
+   }
+
+   pre, blockquote { 
+      padding-right: 1em; 
+      page-break-inside: avoid; 
+   }
+
+   tr, img { 
+      page-break-inside: avoid; 
+   }
+
+   img { 
+      max-width: 100% !important; 
+   }
+
+   @page :left { 
+      margin: 15mm 20mm 15mm 10mm; 
+   }
+     
+   @page :right { 
+      margin: 15mm 10mm 15mm 20mm; 
+   }
+
+   p, h2, h3 { 
+      orphans: 3; widows: 3; 
+   }
+
+   h2, h3 { 
+      page-break-after: avoid; 
+   }
+}
+
+</style>
+
+<!-- Styles for R syntax highlighter -->
+<style type="text/css">
+   pre .operator,
+   pre .paren {
+     color: rgb(104, 118, 135)
+   }
+
+   pre .literal {
+     color: rgb(88, 72, 246)
+   }
+
+   pre .number {
+     color: rgb(0, 0, 205);
+   }
+
+   pre .comment {
+     color: rgb(76, 136, 107);
+   }
+
+   pre .keyword {
+     color: rgb(0, 0, 255);
+   }
+
+   pre .identifier {
+     color: rgb(0, 0, 0);
+   }
+
+   pre .string {
+     color: rgb(3, 106, 7);
+   }
+</style>
+
+<!-- R syntax highlighter -->
+<script type="text/javascript">
+var hljs=new function(){function m(p){return p.replace(/&/gm,"&amp;").replace(/</gm,"&lt;")}function f(r,q,p){return RegExp(q,"m"+(r.cI?"i":"")+(p?"g":""))}function b(r){for(var p=0;p<r.childNodes.length;p++){var q=r.childNodes[p];if(q.nodeName=="CODE"){return q}if(!(q.nodeType==3&&q.nodeValue.match(/\s+/))){break}}}function h(t,s){var p="";for(var r=0;r<t.childNodes.length;r++){if(t.childNodes[r].nodeType==3){var q=t.childNodes[r].nodeValue;if(s){q=q.replace(/\n/g,"")}p+=q}else{if(t.childNodes[r].nodeName=="BR"){p+="\n"}else{p+=h(t.childNodes[r])}}}if(/MSIE [678]/.test(navigator.userAgent)){p=p.replace(/\r/g,"\n")}return p}function a(s){var r=s.className.split(/\s+/);r=r.concat(s.parentNode.className.split(/\s+/));for(var q=0;q<r.length;q++){var p=r[q].replace(/^language-/,"");if(e[p]){return p}}}function c(q){var p=[];(function(s,t){for(var r=0;r<s.childNodes.length;r++){if(s.childNodes[r].nodeType==3){t+=s.childNodes[r].nodeValue.length}else{if(s.childNodes[r].nodeName=="BR"){t+=1}else{if(s.childNodes[r].nodeType==1){p.push({event:"start",offset:t,node:s.childNodes[r]});t=arguments.callee(s.childNodes[r],t);p.push({event:"stop",offset:t,node:s.childNodes[r]})}}}}return t})(q,0);return p}function k(y,w,x){var q=0;var z="";var s=[];function u(){if(y.length&&w.length){if(y[0].offset!=w[0].offset){return(y[0].offset<w[0].offset)?y:w}else{return w[0].event=="start"?y:w}}else{return y.length?y:w}}function t(D){var A="<"+D.nodeName.toLowerCase();for(var B=0;B<D.attributes.length;B++){var C=D.attributes[B];A+=" "+C.nodeName.toLowerCase();if(C.value!==undefined&&C.value!==false&&C.value!==null){A+='="'+m(C.value)+'"'}}return A+">"}while(y.length||w.length){var v=u().splice(0,1)[0];z+=m(x.substr(q,v.offset-q));q=v.offset;if(v.event=="start"){z+=t(v.node);s.push(v.node)}else{if(v.event=="stop"){var p,r=s.length;do{r--;p=s[r];z+=("</"+p.nodeName.toLowerCase()+">")}while(p!=v.node);s.splice(r,1);while(r<s.length){z+=t(s[r]);r++}}}}return z+m(x.substr(q))}function j(){function q(x,y,v){if(x.compiled){return}var u;var s=[];if(x.k){x.lR=f(y,x.l||hljs.IR,true);for(var w in x.k){if(!x.k.hasOwnProperty(w)){continue}if(x.k[w] instanceof Object){u=x.k[w]}else{u=x.k;w="keyword"}for(var r in u){if(!u.hasOwnProperty(r)){continue}x.k[r]=[w,u[r]];s.push(r)}}}if(!v){if(x.bWK){x.b="\\b("+s.join("|")+")\\s"}x.bR=f(y,x.b?x.b:"\\B|\\b");if(!x.e&&!x.eW){x.e="\\B|\\b"}if(x.e){x.eR=f(y,x.e)}}if(x.i){x.iR=f(y,x.i)}if(x.r===undefined){x.r=1}if(!x.c){x.c=[]}x.compiled=true;for(var t=0;t<x.c.length;t++){if(x.c[t]=="self"){x.c[t]=x}q(x.c[t],y,false)}if(x.starts){q(x.starts,y,false)}}for(var p in e){if(!e.hasOwnProperty(p)){continue}q(e[p].dM,e[p],true)}}function d(B,C){if(!j.called){j();j.called=true}function q(r,M){for(var L=0;L<M.c.length;L++){if((M.c[L].bR.exec(r)||[null])[0]==r){return M.c[L]}}}function v(L,r){if(D[L].e&&D[L].eR.test(r)){return 1}if(D[L].eW){var M=v(L-1,r);return M?M+1:0}return 0}function w(r,L){return L.i&&L.iR.test(r)}function K(N,O){var M=[];for(var L=0;L<N.c.length;L++){M.push(N.c[L].b)}var r=D.length-1;do{if(D[r].e){M.push(D[r].e)}r--}while(D[r+1].eW);if(N.i){M.push(N.i)}return f(O,M.join("|"),true)}function p(M,L){var N=D[D.length-1];if(!N.t){N.t=K(N,E)}N.t.lastIndex=L;var r=N.t.exec(M);return r?[M.substr(L,r.index-L),r[0],false]:[M.substr(L),"",true]}function z(N,r){var L=E.cI?r[0].toLowerCase():r[0];var M=N.k[L];if(M&&M instanceof Array){return M}return false}function F(L,P){L=m(L);if(!P.k){return L}var r="";var O=0;P.lR.lastIndex=0;var M=P.lR.exec(L);while(M){r+=L.substr(O,M.index-O);var N=z(P,M);if(N){x+=N[1];r+='<span class="'+N[0]+'">'+M[0]+"</span>"}else{r+=M[0]}O=P.lR.lastIndex;M=P.lR.exec(L)}return r+L.substr(O,L.length-O)}function J(L,M){if(M.sL&&e[M.sL]){var r=d(M.sL,L);x+=r.keyword_count;return r.value}else{return F(L,M)}}function I(M,r){var L=M.cN?'<span class="'+M.cN+'">':"";if(M.rB){y+=L;M.buffer=""}else{if(M.eB){y+=m(r)+L;M.buffer=""}else{y+=L;M.buffer=r}}D.push(M);A+=M.r}function G(N,M,Q){var R=D[D.length-1];if(Q){y+=J(R.buffer+N,R);return false}var P=q(M,R);if(P){y+=J(R.buffer+N,R);I(P,M);return P.rB}var L=v(D.length-1,M);if(L){var O=R.cN?"</span>":"";if(R.rE){y+=J(R.buffer+N,R)+O}else{if(R.eE){y+=J(R.buffer+N,R)+O+m(M)}else{y+=J(R.buffer+N+M,R)+O}}while(L>1){O=D[D.length-2].cN?"</span>":"";y+=O;L--;D.length--}var r=D[D.length-1];D.length--;D[D.length-1].buffer="";if(r.starts){I(r.starts,"")}return R.rE}if(w(M,R)){throw"Illegal"}}var E=e[B];var D=[E.dM];var A=0;var x=0;var y="";try{var s,u=0;E.dM.buffer="";do{s=p(C,u);var t=G(s[0],s[1],s[2]);u+=s[0].length;if(!t){u+=s[1].length}}while(!s[2]);if(D.length>1){throw"Illegal"}return{r:A,keyword_count:x,value:y}}catch(H){if(H=="Illegal"){return{r:0,keyword_count:0,value:m(C)}}else{throw H}}}function g(t){var p={keyword_count:0,r:0,value:m(t)};var r=p;for(var q in e){if(!e.hasOwnProperty(q)){continue}var s=d(q,t);s.language=q;if(s.keyword_count+s.r>r.keyword_count+r.r){r=s}if(s.keyword_count+s.r>p.keyword_count+p.r){r=p;p=s}}if(r.language){p.second_best=r}return p}function i(r,q,p){if(q){r=r.replace(/^((<[^>]+>|\t)+)/gm,function(t,w,v,u){return w.replace(/\t/g,q)})}if(p){r=r.replace(/\n/g,"<br>")}return r}function n(t,w,r){var x=h(t,r);var v=a(t);var y,s;if(v){y=d(v,x)}else{return}var q=c(t);if(q.length){s=document.createElement("pre");s.innerHTML=y.value;y.value=k(q,c(s),x)}y.value=i(y.value,w,r);var u=t.className;if(!u.match("(\\s|^)(language-)?"+v+"(\\s|$)")){u=u?(u+" "+v):v}if(/MSIE [678]/.test(navigator.userAgent)&&t.tagName=="CODE"&&t.parentNode.tagName=="PRE"){s=t.parentNode;var p=document.createElement("div");p.innerHTML="<pre><code>"+y.value+"</code></pre>";t=p.firstChild.firstChild;p.firstChild.cN=s.cN;s.parentNode.replaceChild(p.firstChild,s)}else{t.innerHTML=y.value}t.className=u;t.result={language:v,kw:y.keyword_count,re:y.r};if(y.second_best){t.second_best={language:y.second_best.language,kw:y.second_best.keyword_count,re:y.second_best.r}}}function o(){if(o.called){return}o.called=true;var r=document.getElementsByTagName("pre");for(var p=0;p<r.length;p++){var q=b(r[p]);if(q){n(q,hljs.tabReplace)}}}function l(){if(window.addEventListener){window.addEventListener("DOMContentLoaded",o,false);window.addEventListener("load",o,false)}else{if(window.attachEvent){window.attachEvent("onload",o)}else{window.onload=o}}}var e={};this.LANGUAGES=e;this.highlight=d;this.highlightAuto=g;this.fixMarkup=i;this.highlightBlock=n;this.initHighlighting=o;this.initHighlightingOnLoad=l;this.IR="[a-zA-Z][a-zA-Z0-9_]*";this.UIR="[a-zA-Z_][a-zA-Z0-9_]*";this.NR="\\b\\d+(\\.\\d+)?";this.CNR="\\b(0[xX][a-fA-F0-9]+|(\\d+(\\.\\d*)?|\\.\\d+)([eE][-+]?\\d+)?)";this.BNR="\\b(0b[01]+)";this.RSR="!|!=|!==|%|%=|&|&&|&=|\\*|\\*=|\\+|\\+=|,|\\.|-|-=|/|/=|:|;|<|<<|<<=|<=|=|==|===|>|>=|>>|>>=|>>>|>>>=|\\?|\\[|\\{|\\(|\\^|\\^=|\\||\\|=|\\|\\||~";this.ER="(?![\\s\\S])";this.BE={b:"\\\\.",r:0};this.ASM={cN:"string",b:"'",e:"'",i:"\\n",c:[this.BE],r:0};this.QSM={cN:"string",b:'"',e:'"',i:"\\n",c:[this.BE],r:0};this.CLCM={cN:"comment",b:"//",e:"$"};this.CBLCLM={cN:"comment",b:"/\\*",e:"\\*/"};this.HCM={cN:"comment",b:"#",e:"$"};this.NM={cN:"number",b:this.NR,r:0};this.CNM={cN:"number",b:this.CNR,r:0};this.BNM={cN:"number",b:this.BNR,r:0};this.inherit=function(r,s){var p={};for(var q in r){p[q]=r[q]}if(s){for(var q in s){p[q]=s[q]}}return p}}();hljs.LANGUAGES.cpp=function(){var a={keyword:{"false":1,"int":1,"float":1,"while":1,"private":1,"char":1,"catch":1,"export":1,virtual:1,operator:2,sizeof:2,dynamic_cast:2,typedef:2,const_cast:2,"const":1,struct:1,"for":1,static_cast:2,union:1,namespace:1,unsigned:1,"long":1,"throw":1,"volatile":2,"static":1,"protected":1,bool:1,template:1,mutable:1,"if":1,"public":1,friend:2,"do":1,"return":1,"goto":1,auto:1,"void":2,"enum":1,"else":1,"break":1,"new":1,extern:1,using:1,"true":1,"class":1,asm:1,"case":1,typeid:1,"short":1,reinterpret_cast:2,"default":1,"double":1,register:1,explicit:1,signed:1,typename:1,"try":1,"this":1,"switch":1,"continue":1,wchar_t:1,inline:1,"delete":1,alignof:1,char16_t:1,char32_t:1,constexpr:1,decltype:1,noexcept:1,nullptr:1,static_assert:1,thread_local:1,restrict:1,_Bool:1,complex:1},built_in:{std:1,string:1,cin:1,cout:1,cerr:1,clog:1,stringstream:1,istringstream:1,ostringstream:1,auto_ptr:1,deque:1,list:1,queue:1,stack:1,vector:1,map:1,set:1,bitset:1,multiset:1,multimap:1,unordered_set:1,unordered_map:1,unordered_multiset:1,unordered_multimap:1,array:1,shared_ptr:1}};return{dM:{k:a,i:"</",c:[hljs.CLCM,hljs.CBLCLM,hljs.QSM,{cN:"string",b:"'\\\\?.",e:"'",i:"."},{cN:"number",b:"\\b(\\d+(\\.\\d*)?|\\.\\d+)(u|U|l|L|ul|UL|f|F)"},hljs.CNM,{cN:"preprocessor",b:"#",e:"$"},{cN:"stl_container",b:"\\b(deque|list|queue|stack|vector|map|set|bitset|multiset|multimap|unordered_map|unordered_set|unordered_multiset|unordered_multimap|array)\\s*<",e:">",k:a,r:10,c:["self"]}]}}}();hljs.LANGUAGES.r={dM:{c:[hljs.HCM,{cN:"number",b:"\\b0[xX][0-9a-fA-F]+[Li]?\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"number",b:"\\b\\d+(?:[eE][+\\-]?\\d*)?L\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"number",b:"\\b\\d+\\.(?!\\d)(?:i\\b)?",e:hljs.IMMEDIATE_RE,r:1},{cN:"number",b:"\\b\\d+(?:\\.\\d*)?(?:[eE][+\\-]?\\d*)?i?\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"number",b:"\\.\\d+(?:[eE][+\\-]?\\d*)?i?\\b",e:hljs.IMMEDIATE_RE,r:1},{cN:"keyword",b:"(?:tryCatch|library|setGeneric|setGroupGeneric)\\b",e:hljs.IMMEDIATE_RE,r:10},{cN:"keyword",b:"\\.\\.\\.",e:hljs.IMMEDIATE_RE,r:10},{cN:"keyword",b:"\\.\\.\\d+(?![\\w.])",e:hljs.IMMEDIATE_RE,r:10},{cN:"keyword",b:"\\b(?:function)",e:hljs.IMMEDIATE_RE,r:2},{cN:"keyword",b:"(?:if|in|break|next|repeat|else|for|return|switch|while|try|stop|warning|require|attach|detach|source|setMethod|setClass)\\b",e:hljs.IMMEDIATE_RE,r:1},{cN:"literal",b:"(?:NA|NA_integer_|NA_real_|NA_character_|NA_complex_)\\b",e:hljs.IMMEDIATE_RE,r:10},{cN:"literal",b:"(?:NULL|TRUE|FALSE|T|F|Inf|NaN)\\b",e:hljs.IMMEDIATE_RE,r:1},{cN:"identifier",b:"[a-zA-Z.][a-zA-Z0-9._]*\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"operator",b:"<\\-(?!\\s*\\d)",e:hljs.IMMEDIATE_RE,r:2},{cN:"operator",b:"\\->|<\\-",e:hljs.IMMEDIATE_RE,r:1},{cN:"operator",b:"%%|~",e:hljs.IMMEDIATE_RE},{cN:"operator",b:">=|<=|==|!=|\\|\\||&&|=|\\+|\\-|\\*|/|\\^|>|<|!|&|\\||\\$|:",e:hljs.IMMEDIATE_RE,r:0},{cN:"operator",b:"%",e:"%",i:"\\n",r:1},{cN:"identifier",b:"`",e:"`",r:0},{cN:"string",b:'"',e:'"',c:[hljs.BE],r:0},{cN:"string",b:"'",e:"'",c:[hljs.BE],r:0},{cN:"paren",b:"[[({\\])}]",e:hljs.IMMEDIATE_RE,r:0}]}};
+hljs.initHighlightingOnLoad();
+</script>
+
+
+
+
+</head>
+
+<body>
+<pre><code class="r"># Working with color
+
+# Barplot
+x = c(12, 4, 21, 17, 13, 9)
+barplot(x)
+</code></pre>
+
+<p><img src="data:image/png;base64,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" alt="plot of chunk unnamed-chunk-1"/> </p>
+
+<pre><code class="r">
+# R specifies color in several ways
+`?`(colors)
+</code></pre>
+
+<pre><code>## starting httpd help server ... done
+</code></pre>
+
+<pre><code class="r"># Web page with PDFs of colors in R
+browseURL(&quot;http://research.stowers-institute.org/efg/R/Color/Chart/&quot;)
+
+# Color names R has names for 657 colors, arranged alphabetically except for
+# white (first) &#39;Gray&#39; or &#39;grey&#39;: either is acceptable
+colors()  # Gives list of color names
+</code></pre>
+
+<pre><code>##   [1] &quot;white&quot;                &quot;aliceblue&quot;            &quot;antiquewhite&quot;        
+##   [4] &quot;antiquewhite1&quot;        &quot;antiquewhite2&quot;        &quot;antiquewhite3&quot;       
+##   [7] &quot;antiquewhite4&quot;        &quot;aquamarine&quot;           &quot;aquamarine1&quot;         
+##  [10] &quot;aquamarine2&quot;          &quot;aquamarine3&quot;          &quot;aquamarine4&quot;         
+##  [13] &quot;azure&quot;                &quot;azure1&quot;               &quot;azure2&quot;              
+##  [16] &quot;azure3&quot;               &quot;azure4&quot;               &quot;beige&quot;               
+##  [19] &quot;bisque&quot;               &quot;bisque1&quot;              &quot;bisque2&quot;             
+##  [22] &quot;bisque3&quot;              &quot;bisque4&quot;              &quot;black&quot;               
+##  [25] &quot;blanchedalmond&quot;       &quot;blue&quot;                 &quot;blue1&quot;               
+##  [28] &quot;blue2&quot;                &quot;blue3&quot;                &quot;blue4&quot;               
+##  [31] &quot;blueviolet&quot;           &quot;brown&quot;                &quot;brown1&quot;              
+##  [34] &quot;brown2&quot;               &quot;brown3&quot;               &quot;brown4&quot;              
+##  [37] &quot;burlywood&quot;            &quot;burlywood1&quot;           &quot;burlywood2&quot;          
+##  [40] &quot;burlywood3&quot;           &quot;burlywood4&quot;           &quot;cadetblue&quot;           
+##  [43] &quot;cadetblue1&quot;           &quot;cadetblue2&quot;           &quot;cadetblue3&quot;          
+##  [46] &quot;cadetblue4&quot;           &quot;chartreuse&quot;           &quot;chartreuse1&quot;         
+##  [49] &quot;chartreuse2&quot;          &quot;chartreuse3&quot;          &quot;chartreuse4&quot;         
+##  [52] &quot;chocolate&quot;            &quot;chocolate1&quot;           &quot;chocolate2&quot;          
+##  [55] &quot;chocolate3&quot;           &quot;chocolate4&quot;           &quot;coral&quot;               
+##  [58] &quot;coral1&quot;               &quot;coral2&quot;               &quot;coral3&quot;              
+##  [61] &quot;coral4&quot;               &quot;cornflowerblue&quot;       &quot;cornsilk&quot;            
+##  [64] &quot;cornsilk1&quot;            &quot;cornsilk2&quot;            &quot;cornsilk3&quot;           
+##  [67] &quot;cornsilk4&quot;            &quot;cyan&quot;                 &quot;cyan1&quot;               
+##  [70] &quot;cyan2&quot;                &quot;cyan3&quot;                &quot;cyan4&quot;               
+##  [73] &quot;darkblue&quot;             &quot;darkcyan&quot;             &quot;darkgoldenrod&quot;       
+##  [76] &quot;darkgoldenrod1&quot;       &quot;darkgoldenrod2&quot;       &quot;darkgoldenrod3&quot;      
+##  [79] &quot;darkgoldenrod4&quot;       &quot;darkgray&quot;             &quot;darkgreen&quot;           
+##  [82] &quot;darkgrey&quot;             &quot;darkkhaki&quot;            &quot;darkmagenta&quot;         
+##  [85] &quot;darkolivegreen&quot;       &quot;darkolivegreen1&quot;      &quot;darkolivegreen2&quot;     
+##  [88] &quot;darkolivegreen3&quot;      &quot;darkolivegreen4&quot;      &quot;darkorange&quot;          
+##  [91] &quot;darkorange1&quot;          &quot;darkorange2&quot;          &quot;darkorange3&quot;         
+##  [94] &quot;darkorange4&quot;          &quot;darkorchid&quot;           &quot;darkorchid1&quot;         
+##  [97] &quot;darkorchid2&quot;          &quot;darkorchid3&quot;          &quot;darkorchid4&quot;         
+## [100] &quot;darkred&quot;              &quot;darksalmon&quot;           &quot;darkseagreen&quot;        
+## [103] &quot;darkseagreen1&quot;        &quot;darkseagreen2&quot;        &quot;darkseagreen3&quot;       
+## [106] &quot;darkseagreen4&quot;        &quot;darkslateblue&quot;        &quot;darkslategray&quot;       
+## [109] &quot;darkslategray1&quot;       &quot;darkslategray2&quot;       &quot;darkslategray3&quot;      
+## [112] &quot;darkslategray4&quot;       &quot;darkslategrey&quot;        &quot;darkturquoise&quot;       
+## [115] &quot;darkviolet&quot;           &quot;deeppink&quot;             &quot;deeppink1&quot;           
+## [118] &quot;deeppink2&quot;            &quot;deeppink3&quot;            &quot;deeppink4&quot;           
+## [121] &quot;deepskyblue&quot;          &quot;deepskyblue1&quot;         &quot;deepskyblue2&quot;        
+## [124] &quot;deepskyblue3&quot;         &quot;deepskyblue4&quot;         &quot;dimgray&quot;             
+## [127] &quot;dimgrey&quot;              &quot;dodgerblue&quot;           &quot;dodgerblue1&quot;         
+## [130] &quot;dodgerblue2&quot;          &quot;dodgerblue3&quot;          &quot;dodgerblue4&quot;         
+## [133] &quot;firebrick&quot;            &quot;firebrick1&quot;           &quot;firebrick2&quot;          
+## [136] &quot;firebrick3&quot;           &quot;firebrick4&quot;           &quot;floralwhite&quot;         
+## [139] &quot;forestgreen&quot;          &quot;gainsboro&quot;            &quot;ghostwhite&quot;          
+## [142] &quot;gold&quot;                 &quot;gold1&quot;                &quot;gold2&quot;               
+## [145] &quot;gold3&quot;                &quot;gold4&quot;                &quot;goldenrod&quot;           
+## [148] &quot;goldenrod1&quot;           &quot;goldenrod2&quot;           &quot;goldenrod3&quot;          
+## [151] &quot;goldenrod4&quot;           &quot;gray&quot;                 &quot;gray0&quot;               
+## [154] &quot;gray1&quot;                &quot;gray2&quot;                &quot;gray3&quot;               
+## [157] &quot;gray4&quot;                &quot;gray5&quot;                &quot;gray6&quot;               
+## [160] &quot;gray7&quot;                &quot;gray8&quot;                &quot;gray9&quot;               
+## [163] &quot;gray10&quot;               &quot;gray11&quot;               &quot;gray12&quot;              
+## [166] &quot;gray13&quot;               &quot;gray14&quot;               &quot;gray15&quot;              
+## [169] &quot;gray16&quot;               &quot;gray17&quot;               &quot;gray18&quot;              
+## [172] &quot;gray19&quot;               &quot;gray20&quot;               &quot;gray21&quot;              
+## [175] &quot;gray22&quot;               &quot;gray23&quot;               &quot;gray24&quot;              
+## [178] &quot;gray25&quot;               &quot;gray26&quot;               &quot;gray27&quot;              
+## [181] &quot;gray28&quot;               &quot;gray29&quot;               &quot;gray30&quot;              
+## [184] &quot;gray31&quot;               &quot;gray32&quot;               &quot;gray33&quot;              
+## [187] &quot;gray34&quot;               &quot;gray35&quot;               &quot;gray36&quot;              
+## [190] &quot;gray37&quot;               &quot;gray38&quot;               &quot;gray39&quot;              
+## [193] &quot;gray40&quot;               &quot;gray41&quot;               &quot;gray42&quot;              
+## [196] &quot;gray43&quot;               &quot;gray44&quot;               &quot;gray45&quot;              
+## [199] &quot;gray46&quot;               &quot;gray47&quot;               &quot;gray48&quot;              
+## [202] &quot;gray49&quot;               &quot;gray50&quot;               &quot;gray51&quot;              
+## [205] &quot;gray52&quot;               &quot;gray53&quot;               &quot;gray54&quot;              
+## [208] &quot;gray55&quot;               &quot;gray56&quot;               &quot;gray57&quot;              
+## [211] &quot;gray58&quot;               &quot;gray59&quot;               &quot;gray60&quot;              
+## [214] &quot;gray61&quot;               &quot;gray62&quot;               &quot;gray63&quot;              
+## [217] &quot;gray64&quot;               &quot;gray65&quot;               &quot;gray66&quot;              
+## [220] &quot;gray67&quot;               &quot;gray68&quot;               &quot;gray69&quot;              
+## [223] &quot;gray70&quot;               &quot;gray71&quot;               &quot;gray72&quot;              
+## [226] &quot;gray73&quot;               &quot;gray74&quot;               &quot;gray75&quot;              
+## [229] &quot;gray76&quot;               &quot;gray77&quot;               &quot;gray78&quot;              
+## [232] &quot;gray79&quot;               &quot;gray80&quot;               &quot;gray81&quot;              
+## [235] &quot;gray82&quot;               &quot;gray83&quot;               &quot;gray84&quot;              
+## [238] &quot;gray85&quot;               &quot;gray86&quot;               &quot;gray87&quot;              
+## [241] &quot;gray88&quot;               &quot;gray89&quot;               &quot;gray90&quot;              
+## [244] &quot;gray91&quot;               &quot;gray92&quot;               &quot;gray93&quot;              
+## [247] &quot;gray94&quot;               &quot;gray95&quot;               &quot;gray96&quot;              
+## [250] &quot;gray97&quot;               &quot;gray98&quot;               &quot;gray99&quot;              
+## [253] &quot;gray100&quot;              &quot;green&quot;                &quot;green1&quot;              
+## [256] &quot;green2&quot;               &quot;green3&quot;               &quot;green4&quot;              
+## [259] &quot;greenyellow&quot;          &quot;grey&quot;                 &quot;grey0&quot;               
+## [262] &quot;grey1&quot;                &quot;grey2&quot;                &quot;grey3&quot;               
+## [265] &quot;grey4&quot;                &quot;grey5&quot;                &quot;grey6&quot;               
+## [268] &quot;grey7&quot;                &quot;grey8&quot;                &quot;grey9&quot;               
+## [271] &quot;grey10&quot;               &quot;grey11&quot;               &quot;grey12&quot;              
+## [274] &quot;grey13&quot;               &quot;grey14&quot;               &quot;grey15&quot;              
+## [277] &quot;grey16&quot;               &quot;grey17&quot;               &quot;grey18&quot;              
+## [280] &quot;grey19&quot;               &quot;grey20&quot;               &quot;grey21&quot;              
+## [283] &quot;grey22&quot;               &quot;grey23&quot;               &quot;grey24&quot;              
+## [286] &quot;grey25&quot;               &quot;grey26&quot;               &quot;grey27&quot;              
+## [289] &quot;grey28&quot;               &quot;grey29&quot;               &quot;grey30&quot;              
+## [292] &quot;grey31&quot;               &quot;grey32&quot;               &quot;grey33&quot;              
+## [295] &quot;grey34&quot;               &quot;grey35&quot;               &quot;grey36&quot;              
+## [298] &quot;grey37&quot;               &quot;grey38&quot;               &quot;grey39&quot;              
+## [301] &quot;grey40&quot;               &quot;grey41&quot;               &quot;grey42&quot;              
+## [304] &quot;grey43&quot;               &quot;grey44&quot;               &quot;grey45&quot;              
+## [307] &quot;grey46&quot;               &quot;grey47&quot;               &quot;grey48&quot;              
+## [310] &quot;grey49&quot;               &quot;grey50&quot;               &quot;grey51&quot;              
+## [313] &quot;grey52&quot;               &quot;grey53&quot;               &quot;grey54&quot;              
+## [316] &quot;grey55&quot;               &quot;grey56&quot;               &quot;grey57&quot;              
+## [319] &quot;grey58&quot;               &quot;grey59&quot;               &quot;grey60&quot;              
+## [322] &quot;grey61&quot;               &quot;grey62&quot;               &quot;grey63&quot;              
+## [325] &quot;grey64&quot;               &quot;grey65&quot;               &quot;grey66&quot;              
+## [328] &quot;grey67&quot;               &quot;grey68&quot;               &quot;grey69&quot;              
+## [331] &quot;grey70&quot;               &quot;grey71&quot;               &quot;grey72&quot;              
+## [334] &quot;grey73&quot;               &quot;grey74&quot;               &quot;grey75&quot;              
+## [337] &quot;grey76&quot;               &quot;grey77&quot;               &quot;grey78&quot;              
+## [340] &quot;grey79&quot;               &quot;grey80&quot;               &quot;grey81&quot;              
+## [343] &quot;grey82&quot;               &quot;grey83&quot;               &quot;grey84&quot;              
+## [346] &quot;grey85&quot;               &quot;grey86&quot;               &quot;grey87&quot;              
+## [349] &quot;grey88&quot;               &quot;grey89&quot;               &quot;grey90&quot;              
+## [352] &quot;grey91&quot;               &quot;grey92&quot;               &quot;grey93&quot;              
+## [355] &quot;grey94&quot;               &quot;grey95&quot;               &quot;grey96&quot;              
+## [358] &quot;grey97&quot;               &quot;grey98&quot;               &quot;grey99&quot;              
+## [361] &quot;grey100&quot;              &quot;honeydew&quot;             &quot;honeydew1&quot;           
+## [364] &quot;honeydew2&quot;            &quot;honeydew3&quot;            &quot;honeydew4&quot;           
+## [367] &quot;hotpink&quot;              &quot;hotpink1&quot;             &quot;hotpink2&quot;            
+## [370] &quot;hotpink3&quot;             &quot;hotpink4&quot;             &quot;indianred&quot;           
+## [373] &quot;indianred1&quot;           &quot;indianred2&quot;           &quot;indianred3&quot;          
+## [376] &quot;indianred4&quot;           &quot;ivory&quot;                &quot;ivory1&quot;              
+## [379] &quot;ivory2&quot;               &quot;ivory3&quot;               &quot;ivory4&quot;              
+## [382] &quot;khaki&quot;                &quot;khaki1&quot;               &quot;khaki2&quot;              
+## [385] &quot;khaki3&quot;               &quot;khaki4&quot;               &quot;lavender&quot;            
+## [388] &quot;lavenderblush&quot;        &quot;lavenderblush1&quot;       &quot;lavenderblush2&quot;      
+## [391] &quot;lavenderblush3&quot;       &quot;lavenderblush4&quot;       &quot;lawngreen&quot;           
+## [394] &quot;lemonchiffon&quot;         &quot;lemonchiffon1&quot;        &quot;lemonchiffon2&quot;       
+## [397] &quot;lemonchiffon3&quot;        &quot;lemonchiffon4&quot;        &quot;lightblue&quot;           
+## [400] &quot;lightblue1&quot;           &quot;lightblue2&quot;           &quot;lightblue3&quot;          
+## [403] &quot;lightblue4&quot;           &quot;lightcoral&quot;           &quot;lightcyan&quot;           
+## [406] &quot;lightcyan1&quot;           &quot;lightcyan2&quot;           &quot;lightcyan3&quot;          
+## [409] &quot;lightcyan4&quot;           &quot;lightgoldenrod&quot;       &quot;lightgoldenrod1&quot;     
+## [412] &quot;lightgoldenrod2&quot;      &quot;lightgoldenrod3&quot;      &quot;lightgoldenrod4&quot;     
+## [415] &quot;lightgoldenrodyellow&quot; &quot;lightgray&quot;            &quot;lightgreen&quot;          
+## [418] &quot;lightgrey&quot;            &quot;lightpink&quot;            &quot;lightpink1&quot;          
+## [421] &quot;lightpink2&quot;           &quot;lightpink3&quot;           &quot;lightpink4&quot;          
+## [424] &quot;lightsalmon&quot;          &quot;lightsalmon1&quot;         &quot;lightsalmon2&quot;        
+## [427] &quot;lightsalmon3&quot;         &quot;lightsalmon4&quot;         &quot;lightseagreen&quot;       
+## [430] &quot;lightskyblue&quot;         &quot;lightskyblue1&quot;        &quot;lightskyblue2&quot;       
+## [433] &quot;lightskyblue3&quot;        &quot;lightskyblue4&quot;        &quot;lightslateblue&quot;      
+## [436] &quot;lightslategray&quot;       &quot;lightslategrey&quot;       &quot;lightsteelblue&quot;      
+## [439] &quot;lightsteelblue1&quot;      &quot;lightsteelblue2&quot;      &quot;lightsteelblue3&quot;     
+## [442] &quot;lightsteelblue4&quot;      &quot;lightyellow&quot;          &quot;lightyellow1&quot;        
+## [445] &quot;lightyellow2&quot;         &quot;lightyellow3&quot;         &quot;lightyellow4&quot;        
+## [448] &quot;limegreen&quot;            &quot;linen&quot;                &quot;magenta&quot;             
+## [451] &quot;magenta1&quot;             &quot;magenta2&quot;             &quot;magenta3&quot;            
+## [454] &quot;magenta4&quot;             &quot;maroon&quot;               &quot;maroon1&quot;             
+## [457] &quot;maroon2&quot;              &quot;maroon3&quot;              &quot;maroon4&quot;             
+## [460] &quot;mediumaquamarine&quot;     &quot;mediumblue&quot;           &quot;mediumorchid&quot;        
+## [463] &quot;mediumorchid1&quot;        &quot;mediumorchid2&quot;        &quot;mediumorchid3&quot;       
+## [466] &quot;mediumorchid4&quot;        &quot;mediumpurple&quot;         &quot;mediumpurple1&quot;       
+## [469] &quot;mediumpurple2&quot;        &quot;mediumpurple3&quot;        &quot;mediumpurple4&quot;       
+## [472] &quot;mediumseagreen&quot;       &quot;mediumslateblue&quot;      &quot;mediumspringgreen&quot;   
+## [475] &quot;mediumturquoise&quot;      &quot;mediumvioletred&quot;      &quot;midnightblue&quot;        
+## [478] &quot;mintcream&quot;            &quot;mistyrose&quot;            &quot;mistyrose1&quot;          
+## [481] &quot;mistyrose2&quot;           &quot;mistyrose3&quot;           &quot;mistyrose4&quot;          
+## [484] &quot;moccasin&quot;             &quot;navajowhite&quot;          &quot;navajowhite1&quot;        
+## [487] &quot;navajowhite2&quot;         &quot;navajowhite3&quot;         &quot;navajowhite4&quot;        
+## [490] &quot;navy&quot;                 &quot;navyblue&quot;             &quot;oldlace&quot;             
+## [493] &quot;olivedrab&quot;            &quot;olivedrab1&quot;           &quot;olivedrab2&quot;          
+## [496] &quot;olivedrab3&quot;           &quot;olivedrab4&quot;           &quot;orange&quot;              
+## [499] &quot;orange1&quot;              &quot;orange2&quot;              &quot;orange3&quot;             
+## [502] &quot;orange4&quot;              &quot;orangered&quot;            &quot;orangered1&quot;          
+## [505] &quot;orangered2&quot;           &quot;orangered3&quot;           &quot;orangered4&quot;          
+## [508] &quot;orchid&quot;               &quot;orchid1&quot;              &quot;orchid2&quot;             
+## [511] &quot;orchid3&quot;              &quot;orchid4&quot;              &quot;palegoldenrod&quot;       
+## [514] &quot;palegreen&quot;            &quot;palegreen1&quot;           &quot;palegreen2&quot;          
+## [517] &quot;palegreen3&quot;           &quot;palegreen4&quot;           &quot;paleturquoise&quot;       
+## [520] &quot;paleturquoise1&quot;       &quot;paleturquoise2&quot;       &quot;paleturquoise3&quot;      
+## [523] &quot;paleturquoise4&quot;       &quot;palevioletred&quot;        &quot;palevioletred1&quot;      
+## [526] &quot;palevioletred2&quot;       &quot;palevioletred3&quot;       &quot;palevioletred4&quot;      
+## [529] &quot;papayawhip&quot;           &quot;peachpuff&quot;            &quot;peachpuff1&quot;          
+## [532] &quot;peachpuff2&quot;           &quot;peachpuff3&quot;           &quot;peachpuff4&quot;          
+## [535] &quot;peru&quot;                 &quot;pink&quot;                 &quot;pink1&quot;               
+## [538] &quot;pink2&quot;                &quot;pink3&quot;                &quot;pink4&quot;               
+## [541] &quot;plum&quot;                 &quot;plum1&quot;                &quot;plum2&quot;               
+## [544] &quot;plum3&quot;                &quot;plum4&quot;                &quot;powderblue&quot;          
+## [547] &quot;purple&quot;               &quot;purple1&quot;              &quot;purple2&quot;             
+## [550] &quot;purple3&quot;              &quot;purple4&quot;              &quot;red&quot;                 
+## [553] &quot;red1&quot;                 &quot;red2&quot;                 &quot;red3&quot;                
+## [556] &quot;red4&quot;                 &quot;rosybrown&quot;            &quot;rosybrown1&quot;          
+## [559] &quot;rosybrown2&quot;           &quot;rosybrown3&quot;           &quot;rosybrown4&quot;          
+## [562] &quot;royalblue&quot;            &quot;royalblue1&quot;           &quot;royalblue2&quot;          
+## [565] &quot;royalblue3&quot;           &quot;royalblue4&quot;           &quot;saddlebrown&quot;         
+## [568] &quot;salmon&quot;               &quot;salmon1&quot;              &quot;salmon2&quot;             
+## [571] &quot;salmon3&quot;              &quot;salmon4&quot;              &quot;sandybrown&quot;          
+## [574] &quot;seagreen&quot;             &quot;seagreen1&quot;            &quot;seagreen2&quot;           
+## [577] &quot;seagreen3&quot;            &quot;seagreen4&quot;            &quot;seashell&quot;            
+## [580] &quot;seashell1&quot;            &quot;seashell2&quot;            &quot;seashell3&quot;           
+## [583] &quot;seashell4&quot;            &quot;sienna&quot;               &quot;sienna1&quot;             
+## [586] &quot;sienna2&quot;              &quot;sienna3&quot;              &quot;sienna4&quot;             
+## [589] &quot;skyblue&quot;              &quot;skyblue1&quot;             &quot;skyblue2&quot;            
+## [592] &quot;skyblue3&quot;             &quot;skyblue4&quot;             &quot;slateblue&quot;           
+## [595] &quot;slateblue1&quot;           &quot;slateblue2&quot;           &quot;slateblue3&quot;          
+## [598] &quot;slateblue4&quot;           &quot;slategray&quot;            &quot;slategray1&quot;          
+## [601] &quot;slategray2&quot;           &quot;slategray3&quot;           &quot;slategray4&quot;          
+## [604] &quot;slategrey&quot;            &quot;snow&quot;                 &quot;snow1&quot;               
+## [607] &quot;snow2&quot;                &quot;snow3&quot;                &quot;snow4&quot;               
+## [610] &quot;springgreen&quot;          &quot;springgreen1&quot;         &quot;springgreen2&quot;        
+## [613] &quot;springgreen3&quot;         &quot;springgreen4&quot;         &quot;steelblue&quot;           
+## [616] &quot;steelblue1&quot;           &quot;steelblue2&quot;           &quot;steelblue3&quot;          
+## [619] &quot;steelblue4&quot;           &quot;tan&quot;                  &quot;tan1&quot;                
+## [622] &quot;tan2&quot;                 &quot;tan3&quot;                 &quot;tan4&quot;                
+## [625] &quot;thistle&quot;              &quot;thistle1&quot;             &quot;thistle2&quot;            
+## [628] &quot;thistle3&quot;             &quot;thistle4&quot;             &quot;tomato&quot;              
+## [631] &quot;tomato1&quot;              &quot;tomato2&quot;              &quot;tomato3&quot;             
+## [634] &quot;tomato4&quot;              &quot;turquoise&quot;            &quot;turquoise1&quot;          
+## [637] &quot;turquoise2&quot;           &quot;turquoise3&quot;           &quot;turquoise4&quot;          
+## [640] &quot;violet&quot;               &quot;violetred&quot;            &quot;violetred1&quot;          
+## [643] &quot;violetred2&quot;           &quot;violetred3&quot;           &quot;violetred4&quot;          
+## [646] &quot;wheat&quot;                &quot;wheat1&quot;               &quot;wheat2&quot;              
+## [649] &quot;wheat3&quot;               &quot;wheat4&quot;               &quot;whitesmoke&quot;          
+## [652] &quot;yellow&quot;               &quot;yellow1&quot;              &quot;yellow2&quot;             
+## [655] &quot;yellow3&quot;              &quot;yellow4&quot;              &quot;yellowgreen&quot;
+</code></pre>
+
+<pre><code class="r">barplot(x, col = &quot;slategray3&quot;)
+</code></pre>
+
+<p><img src="data:image/png;base64,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" alt="plot of chunk unnamed-chunk-1"/> </p>
+
+<pre><code class="r">
+# Color numbers From color name&#39;s position in alphabetically-order vector of
+# colors() Specify colors() [i], where i is index number in vector
+barplot(x, col = colors()[102])  # darkseagreen
+</code></pre>
+
+<p><img src="data:image/png;base64,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" alt="plot of chunk unnamed-chunk-1"/> </p>
+
+<pre><code class="r">barplot(x, col = colors()[602])  # Back to slategray3
+</code></pre>
+
+<p><img src="data:image/png;base64,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" alt="plot of chunk unnamed-chunk-1"/> </p>
+
+<pre><code class="r">
+# RGB Triplets Separately specify the red, green, and blue components of the
+# color By default, colors are specified in 0-1 range Can specify 0-255
+# range by adding &#39;max = 255&#39;
+`?`(rgb)
+# Can convert color names to rgb with &#39;col2rgb&#39;
+`?`(col2rgb)
+col2rgb(&quot;navyblue&quot;)  # Yields (0, 0, 128)
+</code></pre>
+
+<pre><code>##       [,1]
+## red      0
+## green    0
+## blue   128
+</code></pre>
+
+<pre><code class="r">barplot(x, col = rgb(0.54, 0, 0))  # darkred
+</code></pre>
+
+<p><img src="data:image/png;base64,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" alt="plot of chunk unnamed-chunk-1"/> </p>
+
+<pre><code class="r">barplot(x, col = rgb(159, 182, 205, max = 255))  # Back to slategray3
+</code></pre>
+
+<p><img src="data:image/png;base64,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" alt="plot of chunk unnamed-chunk-1"/> </p>
+
+<pre><code class="r">
+# RGB Hexcodes Can also use shortcut hexcodes (base 16), which are
+# equivalent to RGB on the 0-255 scale, as FF in hex equals 255 in decimal
+barplot(x, col = &quot;#FFEBCD&quot;)  # blanchedalmond
+</code></pre>
+
+<p><img src="data:image/png;base64,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" alt="plot of chunk unnamed-chunk-1"/> </p>
+
+<pre><code class="r">barplot(x, col = &quot;#9FB6CD&quot;)  # Back to slategray3
+</code></pre>
+
+<p><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAfgAAAH4CAMAAACR9g9NAAAAWlBMVEX9/v0AAAAAADkAAGUAOTkAOY8AZrU5AAA5AGU5OY85ZrU5j9plAABlADllAGVltf2POQCPOWWP29qP2/2fts21ZgC1/v3ajzna/v39tWX924/9/rX9/tr9/v2lhHu+AAAAHnRSTlP//////////////////////////////////////wDsGBxeAAAACXBIWXMAAAsSAAALEgHS3X78AAAKpklEQVR4nO3d21IchxWFYY8wUmRhCVsdDAy8/2u6wFaV0UDNPkz3Xsz6/xsuSO1a3V84pZzkl0ey7JfpATQT8KYBbxrwpgFvGvCmAW8a8KYBbxrwpgFvGvCmAW8a8KYBbxrwpgFvGvCmAW8a8KYBbxrwpgFvGvCmAW8a8KYBbxrwpgFvGvCmAW8a8KYBbxrwpgFvGvCmAW8a8KYBbxrwpgFvGvCmAW8a8KYBbxrwpgFvGvCmAW8a8KYBbxrwpgFvGvCmAW8a8KYBbxrwpp0Z/K7W9OyBzg1+qQT8uw/4aMADfw4BHw144M8h4KMBD/w5BHw04IE/h4CPdhz+/tPzf6p5cbPBmnbARzsK/3D97fnj3eXt6mP6AR/tKPz+682Lj9oBH42veODfaH/Fz/gzjN/qgQ8n/M8vAB8t9Ofch++v/nIn+L6Ajxb65e7h+gvwZ1bwz7n/fwT+vIr+OffXr/8D/pyK/Dn35enDX4d/zwm+L+Cjdf6cE3xfwEcDHvh0gu8L+GjAA59O8H0BHw144NMJvi/gowEPfDrB9wV8NOCBTyf4voCPBjzw6QTfF/DRgAc+neD7Aj4a8MCnE3xfwEcDHvh0gu8L+GjAA59O8H0BHw144NMJvi/gowEPfDrB9wV8NOCBTyf4voCPBjzw6QTfF/DRgAc+neD7Aj4a8MCnE3xfwEcDHvh0gu8L+GjAA59O8H0BHw144NMJvi/gowEPfDrB9wV8NOCBTyf4voCPBjzw6QTfF/DRgAc+neD7Aj4a8C/hd8XmHrkY8D/Blw68w+8ZwAOfTvBpgY8GPPDpBJ8W+GjAA59O8GmBjwY88OkEnxb4aMADn07waYGPBjzw6QSfFvhowAOfTvBpgY8GPPDpBJ8W+GjAA59O8GmBjwY88OkEnxb4aMADn07waYGPBjzw6QSfFvhowAOfTvBpgY8GPPCvt/9687i/2u0ubw8+Jfi0wEeLwD/ZP97/dvApwacFPloE/v7z7T9f+T8l+LTARzsOf/Xhzz+evuI/H3yvF3xa4KMFfrl7uN59fLy7OPiCB/7M4d9M8GmBj1aBF/7f/wA+Gl/xwKcTfFrgowV+q//3+/rhb3eCTwt8tONf8Q/XX974jODTAh8t8K1+//v31z8h+LTAR+NnPPDpBJ8W+GjAA59O8GmBjwY88OkEnxb4aMADn07waYGPBjzw6QSfFvhowAOfTvBpgY8GPPDpBJ8W+GjAA59O8GmBjwY88OkEnxb4aMADn07waYGPBjzw6QSfFvhowAOfTvBpgY8GPPDpBJ8W+GjAA59O8GmBjwY88OkEn1YAflds4zcF/Mnh2xc2CfhTswE/EfDRgD81G/ATAR8N+FOzAT8R8NGAPzUb8BMBHw34U7MBPxHw0YA/NRvwEwEfDfhTswE/EfDRgD81mx+8wj+BAHy0U8ILPDHw0YBfgM8G/DoXNgn4BfhswK9zYZOAX4DPBvw6FzYJ+AX4bMCvc2GTgF+Azwb8Ohc2CfgF+GzAr3Nhk4BfgM8G/DoXNgn4BfhswK9zYZOAX4DPBvw6FzYJ+AX4bMCvc2GTgF+Azwb8Ohc2CfgF+GzAr3Nhk4BfgM8G/DoXNgn4BfjXu//0/F9tvLg5+Azw61zYpKPwD9ffnj/eXd7+/Cng17mwSUfh919vXnz8T8Cvc2GT+IpfgH+9/RU/47e9sEn8Vr8AH+2N/xEThScGPhpf8Qvw2YBf58ImHf9z7urf7+uHv90Bv86FTTr+Ff9w/eWNzwC/zoVNCnyr3//+/fVPAL/OhU3iZ/wCfDbg17mwScAvwGcDfp0LmwT8Anw24Ne5sEnAL8BnA36dC5sE/AJ8NuDXubBJwC/AZwN+nQubBPwiB7/J/6sT8IsefPtCIOAXOTbgC5O6ExTYgC9M6k5QYAO+MKk7QYEN+MKk7gQFNuALk7oTFNiAL0zqTlBgA74wqTtBgQ34wqTuBAU24AuTuhMU2IAvTOpOUGADvjCpO0GBDfjCpO4EBTbgC5O6ExTYgC9M6k5QYAO+MKk7QYEN+MKk7gQFNuALk7oTFNiAL0zqTlBgA74wqTtBgQ34wqTuBAU24AuTuhMU2IAvTOpOUGADvjCpO0GBDfjCpO4EBTbgC5O6ExTYgC9M6k5QYAO+MKk7QYEN+MKk7gQFNuALk7oTFNiAL0zqTlBgA74wqTtBgQ34wqTuBAU24AuTuhMU2IAvTOpOUGADvjCpO0GBDfjCpO4EBTbgC5O6ExTYgC9M6k5QYAO+MKk7QYEN+MKk7gQFNuALk7oTFNiAL0zqTlBgA74wqTtBgQ34wqTuBAU24AuTuhMU2IAvTOpOUGADvjCpO0GBDfjCpO4EBTbgC5O6ExTYgC9M6k5QYAO+MKk7QYEN+MKk7gQFNuALk7oTFNiAL0zqTlBgA74wqTtBgQ34wqTuBAU24AuTuhMU2IAvTOpOUGADvjCpO0GBDfjCpO4EBTbgC5O6ExTYgC9M6k5QYAO+MKk7QYEN+MKk7gQFNuALk7oTFNg04Pdfbx73V7vd5e3hWz7FSwd+hQuBIvBP9o/3vx2+5VO8dOBXuBAoAn//+fafr/wfw350ipcO/AoXAh2Hv/rw5x9PX/GfD77XA696IVDgl7uH693Hx7uLm4NPAK96IRC/1S9ybMAXJnUnKLABX5jUnaDABnxhUneCAhvwhUndCQpswBcmdScosAFfmNSdoMAGfGFSd4ICG/CFSd0JCmzAFyZ1JyiwAV+Y1J2gwAZ8YVJ3ggIb8IVJ3QkKbMAXJnUnKLD5we+KdTeIsRnCD10QmAD8xAWBCcBPXBCYAPzEBYEJwE9cEJgA/MQFgQnAT1wQmAD8xAWBCcBPXBCYAPzEBYEJwE9cEJgA/MQFgQnAT1wQmAD8xAWBCcBPXBCYAPzEBYEJwE9cEJgA/MQFgQnAT1wQmAD8xAWBCcBPXBCYAPzEBYEJwE9cEJgA/MQFgQnAT1wQmAD8xAWBCcBPXBCYAPzEBYEJwE9cEJgA/MQFgQnAT1wQmAD8xAWBCcBPXBCYAPzEBYEJwE9cEJgA/MQFgQnAT1wQmAD8xAWBCcBPXBCYAPzEBYEJwE9cEJgA/MQFgQnAT1wQmAD8xAWBCcBPXBCYAPzEBYEJwE9cEJgA/MQFgQnAT1wQmAD8xAWBCcBPXBCYAPzEBYEJwE9cEJgA/MQFgQnAT1wQmAD8xAWBCcBPXBCYAPzEBYEJwE9cEJgA/MQFgQnAT1wQmAD8xAWBCcBPXBCYAPzEBYEJwE9cEJgA/MQFgQnAT1wQmCAIf/9p99TFzcFngFe9EOgo/MP1t+ePd5e3P38KeNULgY7C77/evPj4NOxHL/+Vu2ICFwQmnPRCoM5XPL3jjv+M3189/9vplZ/x9I7r/FZP7zjgTQPeNOBNA9404E0D3jTgTQPeNOBNA9404E0D3jTgTQPeNOBNA9404E0D3jTgTQPeNOBNA9404E0D3jTgTQPeNOBNA9404E0D3jTgTQPeNOBNA9404E0D3jTgTQPeNOBNA9404E0D3jTgTQPeNOBNA9404E0D3jTgTQPeNOBNA9404E0D3jTgTQPeNOBNA9404E0D3jTgTQPeNOBNA9404E0D3jTgTQPeNOBNA9404E0D3jTgTQPetL8BIPoIorpPOL4AAAAASUVORK5CYII=" alt="plot of chunk unnamed-chunk-1"/> </p>
+
+<pre><code class="r">
+# MULTIPLE COLORS Can specify several colors (using any coding method) in
+# vector
+barplot(x, col = c(&quot;red&quot;, &quot;blue&quot;))  # Colors will cycle
+</code></pre>
+
+<p><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAfgAAAH4CAMAAACR9g9NAAAAXVBMVEX9/v0AAAAAADkAAGUAAP8AOTkAOY8AZrU5AAA5AGU5OY85ZrU5j9plAABlADllAGVltf2POQCPOWWP29qP2/21ZgC1/v3ajzna/v39tWX924/9/rX9/tr9/v3/AAAiCkHPAAAAH3RSTlP//////////////////////////////////////wD/cz9k7wAAAAlwSFlzAAALEgAACxIB0t1+/AAACdJJREFUeJzt3WFvk1cSgNGa7AJLSUNaNk3i2P//Z3bjFmnBiTzje+EOnvN8iV65qmbm1MSpKP1lp5b9snoArQl808A3DXzTwDcNfNPANw1808A3DXzTwDcNfNPANw1808A3DXzTwDcNfNPANw1808A3DXzTwDcNfNPANw1808A3DXzTwDcNfNPANw1808A3DXzTwDcNfNPANw1808A3DXzTwDcNfNPANw1808A3DXzTwDcNfNPANw1808A3DXzTwDcNfNPANw1808A3DXzTLgx+c16rx17QpcHvzwn8Tx/4aODBX0Lgo4EHfwmBjwYe/CUEPhp48JcQ+Gin4R/fH/6t5tXdD5hmOPDRTsI/3X46fH14e//dhxkPfLST8Nubu6++1g58NO948K+0vfY9/gLzqR58uMK/fwF8tNCPc28+v/jhruC9wEcLfbh7uv0I/sIK/jj333fgL6voj3N//vs/4C+pyI9zH5+//Hn881zBe4GPNvLjXMF7gY8GHny6gvcCHw08+HQF7wU+Gnjw6QreC3w08ODTFbwX+GjgwacreC/w0cCDT1fwXuCjgQefruC9wEcDDz5dwXuBjwYefLqC9wIfDTz4dAXvBT4aePDpCt4LfDTw4NMVvBf4aODBpyt4L/DRwINPV/Be4KOBB5+u4L3ARwMPPl3Be4GPBh58uoL3Ah8NPPh0Be8FPhp48OkK3gt8NPDg0xW8F/ho4MGnK3gv8NHAg09X8F7go4EHn67gvcBHA/81/ObM1q18ZuC/gf/XWRU8xYnAg09XcFvw0cCDT1dwW/DRwINPV3Bb8NHAg09XcFvw0cCDT1dwW/DRwINPV3Bb8NHAg09XcFvw0cCDT1dwW/DRwINPV3Bb8NHAg09XcFvw0cCDT1dwW/DRwINPV3Bb8NHAg09XcFvw0cCDf7nt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" alt="plot of chunk unnamed-chunk-1"/> </p>
+
+<pre><code class="r">barplot(x, col = c(&quot;red&quot;, &quot;blue&quot;, &quot;green&quot;, &quot;yellow&quot;))  # Colors will cycle
+</code></pre>
+
+<p><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAfgAAAH4CAMAAACR9g9NAAAAY1BMVEX9/v0AAAAAADkAAGUAAP8AOTkAOY8AZrUA/wA5AAA5AGU5OY85ZrU5j9plAABlADllAGVltf2POQCPOWWP29qP2/21ZgC1/v3ajzna/v39tWX924/9/rX9/tr9/v3/AAD//wA80PTIAAAAIXRSTlP///////////////////////////////////////8A//8MWwtBAAAACXBIWXMAAAsSAAALEgHS3X78AAAJBElEQVR4nO3dYXMTVxKG0Qh2YQnBASfEMZad/f+/ctdKqAoju/z2eALN9Hm+qG6Jct3ug2yJIuSHO43sh299AX2bwA8N/NDADw380MAPDfzQwA8N/NDADw380MAPDfzQwA8N/NDADw380MAPDfzQwA8N/NDADw380MAPDfzQwA8N/NDADw380MAPDfzQwA8N/NDADw380MAPDfzQwA8N/NDADw380MAPDfzQwA8N/NDADw380MAPDfzQwA8N/NDADw380MAPDfzQwA8N/NDAD21n8Id1fetrf4P2Bv+fNYH/7gOfBh78HgKfBh78HgKfBh78HgKfBh78HgKf9jT8zZvTn2q+vPoKt3l24NOehL+9/HB6/PTq+h+/zPMDn/Yk/PH91RePvQOf5hUP/pGOF37G7zDv6sHHNf77C+DToo9zLz4++Oau4b7Ap0Vv7m4v34HfWeHHud9eg99X6ce53//9I/g9lXyce3f/8Pv557mG+wKf9pyPcw33BT4NPPhyDfcFPg08+HIN9wU+DTz4cg33BT4NPPhyDfcFPg08+HIN9wU+DTz4cg33BT4NPPhyDfcFPg08+HIN9wU+DTz4cg33BT4NPPhyDfcFPg08+HIN9wU+DTz4cg33BT4NPPhyDfcFPg08+HIN9wU+DTz4cg33BT4NPPhyDfcFPg08+HIN9wU+DTz4cg33BT4NPPhyDfcFPg08+HIN9wU+DTz4cg33BT4NPPhyDfcFPg08+HIN9wU+DfyX8IeVfbuRVwZ+Af/fVTVcxROBB1+u4bTg08CDL9dwWvBp4MGXazgt+DTw4Ms1nBZ8Gnjw5RpOCz4NPPhyDacFnwYefLmG04JPAw++XMNpwaeBB1+u4bTg08CDL9dwWvBp4MGXazgt+DTw4Ms1nBZ8Gnjw5RpOCz4N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" alt="plot of chunk unnamed-chunk-1"/> </p>
+
+<pre><code class="r">
+# USING COLOR PALETTES Palettes can be more attractive and more informative
+# Easiest to use
+help(package = colorspace)  # Lots of info on color spaces
+`?`(palette)
+
+# Built-in palettes rainbow(n, s = 1, v = 1, start = 0, end = max(1, n -
+# 1)/n, alpha = 1) heat.colors(n, alpha = 1) # Yellow through red
+# terrain.colors(n, alpha = 1) # Gray through green topo.colors(n, alpha =
+# 1) # Purple through tan cm.colors(n, alpha = 1) # Blues and pinks
+help(package = colorspace)
+palette()
+</code></pre>
+
+<pre><code>## [1] &quot;black&quot;   &quot;red&quot;     &quot;green3&quot;  &quot;blue&quot;    &quot;cyan&quot;    &quot;magenta&quot; &quot;yellow&quot; 
+## [8] &quot;gray&quot;
+</code></pre>
+
+<pre><code class="r">barplot(x, col = 1:6)
+</code></pre>
+
+<p><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAfgAAAH4CAMAAACR9g9NAAAAZlBMVEX9/v0AAAAAADkAAGUAAP8AOTkAOY8AZrUAzQAA//85AAA5AGU5OY85ZrU5j9plAABlADllAGVltf2POQCPOWWP29qP2/21ZgC1/v3ajzna/v39tWX924/9/rX9/tr9/v3/AAD/AP+hTI7dAAAAInRSTlP/////////////////////////////////////////AP//nkoYEQAAAAlwSFlzAAALEgAACxIB0t1+/AAACCdJREFUeJzt3GFTU1cQgGEjLbaWgojaCIS0//9PtpzojNzAZDfcynL3eb9kzsTZydnHQNJx+marlr156Reglwl808A3DXzTwDcNfNPANw1808A3DXzTwDcNfNPANw1808A3DXzTwDcNfNPANw1808A3DXzTwDcNfNPANw1808A3DXzTwDcNfNPANw1808A3DXzTwDcNfNPANw1808A3DXzTwDcNfNPANw1808A3DXzTwDcNfNPANw1808A3DXzTwDcNfNPANw1808A3DXzTFga/Oq6Xftkv0NLgfzsm8K8+8NHAg19C4KOBB7+EwEcDD34JgY8GHvwSAh/tMPzt+/FfNU/WP+HVPDvw0Q7C3119HI83p9f/+4t5fuCjHYTfXK4fPNYOfDTvePBPtLnwO36B+VQPPlzhf78APlro69zbL49+uCu4L/DRQh/u7q7OwS+s4Ne5v96BX1bRr3Nff/0D/JKKfJ07v3/4uv99ruC+wEd7zte5gvsCHw08+HQF9wU+Gnjw6QruC3w08ODTFdwX+GjgwacruC/w0cCDT1dwX+CjgQefruC+wEcDDz5dwX2BjwYefLqC+wIfDTz4dAX3BT4aePDpCu4LfDTw4NMV3Bf4aODBpyu4L/DRwINPV3Bf4KOBB5+u4L7ARwMPPl3BfYGPBh58uoL7Ah8NPPh0BfcFPhp48OkK7gt8NPDg0xXcF/ho4MGnK7gv8NHAg09XcF/go4EHn67gvsBHAw8+XcF9gY8G/iH86she7spHBn4C/8tRFVzFgcCDT1fwtuCjgQefruBtwUcDDz5dwduCjwYefLqCtwUfDTz4dAVvCz4aePDpCt4WfDTw4NMVvC34aODBpyt4W/DRwINPV/C24KOBB5+u4G3BRwMPPl3B24KPBh58uoK3BR8NPPh0BW8LPhp48I+3uVxvNxer1en13lMFbws+WgT+3n57++feUwVvCz5aBP727Hr3zp9U8Lbgox2Gv3j7+dP9O/5s72d9wduCjxb4cHd3tXq3vTnZe8ODXzj8kxW8Lfhox8AX/v9/gI/mHQ8+XcHbgo8W+FT/7ef6/qe7grcFH+3wO/7u6vyJZwreFny0wI/6zYcvjz9R8Lbgo/kdDz5dwduCjwYefLqCtwUfDTz4dAVvCz4aePDpCt4WfDTw4NMVvC34aODBpyt4W/DRwINPV/C24KOBB5+u4G3BRwMPPl3B24KPBh58uoK3BR8NPPh0BW8LPhp48OkK3hZ8NPDg0xW8Lfho4MGnK3hb8NHAg09X8LYF4FdH9pM3BX52+N+PCvyzAh8NPPh04MFXCXw08ODTgQdfJfDRwINPBx58lcBHAw8+HXjwVQIfDTz4dODBj2OBf4EAPhp48OnAgx9H8GMCePDgwYMHDx48+JkCHw08+HTgwY8j+DEBPHjw4MGDBw8e/EyBjwYefDrw4McR/JgAHjx48ODBgwcPfqbARwMPPh148OMIfkwAD/5Vw9++Hzwn671nwC8Z/u7q43i8Ob2ePgV+yfCby/WDxx8Cv2R47/im8NvNxeDxO74b/NOBbwb/BBn43YTlwn8PPPhxBD8mLAT+22e7xz7dgV8y/H/f586feAb8ouG3mw9fHn8C/LLhnww8+HEEPyaABw8ePHjw4MGDnynw0cCDTwce/DiCHxPAgwcPHjz4Q/A/ZZHgC8L/c1TgwQcCDz6/5ckR/JgAHjx48ODBgwcPfqbARwMPPr/lyRH8mAAePHjw4MGDBw9+psBHAw8+v+XJEfyYAB48ePDgwYMHD36mwEcDDz6/5ckR/JgAHjx48ODBgwcPfqbARwMPPr/lyRH8mAAePHjw4MGDBw9+psBHAw8+v+XJEfyYAB48ePDgwYMHD36mwEcDDz6/5ckR/JgAHjx48ODBgwcPfqbARwMPPr/lyRH8mAAePHjw4MGDBw9+psBHAw8+v+XJEfyYAB48ePDgwYMHD36mwEcDDz6/5ckR/JiwEPjN5Xq7uVitTq/3tzw5gh8TlgN/b7+9/XN/y5Mj+DFhOfC3Z9e7d/73F/Y4GfjdhKXAX7z9/On+HX+297Me/JLht9u7q9W77c3Jeu8J8MuGf3rLkyP4MQE8ePDgwYMHDx78TIGPBh58fsuTI/gxATx48ODBgwcPHvxMgY8GHnx+y5Pjs+FnmAA+WC34v48KPHjw0cCDTwce/DiCHxPAgwcPHjx48ODB7yaAHxPAgwcPHjx48ODB7yaADwYefDrw4McR/JgAHjx48ODBgwcPfjcB/JgAHjx48ODBgwcPfjcBfDDw4NOBBz+O4McE8ODBgwcPHjx48LsJ4McE8ODBgwcPHjx48LsJ4IOBB58OPPhxBD8mgAcPHjx48ODBg99NAD8mgAcPHjx48ODBg99NAB8MPPh04MGPI/gxATx48ODBgwcPHvxuAvgxATx48ODBgwcPHvxuAvhgh+Fv3w+ek/XeM+CXDH939XE83pxeT58Cv2T4zeX6weOPwg//5AzwLzWhwEuYdUKg57zj9Yo7/Dt+czH+Oj3yO16vuOd8qtcrDnzTwDcNfNPANw1808A3DXzTwDcNfNPANw1808A3DXzTwDcNfNPANw1808A3DXzTwDcNfNPANw1808A3DXzTwDcNfNPANw1808A3DXzTwDcNfNPANw1808A3DXzTwDcNfNPANw1808A3DXzTwDcNfNPANw1808A3DXzTwDcNfNPANw1808A3DXzTwDcNfNPANw1808A3DXzTwDcNfNPANw1808A3DXzTwDcNfNPANw1808A3DXzTwDftX+xqFOiXiMWoAAAAAElFTkSuQmCC" alt="plot of chunk unnamed-chunk-1"/> </p>
+
+<pre><code class="r">barplot(x, col = rainbow(6))
+</code></pre>
+
+<p><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAfgAAAH4CAMAAACR9g9NAAAAaVBMVEX9/v0AAAAAADkAAGUAAP8AOTkAOY8AZrUA/wAA//85AAA5AGU5OY85ZrU5j9plAABlADllAGVltf2POQCPOWWP29qP2/21ZgC1/v3ajzna/v39tWX924/9/rX9/tr9/v3/AAD/AP///wCekLcoAAAAI3RSTlP/////////////////////////////////////////AP///5UuauoAAAAJcEhZcwAACxIAAAsSAdLdfvwAAAg1SURBVHic7d1hU1tVEIDhpijV2kIpbU2BEPX//0jlpJ0pNzDZDdey3H3eL5kzcXZy9jGQOFVfbdWyV8/9AvQ8gW8a+KaBbxr4poFvGvimgW8a+KaBbxr4poFvGvimgW8a+KaBbxr4poFvGvimgW8a+KaBbxr4poFvGvimgW8a+KaBbxr4poFvGvimgW8a+KaBbxr4poFvGvimgW8a+KaBbxr4poFvGvimgW8a+KaBbxr4poFvGvimgW8a+KaBbxr4poFvGvimgW8a+KaBb9rC4FfH9dwv+xlaGvxvxwT+xQc+GnjwSwh8NPDglxD4aODBLyHw0cCDX0Lgox2Gv3k7/qnmyfonvJonBz7aQfjby4/j8fr06n9/MU8PfLSD8JuL9b3H2oGP5h0P/pE2537HLzCf6sGHK/znF8BHC32de/3lwQ93BfcFPlrow93t5Rn4hRX8OvfnG/DLKvp17uuvf4BfUpGvc2d3D1/3v88V3Bf4aE/5OldwX+CjgQefruC+wEcDDz5dwX2BjwYefLqC+wIfDTz4dAX3BT4aePDpCu4LfDTw4NMV3Bf4aODBpyu4L/DRwINPV3Bf4KOBB5+u4L7ARwMPPl3BfYGPBh58uoL7Ah8NPPh0BfcFPhp48OkK7gt8NPDg0xXcF/ho4MGnK7gv8NHAg09XcF/go4EHn67gvsBHAw8+XcF9gY8GHny6gvsCHw08+HQF9wU+Gnjw6QruC3w08ODTFdwX+GjgwacruC/w0cDfh18d2fNd+cjAT+B/P6qCqzgQePDpCt4WfDTw4NMVvC34aODBpyt4W/DRwINPV/C24KOBB5+u4G3BRwMPPl3B24KPBh58uoK3BR8NPPh0BW8LPhp48OkK3hZ8NPDg0xW8Lfho4MGnK3hb8NHAg09X8Lbgo4EHn67gbcFHAw/+4TYX6+3mfLU6vdp7quBtwUeLwN/Zb2/e7z1V8Lbgo0Xgb95d7d75kwreFny0w/Dnrz9/unvHv9v7WV/wtuCjBT7c3V6u3myvT/be8OAXDv9oBW8LPtox8IX/+x/go3nHg09X8LbgowU+1X/7ub7/6a7gbcFHO/yOv708e+SZgrcFHy3wo37z4cvDTxS8LfhofseDT1fwtuCjgQefruBtwUcDDz5dwduCjwYefLqCtwUfDTz4dAVvCz4aePDpCt4WfDTw4NMVvC34aODBpyt4W/DRwINPV/C24KOBB5+u4G3BRwMPPl3B24KPBh58uoK3BR8NPPh0BW8LPhp48OkK3hZ8NPDg0xW8bQH41ZH95E2Bnx3+l6MC/6TARwMPPh148FUCHw08+HTgwVcJfDTw4NOBB18l8NHAg08HHnyVwEcDDz4dePDjWOBPIICPNif8X0cFHvzTAx8NPPh04MGPI/gxATx48ODBgwcPHvxMgY8GHnw68ODHEfyYAB48ePDgwYMHD36mwEcDDz4dePDjCH5MAA8ePHjw4MGDBz9T4KOBB58O/KLhb96Of7XxZL33DPglw99efhyP16dX06fALxl+c7G+9/hD4JcM7x3fFH67Ofc7viX844FvBv/If8QE/G7CcuG/Bx78OIIfExYC/+2z3UOf7sAvGf6/73NnjzwDftHw282HLw8/AX7Z8I8GHvw4gh8TwIMHDx48ePDgwc8U+GjgwacDD34cwY8J4MGDBw8e/CH4n/J/dQJfEP7vowIPPhB48PktT47gxwTw4MGDBw8ePHjwMwU+Gnjw+S1PjuDHBPDgwYMHDx48ePAzBT4aePD5LU+O4McE8ODBgwcPHjx48DMFPhp48PktT47gxwTw4MGDBw8ePHjwMwU+Gnjw+S1PjuDHBPDgwYMHDx48ePAzBT4aePD5LU+O4McE8ODBgwcPHjx48DMFPhp48PktT47gxwTw4MGDBw8ePHjwMwU+Gnjw+S1PjuDHBPDgwYMHDx48ePAzBT4aePD5LU+O4McE8ODBgwcPHjx48DMFPhp48PktT47gx4SFwG8u1tvN+Wp1erW/5ckR/JiwHPg7++3N+/0tT47gx4TlwN+8u9q987+/sO9Nlg5+TFgK/Pnrz5/u3vHv9n7Wg18y/HZ7e7l6s70+We89AX7Z8I9veXIEPyaABw8ePHjw4MGDnynw0cCDz295cgQ/JoAHDx48ePDgwYOfKfDRwIPPb3lyfDL86sh+mAA+WC34f44KPHjw0cCDTwce/DiCHxPAgwcPHjx48ODB7yaAHxPAgwcPHjx48ODB7yaADwYefDrw4McR/JgAHjx48ODBgwcPfjcB/JgAHjx48ODBgwcPfjcBfDDw4NOBBz+O4McE8ODBgwcPHjx48LsJ4McE8ODBgwcPHjx48LsJ4IOBB58OPPhxBD8mgAcPHjx48ODBg99NAD8mgAcPHjx48ODBg99NAB8MPPh04MGPI/gxATx48ODBgwcPHvxuAvgxATx48ODBgwcPHvxuAvhgh+Fv3q7uOlnvPQN+yfC3lx/H4/Xp1fQp8EuG31ys7z3evbDv3f8rV0dWYEKBlzDrhEBPecfrBXf4d/zmfPzt9MDveL3gnvKpXi848E0D3zTwTQPfNPBNA9808E0D3zTwTQPfNPBNA9808E0D3zTwTQPfNPBNA9808E0D3zTwTQPfNPBNA9808E0D3zTwTQPfNPBNA9808E0D3zTwTQPfNPBNA9808E0D3zTwTQPfNPBNA9808E0D3zTwTQPfNPBNA9808E0D3zTwTQPfNPBNA9808E0D3zTwTQPfNPBNA9808E0D3zTwTQPfNPBNA9808E0D3zTwTQPfNPBNA9808E0D37R/AVvJ0s05oAjzAAAAAElFTkSuQmCC" alt="plot of chunk unnamed-chunk-1"/> </p>
+
+<pre><code class="r">barplot(x, col = heat.colors(6))
+</code></pre>
+
+<p><img src="data:image/png;base64,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" alt="plot of chunk unnamed-chunk-1"/> </p>
+
+<pre><code class="r">barplot(x, col = terrain.colors(6))
+</code></pre>
+
+<p><img src="data:image/png;base64,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/JgAHjx48ODBgwcPfqbARwMPPr/lyRH8mAAePHjw4MGDBw9+psBHAw8+v+XJ8cnwqyP7YQL4YLXgfz8q8ODBRwMPPh148OMIfkwADx48ePDgwYMHv5sAfkwADx48ePDgwYMHv5sAPhh48OnAgx9H8GMCePDgwYMHDx48+N0E8GMCePDgwYMHDx48+N0E8MHAg08HHvw4gh8TwIMHDx48ePDgwe8mgB8TwIMHDx48ePDgwe8mgA8GHnw68ODHEfyYAB48ePDgwYMHD343AfyYAB48ePDgwYMHD343AXww8ODTgQc/juDHBPDgwYMHDx48ePC7CeDHBPDgwYMHDx48ePC7CeCDHYa/ebu662S99wz4JcPfXn4cj9enV9OnwC8ZfnOxvvd498K+d/+vXB1ZgQkFXsKsEwI95R2vF9zh3/Gb8/G30wO/4/WCe8qner3gwDcNfNPANw1808A3DXzTwDcNfNPANw1808A3DXzTwDcNfNPANw1808A3DXzTwDcNfNPANw1808A3DXzTwDcNfNPANw1808A3DXzTwDcNfNPANw1808A3DXzTwDcNfNPANw1808A3DXzTwDcNfNPANw1808A3DXzTwDcNfNPANw1808A3DXzTwDcNfNPANw1808A3DXzTwDcNfNPANw1808A3DXzTwDcNfNPANw1808A3DXzTwDcNfNP+BTojMmXgoMQ9AAAAAElFTkSuQmCC" alt="plot of chunk unnamed-chunk-1"/> </p>
+
+<pre><code class="r">barplot(x, col = topo.colors(6))
+</code></pre>
+
+<p><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAfgAAAH4CAMAAACR9g9NAAAAaVBMVEX9/v0AAAAAADkAAGUAOTkAOY8AZrUA5f8A/005AAA5AGU5OY85ZrU5j9pMAP9lAABlADllAGVltf2POQCPOWWP29qP2/21ZgC1/v3ajzna/v3m/wD9tWX924/9/rX9/tr9/v3/4LP//wBKxdEhAAAAI3RSTlP//////////////////////////////////////////wD///WzWPYAAAAJcEhZcwAACxIAAAsSAdLdfvwAAAsbSURBVHic7Z1hUxtXFkRbJnjXcbwEk3gVFoSy//9HrvUUV0Uj2Gl0J+nL+JwvqleaftX3nsiAy3a0h+8SpQtABqULQAalC0AGpQtABqULQAalC0AGpQtABqULQAalC0AGpQtABqULQAalC0AGpQtABqULQAalC0AGpQtABqULQAalC0AGpQtABqULQAalC0AGpQtABqULQAalC0AGpQtABqULQAalC0AGpQtABqULQAalC0AGpQtABqULQAalC0AGpQtABqULQAalC0AGpQtABqULQAalC0AGpQtABqULQAalC0AGpQtABqULQAalC0AGpQtABqULQAalC0AGpQtABqULQAalC0AGpQtABqULQAalC0AGpQtABqULQAalC0AGpQtABqULLMvmMtK1AyhdYFk2/7wExL95EO+idIFlQbyL0gWWBfEuShdYFsS7KF1gWRDvonSBZUG8i9IFlgXxLkoXWBbEuyhdYFkQ76LZJx4/jN/VvNr+9WXqIN5Fcw883X0erw/X9391lwVAvIvmHtjdbk9ee4N4F809wCd+nWj2id0NX+NXiNIFlgXxLrog0/jPLyDeRbNPfP1x7t2XZ7+5a7gvxLto7oHDN3dPd58QvzI098BR+L/fI35daO6BP36c++2HHxG/JjT7xO7m0+Hlt/Of5xruC/EuKmQb7gvxLipkG+4L8S4qZBvuC/EuKmQb7gvxLipkG+4L8S4qZBvuC/EuKmQb7gvxLipkG+4L8S4qZBvuC/EuKmQb7gvxLipkG+4L8S4qZBvuC/EuKmQb7gvxLipkG+4L8S4qZBvuC/EuKmQb7gvxLipkG+4L8S4qZBvuC/EuKmQb7gvxLipkG+4L8S4qZBvuC/EuKmQb7gvxLipkG+4L8S4qZBvuC/EuKmQb7gvxLipkG+4L8S4qZBvuC/EuKmQb7gvxLipkG+4L8S4qZBvuC/EuKmQb7gvxLipkG+4L8S4qZBvuC/EuKmQb7gvxLipkG+4L8S4qZBvuC/EuKmQb7gvxLipkG+4L8S4qZBvuC/EuKmQb7gvxLipkG+4L8S4qZBvuC/EuKmQb7gvxLipkG+4L8S4qZBvuC/EuKmQb7gvxLipkG+4L8S4qZBvuqyx+cyG5kS9EhWzDaevi/3MRDVcxgwrZhtMi3kWFbMNpEe+iQrbhtIh3USHbcFrEu6iQbTgt4l1UyDacFvEuKmQbTot4FxWyDadFvIsK2YbTIt5FhWzDaRHvokK24bSId1Eh23BaxLuokG04LeJdVMg2nBbxLipkG06LeBcVsg2nRbyLCtmG0yLeRYVsw2kR76JCtuG0iHdRIdtwWsS7qJBtOC3iXVTINpwW8S4qZBtOi3gXFbINp0W8iwrZhtMi3kWFbMNpEe+iQrbhtIh30dwDu9vtfnez2Vzfn73VcFrEu2juga/iD+73jz+dvdVwWsS7aO6Br9YfP94fP/kTGk6LeBfNPbC7effrL4dP/MezX+sbTot4F80/8nS3eb9/uDr7wCN+5eJfpOG0iHfRBZnG//4H4l1UyDacFvEuKmQbTot4F809cPjNm8H5d3cNp0W8i2afeLr79MI7DadFvIvmH9n9/OX5NxpOi3gXFbINp0W8iwrZhtMi3kWFbMNpEe+iQrbhtIh3USHbcFrEu6iQbTgt4l1UyDacFvEuKmQbTot4FxWyDadFvIsK2YbTIt5FhWzDaRHvokK24bSId1Eh23BaxLuokG04LeJdVMg2nBbxLipkG06LeBcVsg2nRbyLCtmG0yLeRYVsw2kR76JCtuG0iHdRIdtwWsS7qJBtOC3iXVTINpwW8S4qZBtOi3gXFbINp0W8iwrZhtMi3kWFbMNpEe+iQrbhtIh3USHbcFrEu6iQbThtA/GbC/mbN6VCFvHPiv/vRSC+BOJdVMgiHvFdQLyLClnEI74LiHdRIYt4xHcB8S4qZBGP+C4g3kWFLOIR3wXEu6iQRTziu4B4FxWyiEd8FxDvokJ20rXDn0BAvIsK2an4f10E4hFfB/EuKmQRj/hxRPy4AfGIRzziEY94xCMe8QuBeBcVsohH/DgiftyAeMQjHvGIRzziEY/4hUC8iwpZxCN+HBE/bkA84hGPeMQjHvGIR/xCIN5FhSziET+OiB83IB7xiEc84hH/RsQ/fhh/tfFqe/YO4tcs/unu83h9uL6fvoX4NYvf3W5PXv8E4tcsnk/8dyp+v7vha/x3Kf5lEP+diX/hHzFB/PGG9Yr/BuIRP46IHzesRPwf39s9990d4tcs/uvPc59eeAfxqxa/3/385fk3EL9u8S+CeMSPI+LHDYhHPOIRj3jEIx7xiF8IxLuokEU84scR8eMGxCMe8YhHPOIRj/hnxf8t/1cnVbY8OSJ+3FAX//tFIB7xBqpseXJE/LgB8YhHPOIRj3jEIx7xC4F4F1W2PDkiftyAeMQjHvGIRzziEY/4hUC8iypbnhwRP25APOIRj3jEIx7xiEf8QiDeRZUtT46IHzcgHvGIRzziEY94xCN+IRDvosqWJ0fEjxsQj3jEIx7xiEc84hG/EIh3UWXLkyPixw2IRzziEY94xCMe8YhfCMS7qLLlyRHx4wbEIx7xiEc84hGPeMQvBOJdVNny5Ij4cQPiEY94xCMe8YhHPOIXAvEuqmx5ckT8uAHxiEc84hGPeMQjHvELgXgXVbY8OSJ+3IB4xCMe8YhHPOIRj/iFQLyLKlueHBE/bkA84hGPeMQjHvGIbyx+d7vd7242m+v78y1PjogfN6xH/MH9/vGn8y1PjogfN6xH/OPH++Mn/1uxb0yWjvhxw1rE37z79ZfDJ/7j2a/1iF+z+P3+6W7zfv9wtT17A/HrFv/ylidHxI8bEI94xCMe8YhHPOIRvxCId1Fly5Mj4scNiEc84hGPeMQjHvGIXwjEu6iy5ckR8eMGxCMe8Z74zYX86QbEm+hVT5+yvPh/XATiEY94F73q6VMQj/hxRPy4AfGIRzziEY94xCMe8ccbED9uQDziEY94xCMe8YhH/PEGxJvoVU+fgnjEjyPixw2IRzziEY94xCMe8Yg/3oD4cQPiEY94xCMe8YhHPOKPNyDeRK96+hTEI34cET9uQDziEY94xCMe8YhH/PEGxI8bEI94xCMe8YhHPOIRf7wB8SZ61dOnIB7x44j4cQPiEY94xCMe8YhHPOKPNyB+3IB4xCMe8YhHPOIRj/jjDYg30auePgXxiB9HxI8bEI94xCMe8YhHPOIRf7wB8eMGxCMe8YhHPOIRj3jEH29AvIle9fQpiEf8OCJ+3IB4xCMe8YhH/BsR//hhc+Bqe/YO4tcs/unu83h9uL6fvoX4NYvf3W5PXg/FvnH65OZCGtzQoMKiNxho7oH/84mHN4xmn9jdjP+cnvkaD28YpQtABqULQAalC0AGpQtABqULQAalC0AGpQtABqULQAalC0AGpQtABqULQAalC0AGpQtABqULQAalC0AGpQtABqULQAalC0AGpQtABqULQAalC0AGpQtABqULQAalC0AGpQtABqULQAalC0AGpQtABqULQAalC0AGpQtABqULQAalC0AGpQtABqULQAalC0AGpQtABqULQAalC0AGpQtABqULQAalC0AGpQtABqULQAalC0AGpQtABqULQAalC0AGpQtABqULQAalC0AGpQtABqULQAalC0AGpQtABqULQAalC0AGpQtABqULQAalC0AGpQtABqULQAalC0AGpQtABqULQAalC0AGpQtABqULQAalC0AGpQtABqULQAalC0AGpQtABqULQAalC0CG/wGmveY8YvP+TwAAAABJRU5ErkJggg==" alt="plot of chunk unnamed-chunk-1"/> </p>
+
+<pre><code class="r">barplot(x, col = cm.colors(6))
+</code></pre>
+
+<p><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAfgAAAH4CAMAAACR9g9NAAAAaVBMVEX9/v0AAAAAADkAAGUAOTkAOY8AZrU5AAA5AGU5OY85ZrU5j9plAABlADllAGVltf2A//+POQCPOWWP29qP2/2q//+1ZgC1/v3V///ajzna/v39tWX924/9/rX9/tr9/v3/gP//qv//1f+R+6aYAAAAI3RSTlP/////////////////////////////////////////AP///5UuauoAAAAJcEhZcwAACxIAAAsSAdLdfvwAAAg1SURBVHic7d1hU1tVEIDhpkhrC6XSVmOBEPX//0jlpJ0pNzDZDdey3H3eL5kzcXZy9jGQOFVfbdWyV8/9AvQ8gW8a+KaBbxr4poFvGvimgW8a+KaBbxr4poFvGvimgW8a+KaBbxr4poFvGvimgW8a+KaBbxr4poFvGvimgW8a+KaBbxr4poFvGvimgW8a+KaBbxr4poFvGvimgW8a+KaBbxr4poFvGvimgW8a+KaBbxr4poFvGvimgW8a+KaBbxr4poFvGvimgW8a+KaBb9rC4FfH9dwv+xlaGvyfxwT+xQc+GnjwSwh8NPDglxD4aODBLyHw0cCDX0Lgox2Gv3k7/qnmyfonvJonBz7aQfjby4/j8fr06n9/MU8PfLSD8JuL9b3H2oGP5h0P/pE2537HLzCf6sGHK/znF8BHC32de/3lwQ93BfcFPlrow93t5Rn4hRX8OvfHG/DLKvp17usvv4JfUpGvc2d3D1/3v88V3Bf4aE/5OldwX+CjgQefruC+wEcDDz5dwX2BjwYefLqC+wIfDTz4dAX3BT4aePDpCu4LfDTw4NMV3Bf4aODBpyu4L/DRwINPV3Bf4KOBB5+u4L7ARwMPPl3BfYGPBh58uoL7Ah8NPPh0BfcFPhp48OkK7gt8NPDg0xXcF/ho4MGnK7gv8NHAg09XcF/go4EHn67gvsBHAw8+XcF9gY8GHny6gvsCHw08+HQF9wU+Gnjw6QruC3w08ODTFdwX+GjgwacruC/w0cDfh18d2fNd+cjAT+D/OaqCqzgQePDpCt4WfDTw4NMVvC34aODBpyt4W/DRwINPV/C24KOBB5+u4G3BRwMPPl3B24KPBh58uoK3BR8NPPh0BW8LPhp48OkK3hZ8NPDg0xW8Lfho4MGnK3hb8NHAg09X8Lbgo4EHn67gbcFHAw/+4TYX6+3mfLU6vdp7quBtwUeLwN/Zb2/e7z1V8Lbgo0Xgb95d7d75kwreFny0w/Dnrz9/unvHv9v7WV/wtuCjBT7c3V6u3myvT/be8OAXDv9oBW8LPtox8IX/+x/go3nHg09X8LbgowU+1X/7ub7/6a7gbcFHO/yOv708e+SZgrcFHy3wo37z4cvDTxS8LfhofseDT1fwtuCjgQefruBtwUcDDz5dwduCjwYefLqCtwUfDTz4dAVvCz4aePDpCt4WfDTw4NMVvC34aODBpyt4W/DRwINPV/C24KOBB5+u4G3BRwMPPl3B24KPBh58uoK3BR8NPPh0BW8LPhp48OkK3hZ8NPDg0xW8bQH41ZH95E2Bnx3+76MC/6TARwMPPh148FUCHw08+HTgwVcJfDTw4NOBB18l8NHAg08HHnyVwEcDDz4dePDjWOBPIICPNif8b0cFHvzTAx8NPPh04MGPI/gxATx48ODBgwcPHvxMgY8GHnw68ODHEfyYAB48ePDgwYMHD36mwEcDDz4dePDjCH5MAA8ePHjw4MGDBz9T4KOBB58O/KLhb96Of7XxZL33DPglw99efhyP16dX06fALxl+c7G+9/hD4JcM7x3fFH67Ofc7viX844FvBv/If8QE/G7CcuG/Bx78OIIfExYC/+2z3UOf7sAvGf6/73NnjzwDftHw282HLw8/AX7Z8I8GHvw4gh8TwIMHDx48ePDgwc8U+GjgwacDD34cwY8J4MGDBw8e/CH4n/J/dQJfEP6vowIPPhB48PktT47gxwTw4MGDBw8ePHjwMwU+Gnjw+S1PjuDHBPDgwYMHDx48ePAzBT4aePD5LU+O4McE8ODBgwcPHjx48DMFPhp48PktT47gxwTw4MGDBw8ePHjwMwU+Gnjw+S1PjuDHBPDgwYMHDx48ePAzBT4aePD5LU+O4McE8ODBgwcPHjx48DMFPhp48PktT47gxwTw4MGDBw8ePHjwMwU+Gnjw+S1PjuDHBPDgwYMHDx48ePAzBT4aePD5LU+O4McE8ODBgwcPHjx48DMFPhp48PktT47gx4SFwG8u1tvN+Wp1erW/5ckR/JiwHPg7++3N+/0tT47gx4TlwN+8u9q987+/sO9Nlg5+TFgK/Pnrz5/u3vHv9n7Wg18y/HZ7e7l6s70+We89AX7Z8I9veXIEPyaABw8ePHjw4MGDnynw0cCDz295cgQ/JoAHDx48ePDgwYOfKfDRwIPPb3lyfDL86sh+mAA+WC34348KPHjw0cCDTwce/DiCHxPAgwcPHjx48ODB7yaAHxPAgwcPHjx48ODB7yaADwYefDrw4McR/JgAHjx48ODBgwcPfjcB/JgAHjx48ODBgwcPfjcBfDDw4NOBBz+O4McE8ODBgwcPHjx48LsJ4McE8ODBgwcPHjx48LsJ4IOBB58OPPhxBD8mgAcPHjx48ODBg99NAD8mgAcPHjx48ODBg99NAB8MPPh04MGPI/gxATx48ODBgwcPHvxuAvgxATx48ODBgwcPHvxuAvhgh+Fv3q7uOlnvPQN+yfC3lx/H4/Xp1fQp8EuG31ys7z3evbDv3f8rV0dWYEKBlzDrhEBPecfrBXf4d/zmfPzt9MDveL3gnvKpXi848E0D3zTwTQPfNPBNA9808E0D3zTwTQPfNPBNA9808E0D3zTwTQPfNPBNA9808E0D3zTwTQPfNPBNA9808E0D3zTwTQPfNPBNA9808E0D3zTwTQPfNPBNA9808E0D3zTwTQPfNPBNA9808E0D3zTwTQPfNPBNA9808E0D3zTwTQPfNPBNA9808E0D3zTwTQPfNPBNA9808E0D3zTwTQPfNPBNA9808E0D3zTwTQPfNPBNA9808E0D37R/AQDWbuJN5p2OAAAAAElFTkSuQmCC" alt="plot of chunk unnamed-chunk-1"/> </p>
+
+<pre><code class="r">palette(&quot;default&quot;)  # Return to default
+
+rm(list = ls())  # Clean up
+</code></pre>
+
+<!-- Automatically generated by RStudio [12861c30b10411e1afa60800200c9a66] -->
+
+</body>
+
+</html>
+

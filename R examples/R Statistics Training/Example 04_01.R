@@ -1,12 +1,10 @@
-# R Statistics Essential Training
-# Ex04_01
 # Examining outliers
 
 # Categorical data
 # Outlier is < 10%
 # Worldwide shipments of smartphone OS
 # in millions for 2013 Q1
-OS <- read.csv("~/Desktop/R/OS.csv", header = TRUE)
+OS <- read.csv("OS.csv", header = TRUE)
 View(OS)
 OS
 

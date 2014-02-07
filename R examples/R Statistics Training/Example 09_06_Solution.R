@@ -1,9 +1,7 @@
-# R Statistics Essential Training
-# Ex09_06_Solution
 # Cluster analysis
 
 # Load data
-scd <- read.csv("~/Desktop/R/StateClusterData.csv", header = TRUE)
+scd <- read.csv("StateClusterData.csv", header = TRUE)
 rownames(scd) <- scd[,1]  # Use state names for row names
 scd[,1] <- NULL  # Remove state names as variable
 scd[1:5, ]

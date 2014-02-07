@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<!-- saved from url=(0014)about:internet -->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta http-equiv="x-ua-compatible" content="IE=9" >
+
+<title></title>
+
+<style type="text/css">
+body, td {
+   font-family: sans-serif;
+   background-color: white;
+   font-size: 12px;
+   margin: 8px;
+}
+
+tt, code, pre {
+   font-family: 'DejaVu Sans Mono', 'Droid Sans Mono', 'Lucida Console', Consolas, Monaco, monospace;
+}
+
+h1 { 
+   font-size:2.2em; 
+}
+
+h2 { 
+   font-size:1.8em; 
+}
+
+h3 { 
+   font-size:1.4em; 
+}
+
+h4 { 
+   font-size:1.0em; 
+}
+
+h5 { 
+   font-size:0.9em; 
+}
+
+h6 { 
+   font-size:0.8em; 
+}
+
+a:visited {
+   color: rgb(50%, 0%, 50%);
+}
+
+pre {	
+   margin-top: 0;
+   max-width: 95%;
+   border: 1px solid #ccc;
+   white-space: pre-wrap;
+}
+
+pre code {
+   display: block; padding: 0.5em;
+}
+
+code.r, code.cpp {
+   background-color: #F8F8F8;
+}
+
+table, td, th {
+  border: none;
+}
+
+blockquote {
+   color:#666666;
+   margin:0;
+   padding-left: 1em;
+   border-left: 0.5em #EEE solid;
+}
+
+hr {
+   height: 0px;
+   border-bottom: none;
+   border-top-width: thin;
+   border-top-style: dotted;
+   border-top-color: #999999;
+}
+
+@media print {
+   * { 
+      background: transparent !important; 
+      color: black !important; 
+      filter:none !important; 
+      -ms-filter: none !important; 
+   }
+
+   body { 
+      font-size:12pt; 
+      max-width:100%; 
+   }
+       
+   a, a:visited { 
+      text-decoration: underline; 
+   }
+
+   hr { 
+      visibility: hidden;
+      page-break-before: always;
+   }
+
+   pre, blockquote { 
+      padding-right: 1em; 
+      page-break-inside: avoid; 
+   }
+
+   tr, img { 
+      page-break-inside: avoid; 
+   }
+
+   img { 
+      max-width: 100% !important; 
+   }
+
+   @page :left { 
+      margin: 15mm 20mm 15mm 10mm; 
+   }
+     
+   @page :right { 
+      margin: 15mm 10mm 15mm 20mm; 
+   }
+
+   p, h2, h3 { 
+      orphans: 3; widows: 3; 
+   }
+
+   h2, h3 { 
+      page-break-after: avoid; 
+   }
+}
+
+</style>
+
+<!-- Styles for R syntax highlighter -->
+<style type="text/css">
+   pre .operator,
+   pre .paren {
+     color: rgb(104, 118, 135)
+   }
+
+   pre .literal {
+     color: rgb(88, 72, 246)
+   }
+
+   pre .number {
+     color: rgb(0, 0, 205);
+   }
+
+   pre .comment {
+     color: rgb(76, 136, 107);
+   }
+
+   pre .keyword {
+     color: rgb(0, 0, 255);
+   }
+
+   pre .identifier {
+     color: rgb(0, 0, 0);
+   }
+
+   pre .string {
+     color: rgb(3, 106, 7);
+   }
+</style>
+
+<!-- R syntax highlighter -->
+<script type="text/javascript">
+var hljs=new function(){function m(p){return p.replace(/&/gm,"&amp;").replace(/</gm,"&lt;")}function f(r,q,p){return RegExp(q,"m"+(r.cI?"i":"")+(p?"g":""))}function b(r){for(var p=0;p<r.childNodes.length;p++){var q=r.childNodes[p];if(q.nodeName=="CODE"){return q}if(!(q.nodeType==3&&q.nodeValue.match(/\s+/))){break}}}function h(t,s){var p="";for(var r=0;r<t.childNodes.length;r++){if(t.childNodes[r].nodeType==3){var q=t.childNodes[r].nodeValue;if(s){q=q.replace(/\n/g,"")}p+=q}else{if(t.childNodes[r].nodeName=="BR"){p+="\n"}else{p+=h(t.childNodes[r])}}}if(/MSIE [678]/.test(navigator.userAgent)){p=p.replace(/\r/g,"\n")}return p}function a(s){var r=s.className.split(/\s+/);r=r.concat(s.parentNode.className.split(/\s+/));for(var q=0;q<r.length;q++){var p=r[q].replace(/^language-/,"");if(e[p]){return p}}}function c(q){var p=[];(function(s,t){for(var r=0;r<s.childNodes.length;r++){if(s.childNodes[r].nodeType==3){t+=s.childNodes[r].nodeValue.length}else{if(s.childNodes[r].nodeName=="BR"){t+=1}else{if(s.childNodes[r].nodeType==1){p.push({event:"start",offset:t,node:s.childNodes[r]});t=arguments.callee(s.childNodes[r],t);p.push({event:"stop",offset:t,node:s.childNodes[r]})}}}}return t})(q,0);return p}function k(y,w,x){var q=0;var z="";var s=[];function u(){if(y.length&&w.length){if(y[0].offset!=w[0].offset){return(y[0].offset<w[0].offset)?y:w}else{return w[0].event=="start"?y:w}}else{return y.length?y:w}}function t(D){var A="<"+D.nodeName.toLowerCase();for(var B=0;B<D.attributes.length;B++){var C=D.attributes[B];A+=" "+C.nodeName.toLowerCase();if(C.value!==undefined&&C.value!==false&&C.value!==null){A+='="'+m(C.value)+'"'}}return A+">"}while(y.length||w.length){var v=u().splice(0,1)[0];z+=m(x.substr(q,v.offset-q));q=v.offset;if(v.event=="start"){z+=t(v.node);s.push(v.node)}else{if(v.event=="stop"){var p,r=s.length;do{r--;p=s[r];z+=("</"+p.nodeName.toLowerCase()+">")}while(p!=v.node);s.splice(r,1);while(r<s.length){z+=t(s[r]);r++}}}}return z+m(x.substr(q))}function j(){function q(x,y,v){if(x.compiled){return}var u;var s=[];if(x.k){x.lR=f(y,x.l||hljs.IR,true);for(var w in x.k){if(!x.k.hasOwnProperty(w)){continue}if(x.k[w] instanceof Object){u=x.k[w]}else{u=x.k;w="keyword"}for(var r in u){if(!u.hasOwnProperty(r)){continue}x.k[r]=[w,u[r]];s.push(r)}}}if(!v){if(x.bWK){x.b="\\b("+s.join("|")+")\\s"}x.bR=f(y,x.b?x.b:"\\B|\\b");if(!x.e&&!x.eW){x.e="\\B|\\b"}if(x.e){x.eR=f(y,x.e)}}if(x.i){x.iR=f(y,x.i)}if(x.r===undefined){x.r=1}if(!x.c){x.c=[]}x.compiled=true;for(var t=0;t<x.c.length;t++){if(x.c[t]=="self"){x.c[t]=x}q(x.c[t],y,false)}if(x.starts){q(x.starts,y,false)}}for(var p in e){if(!e.hasOwnProperty(p)){continue}q(e[p].dM,e[p],true)}}function d(B,C){if(!j.called){j();j.called=true}function q(r,M){for(var L=0;L<M.c.length;L++){if((M.c[L].bR.exec(r)||[null])[0]==r){return M.c[L]}}}function v(L,r){if(D[L].e&&D[L].eR.test(r)){return 1}if(D[L].eW){var M=v(L-1,r);return M?M+1:0}return 0}function w(r,L){return L.i&&L.iR.test(r)}function K(N,O){var M=[];for(var L=0;L<N.c.length;L++){M.push(N.c[L].b)}var r=D.length-1;do{if(D[r].e){M.push(D[r].e)}r--}while(D[r+1].eW);if(N.i){M.push(N.i)}return f(O,M.join("|"),true)}function p(M,L){var N=D[D.length-1];if(!N.t){N.t=K(N,E)}N.t.lastIndex=L;var r=N.t.exec(M);return r?[M.substr(L,r.index-L),r[0],false]:[M.substr(L),"",true]}function z(N,r){var L=E.cI?r[0].toLowerCase():r[0];var M=N.k[L];if(M&&M instanceof Array){return M}return false}function F(L,P){L=m(L);if(!P.k){return L}var r="";var O=0;P.lR.lastIndex=0;var M=P.lR.exec(L);while(M){r+=L.substr(O,M.index-O);var N=z(P,M);if(N){x+=N[1];r+='<span class="'+N[0]+'">'+M[0]+"</span>"}else{r+=M[0]}O=P.lR.lastIndex;M=P.lR.exec(L)}return r+L.substr(O,L.length-O)}function J(L,M){if(M.sL&&e[M.sL]){var r=d(M.sL,L);x+=r.keyword_count;return r.value}else{return F(L,M)}}function I(M,r){var L=M.cN?'<span class="'+M.cN+'">':"";if(M.rB){y+=L;M.buffer=""}else{if(M.eB){y+=m(r)+L;M.buffer=""}else{y+=L;M.buffer=r}}D.push(M);A+=M.r}function G(N,M,Q){var R=D[D.length-1];if(Q){y+=J(R.buffer+N,R);return false}var P=q(M,R);if(P){y+=J(R.buffer+N,R);I(P,M);return P.rB}var L=v(D.length-1,M);if(L){var O=R.cN?"</span>":"";if(R.rE){y+=J(R.buffer+N,R)+O}else{if(R.eE){y+=J(R.buffer+N,R)+O+m(M)}else{y+=J(R.buffer+N+M,R)+O}}while(L>1){O=D[D.length-2].cN?"</span>":"";y+=O;L--;D.length--}var r=D[D.length-1];D.length--;D[D.length-1].buffer="";if(r.starts){I(r.starts,"")}return R.rE}if(w(M,R)){throw"Illegal"}}var E=e[B];var D=[E.dM];var A=0;var x=0;var y="";try{var s,u=0;E.dM.buffer="";do{s=p(C,u);var t=G(s[0],s[1],s[2]);u+=s[0].length;if(!t){u+=s[1].length}}while(!s[2]);if(D.length>1){throw"Illegal"}return{r:A,keyword_count:x,value:y}}catch(H){if(H=="Illegal"){return{r:0,keyword_count:0,value:m(C)}}else{throw H}}}function g(t){var p={keyword_count:0,r:0,value:m(t)};var r=p;for(var q in e){if(!e.hasOwnProperty(q)){continue}var s=d(q,t);s.language=q;if(s.keyword_count+s.r>r.keyword_count+r.r){r=s}if(s.keyword_count+s.r>p.keyword_count+p.r){r=p;p=s}}if(r.language){p.second_best=r}return p}function i(r,q,p){if(q){r=r.replace(/^((<[^>]+>|\t)+)/gm,function(t,w,v,u){return w.replace(/\t/g,q)})}if(p){r=r.replace(/\n/g,"<br>")}return r}function n(t,w,r){var x=h(t,r);var v=a(t);var y,s;if(v){y=d(v,x)}else{return}var q=c(t);if(q.length){s=document.createElement("pre");s.innerHTML=y.value;y.value=k(q,c(s),x)}y.value=i(y.value,w,r);var u=t.className;if(!u.match("(\\s|^)(language-)?"+v+"(\\s|$)")){u=u?(u+" "+v):v}if(/MSIE [678]/.test(navigator.userAgent)&&t.tagName=="CODE"&&t.parentNode.tagName=="PRE"){s=t.parentNode;var p=document.createElement("div");p.innerHTML="<pre><code>"+y.value+"</code></pre>";t=p.firstChild.firstChild;p.firstChild.cN=s.cN;s.parentNode.replaceChild(p.firstChild,s)}else{t.innerHTML=y.value}t.className=u;t.result={language:v,kw:y.keyword_count,re:y.r};if(y.second_best){t.second_best={language:y.second_best.language,kw:y.second_best.keyword_count,re:y.second_best.r}}}function o(){if(o.called){return}o.called=true;var r=document.getElementsByTagName("pre");for(var p=0;p<r.length;p++){var q=b(r[p]);if(q){n(q,hljs.tabReplace)}}}function l(){if(window.addEventListener){window.addEventListener("DOMContentLoaded",o,false);window.addEventListener("load",o,false)}else{if(window.attachEvent){window.attachEvent("onload",o)}else{window.onload=o}}}var e={};this.LANGUAGES=e;this.highlight=d;this.highlightAuto=g;this.fixMarkup=i;this.highlightBlock=n;this.initHighlighting=o;this.initHighlightingOnLoad=l;this.IR="[a-zA-Z][a-zA-Z0-9_]*";this.UIR="[a-zA-Z_][a-zA-Z0-9_]*";this.NR="\\b\\d+(\\.\\d+)?";this.CNR="\\b(0[xX][a-fA-F0-9]+|(\\d+(\\.\\d*)?|\\.\\d+)([eE][-+]?\\d+)?)";this.BNR="\\b(0b[01]+)";this.RSR="!|!=|!==|%|%=|&|&&|&=|\\*|\\*=|\\+|\\+=|,|\\.|-|-=|/|/=|:|;|<|<<|<<=|<=|=|==|===|>|>=|>>|>>=|>>>|>>>=|\\?|\\[|\\{|\\(|\\^|\\^=|\\||\\|=|\\|\\||~";this.ER="(?![\\s\\S])";this.BE={b:"\\\\.",r:0};this.ASM={cN:"string",b:"'",e:"'",i:"\\n",c:[this.BE],r:0};this.QSM={cN:"string",b:'"',e:'"',i:"\\n",c:[this.BE],r:0};this.CLCM={cN:"comment",b:"//",e:"$"};this.CBLCLM={cN:"comment",b:"/\\*",e:"\\*/"};this.HCM={cN:"comment",b:"#",e:"$"};this.NM={cN:"number",b:this.NR,r:0};this.CNM={cN:"number",b:this.CNR,r:0};this.BNM={cN:"number",b:this.BNR,r:0};this.inherit=function(r,s){var p={};for(var q in r){p[q]=r[q]}if(s){for(var q in s){p[q]=s[q]}}return p}}();hljs.LANGUAGES.cpp=function(){var a={keyword:{"false":1,"int":1,"float":1,"while":1,"private":1,"char":1,"catch":1,"export":1,virtual:1,operator:2,sizeof:2,dynamic_cast:2,typedef:2,const_cast:2,"const":1,struct:1,"for":1,static_cast:2,union:1,namespace:1,unsigned:1,"long":1,"throw":1,"volatile":2,"static":1,"protected":1,bool:1,template:1,mutable:1,"if":1,"public":1,friend:2,"do":1,"return":1,"goto":1,auto:1,"void":2,"enum":1,"else":1,"break":1,"new":1,extern:1,using:1,"true":1,"class":1,asm:1,"case":1,typeid:1,"short":1,reinterpret_cast:2,"default":1,"double":1,register:1,explicit:1,signed:1,typename:1,"try":1,"this":1,"switch":1,"continue":1,wchar_t:1,inline:1,"delete":1,alignof:1,char16_t:1,char32_t:1,constexpr:1,decltype:1,noexcept:1,nullptr:1,static_assert:1,thread_local:1,restrict:1,_Bool:1,complex:1},built_in:{std:1,string:1,cin:1,cout:1,cerr:1,clog:1,stringstream:1,istringstream:1,ostringstream:1,auto_ptr:1,deque:1,list:1,queue:1,stack:1,vector:1,map:1,set:1,bitset:1,multiset:1,multimap:1,unordered_set:1,unordered_map:1,unordered_multiset:1,unordered_multimap:1,array:1,shared_ptr:1}};return{dM:{k:a,i:"</",c:[hljs.CLCM,hljs.CBLCLM,hljs.QSM,{cN:"string",b:"'\\\\?.",e:"'",i:"."},{cN:"number",b:"\\b(\\d+(\\.\\d*)?|\\.\\d+)(u|U|l|L|ul|UL|f|F)"},hljs.CNM,{cN:"preprocessor",b:"#",e:"$"},{cN:"stl_container",b:"\\b(deque|list|queue|stack|vector|map|set|bitset|multiset|multimap|unordered_map|unordered_set|unordered_multiset|unordered_multimap|array)\\s*<",e:">",k:a,r:10,c:["self"]}]}}}();hljs.LANGUAGES.r={dM:{c:[hljs.HCM,{cN:"number",b:"\\b0[xX][0-9a-fA-F]+[Li]?\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"number",b:"\\b\\d+(?:[eE][+\\-]?\\d*)?L\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"number",b:"\\b\\d+\\.(?!\\d)(?:i\\b)?",e:hljs.IMMEDIATE_RE,r:1},{cN:"number",b:"\\b\\d+(?:\\.\\d*)?(?:[eE][+\\-]?\\d*)?i?\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"number",b:"\\.\\d+(?:[eE][+\\-]?\\d*)?i?\\b",e:hljs.IMMEDIATE_RE,r:1},{cN:"keyword",b:"(?:tryCatch|library|setGeneric|setGroupGeneric)\\b",e:hljs.IMMEDIATE_RE,r:10},{cN:"keyword",b:"\\.\\.\\.",e:hljs.IMMEDIATE_RE,r:10},{cN:"keyword",b:"\\.\\.\\d+(?![\\w.])",e:hljs.IMMEDIATE_RE,r:10},{cN:"keyword",b:"\\b(?:function)",e:hljs.IMMEDIATE_RE,r:2},{cN:"keyword",b:"(?:if|in|break|next|repeat|else|for|return|switch|while|try|stop|warning|require|attach|detach|source|setMethod|setClass)\\b",e:hljs.IMMEDIATE_RE,r:1},{cN:"literal",b:"(?:NA|NA_integer_|NA_real_|NA_character_|NA_complex_)\\b",e:hljs.IMMEDIATE_RE,r:10},{cN:"literal",b:"(?:NULL|TRUE|FALSE|T|F|Inf|NaN)\\b",e:hljs.IMMEDIATE_RE,r:1},{cN:"identifier",b:"[a-zA-Z.][a-zA-Z0-9._]*\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"operator",b:"<\\-(?!\\s*\\d)",e:hljs.IMMEDIATE_RE,r:2},{cN:"operator",b:"\\->|<\\-",e:hljs.IMMEDIATE_RE,r:1},{cN:"operator",b:"%%|~",e:hljs.IMMEDIATE_RE},{cN:"operator",b:">=|<=|==|!=|\\|\\||&&|=|\\+|\\-|\\*|/|\\^|>|<|!|&|\\||\\$|:",e:hljs.IMMEDIATE_RE,r:0},{cN:"operator",b:"%",e:"%",i:"\\n",r:1},{cN:"identifier",b:"`",e:"`",r:0},{cN:"string",b:'"',e:'"',c:[hljs.BE],r:0},{cN:"string",b:"'",e:"'",c:[hljs.BE],r:0},{cN:"paren",b:"[[({\\])}]",e:hljs.IMMEDIATE_RE,r:0}]}};
+hljs.initHighlightingOnLoad();
+</script>
+
+
+
+
+</head>
+
+<body>
+<pre><code class="r"># Computing a multiple regression
+
+# Load data
+?USJudgeRatings
+</code></pre>
+
+<pre><code>## starting httpd help server ... done
+</code></pre>
+
+<pre><code class="r">data(USJudgeRatings)
+USJudgeRatings[1:5, ]
+</code></pre>
+
+<pre><code>##                CONT INTG DMNR DILG CFMG DECI PREP FAMI ORAL WRIT PHYS RTEN
+## AARONSON,L.H.   5.7  7.9  7.7  7.3  7.1  7.4  7.1  7.1  7.1  7.0  8.3  7.8
+## ALEXANDER,J.M.  6.8  8.9  8.8  8.5  7.8  8.1  8.0  8.0  7.8  7.9  8.5  8.7
+## ARMENTANO,A.J.  7.2  8.1  7.8  7.8  7.5  7.6  7.5  7.5  7.3  7.4  7.9  7.8
+## BERDON,R.I.     6.8  8.8  8.5  8.8  8.3  8.5  8.7  8.7  8.4  8.5  8.8  8.7
+## BRACKEN,J.J.    7.3  6.4  4.3  6.5  6.0  6.2  5.7  5.7  5.1  5.3  5.5  4.8
+</code></pre>
+
+<pre><code class="r">
+# Basic multiple regression
+reg1 &lt;- lm(RTEN ~ CONT + INTG + DMNR + DILG + CFMG + 
+           DECI + PREP + FAMI + ORAL + WRIT + PHYS,
+           data = USJudgeRatings)
+reg1  # Gives the coefficients only
+</code></pre>
+
+<pre><code>## 
+## Call:
+## lm(formula = RTEN ~ CONT + INTG + DMNR + DILG + CFMG + DECI + 
+##     PREP + FAMI + ORAL + WRIT + PHYS, data = USJudgeRatings)
+## 
+## Coefficients:
+## (Intercept)         CONT         INTG         DMNR         DILG  
+##    -2.11943      0.01280      0.36484      0.12540      0.06669  
+##        CFMG         DECI         PREP         FAMI         ORAL  
+##    -0.19453      0.27829     -0.00196     -0.13579      0.54782  
+##        WRIT         PHYS  
+##    -0.06806      0.26881
+</code></pre>
+
+<pre><code class="r">summary(reg1)  # Much more
+</code></pre>
+
+<pre><code>## 
+## Call:
+## lm(formula = RTEN ~ CONT + INTG + DMNR + DILG + CFMG + DECI + 
+##     PREP + FAMI + ORAL + WRIT + PHYS, data = USJudgeRatings)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -0.2212 -0.0616 -0.0106  0.0505  0.2608 
+## 
+## Coefficients:
+##             Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept) -2.11943    0.51904   -4.08  0.00029 ***
+## CONT         0.01280    0.02586    0.49  0.62427    
+## INTG         0.36484    0.12936    2.82  0.00829 ** 
+## DMNR         0.12540    0.08971    1.40  0.17210    
+## DILG         0.06669    0.14304    0.47  0.64429    
+## CFMG        -0.19453    0.14779   -1.32  0.19774    
+## DECI         0.27829    0.13826    2.01  0.05288 .  
+## PREP        -0.00196    0.24001   -0.01  0.99354    
+## FAMI        -0.13579    0.26725   -0.51  0.61497    
+## ORAL         0.54782    0.27725    1.98  0.05712 .  
+## WRIT        -0.06806    0.31485   -0.22  0.83027    
+## PHYS         0.26881    0.06213    4.33  0.00015 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 0.117 on 31 degrees of freedom
+## Multiple R-squared:  0.992,  Adjusted R-squared:  0.989 
+## F-statistic:  333 on 11 and 31 DF,  p-value: &lt;2e-16
+</code></pre>
+
+<pre><code class="r">
+# More detailed summaries
+anova(reg1)
+</code></pre>
+
+<pre><code>## Analysis of Variance Table
+## 
+## Response: RTEN
+##           Df Sum Sq Mean Sq F value  Pr(&gt;F)    
+## CONT       1    0.1     0.1    4.18 0.04949 *  
+## INTG       1   45.1    45.1 3270.77 &lt; 2e-16 ***
+## DMNR       1    1.3     1.3   94.32 6.4e-11 ***
+## DILG       1    2.3     2.3  170.16 4.0e-14 ***
+## CFMG       1    0.5     0.5   36.52 1.1e-06 ***
+## DECI       1    0.2     0.2   15.53 0.00043 ***
+## PREP       1    0.2     0.2   11.91 0.00164 ** 
+## FAMI       1    0.0     0.0    2.80 0.10434    
+## ORAL       1    0.4     0.4   31.86 3.4e-06 ***
+## WRIT       1    0.1     0.1    4.71 0.03781 *  
+## PHYS       1    0.3     0.3   18.72 0.00015 ***
+## Residuals 31    0.4     0.0                    
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+</code></pre>
+
+<pre><code class="r">coef(reg1)  # Or coefficients(reg1)
+</code></pre>
+
+<pre><code>## (Intercept)        CONT        INTG        DMNR        DILG        CFMG 
+##    -2.11943     0.01280     0.36484     0.12540     0.06669    -0.19453 
+##        DECI        PREP        FAMI        ORAL        WRIT        PHYS 
+##     0.27829    -0.00196    -0.13579     0.54782    -0.06806     0.26881
+</code></pre>
+
+<pre><code class="r">confint(reg1)  # CI for coefficients
+</code></pre>
+
+<pre><code>##                 2.5 %   97.5 %
+## (Intercept) -3.178010 -1.06085
+## CONT        -0.039955  0.06555
+## INTG         0.101011  0.62867
+## DMNR        -0.057572  0.30837
+## DILG        -0.225032  0.35841
+## CFMG        -0.495941  0.10689
+## DECI        -0.003683  0.56027
+## PREP        -0.491456  0.48754
+## FAMI        -0.680844  0.40926
+## ORAL        -0.017628  1.11326
+## WRIT        -0.710197  0.57407
+## PHYS         0.142088  0.39554
+</code></pre>
+
+<pre><code class="r">resid(reg1)  # Or residuals; Residuals case-by-case
+</code></pre>
+
+<pre><code>##   AARONSON,L.H.  ALEXANDER,J.M.  ARMENTANO,A.J.     BERDON,R.I. 
+##       0.1674283       0.1599043       0.1318188      -0.0721243 
+##    BRACKEN,J.J.      BURNS,E.B.   CALLAHAN,R.J.      COHEN,S.S. 
+##      -0.1663514       0.0344455      -0.1228673      -0.0359845 
+##       DALY,J.J.    DANNEHY,J.F.       DEAN,H.H.     DEVITA,H.J. 
+##      -0.0414643       0.1054849       0.0315661       0.0279048 
+##   DRISCOLL,P.J.     GRILLO,A.E.  HADDEN,W.L.JR.     HAMILL,E.C. 
+##      -0.0066303       0.1215116      -0.0707169       0.0963751 
+##     HEALEY.A.H.       HULL,T.C.       LEVINE,I.   LEVISTER,R.L. 
+##       0.0966781       0.0587324       0.2607914      -0.0613784 
+##     MARTIN,L.F.    MCGRATH,J.F.    MIGNONE,A.F.     MISSAL,H.M. 
+##      -0.0105476      -0.0926140      -0.0964022      -0.0479618 
+##     MULVEY,H.M.      NARUK,H.J.    O&#39;BRIEN,F.J. O&#39;SULLIVAN,T.J. 
+##       0.0279999      -0.0633663      -0.0142423      -0.1918227 
+##       PASKEY,L.    RUBINOW,J.E.      SADEN.G.A. SATANIELLO,A.G. 
+##       0.0253092      -0.0179725      -0.0144132       0.1145104 
+##       SHEA,D.M.    SHEA,J.F.JR.      SIDOR,W.J.   SPEZIALE,J.A. 
+##      -0.0617148      -0.0608609       0.0421019       0.1474606 
+##     SPONZO,M.J.  STAPLETON,J.F.      TESTO,R.J. TIERNEY,W.L.JR. 
+##       0.0421785      -0.2212326      -0.0375263      -0.0007538 
+##       WALL,R.A.     WRIGHT,D.B.   ZARRILLI,K.J. 
+##      -0.0024278      -0.1204656      -0.0603603
+</code></pre>
+
+<pre><code class="r">hist(residuals(reg1))  # Histogram of residuals
+</code></pre>
+
+<p><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAfgAAAH4CAMAAACR9g9NAAAAflBMVEX9/v0AAAAAADkAAGUAOTkAOWUAOY8AZo8AZrU5AAA5ADk5AGU5OTk5OWU5OY85j485j9plAABlADllAGVlOQBlOTllZjlltbVltf2POQCPOTmPtY+P2/21ZgC1/rW1/v3ajzna24/a/rXa/tra/v39tWX924/9/rX9/tr9/v0aKXjKAAAAKnRSTlP//////////////////////////////////////////////////////wAyqPBcAAAACXBIWXMAAAsSAAALEgHS3X78AAAN0klEQVR4nO2dDXviuBVG18l2luy0uzDZtskUGnY7QPz//2AtfyHChwErXF3ec55nBgKvhfBBkk2s6KcSJPnJugJgA+JFQbwoiBcF8aIgXhTEi4J4URAvCuJFQbwoiBcF8aIgXhTEi4J4URAvCuJFQbwoiBcF8aIgXhTEi4J4URAvihPxm9njW1m+vz6+Nfc6Fi8jCl0/FQ/zodes73z5cfzZmuWpgqoXmoT/plfW81NwJ37n4UUxRvy5Ww+L38wmJ1+nCE8vPlTeFnfi63tVWy0e395fi3qXLqub0Jqqnx//W0l6f334V9WWV9XDVUNcFb9Uj79VoU5zk6+3ro22+frxkGlKb14zpP5dl1k/UuXbYqN6hBJf9krZ1qb4ey1+VeTU5F2K38yKIO1/jfhF+KG6rU3+/FTv6urZv5rQj1XR0ba4Nh+Lr+81j0/LtvQf4ZXqp8IPvfj42e5+5Xz+sZRtbb5XH8FJeaTjMMON+M5d2OHrp3YXhs56/VS3v4f5+qlys6w9FJNus8e3VRE2KF5CJDzW5/uuvsnXhQa/XenNK/Vldi2+fSauR/34XintlmVo65PywEBlikvx9U9hLwZ1zV6tOtv6zmbWNsB2oyB+UjaNt3m0z0fiwzNtz/Aw70pvPjV9mb34pti4Hq3tnVL6Lcut+JNHgDfGjfi9Mb5o2+wx8XWmF7/9OAyK70o/LL4rNq7HeeLLBeIv5sDp3KJVd6irD3t4WQ204aGP4g919c0HJR6CF2Fs2Onqq3C40xUb1yMS35dyqKtH/MXsiu9aXXOidODgbtv29sX3+Q/i28d323R/cNc/2xUb16Md43dK6WtTMsaP4EBX33bn1Z7tTueqIbc7nWsV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" alt="plot of chunk unnamed-chunk-1"/> </p>
+
+<pre><code class="r"># And others
+
+# Possibility of stepwise variables selection
+# (backwards and forwards); exercise caution!
+
+# Backwards stepwise regression
+# Repeating the first regression model, which contains
+# all of the predictor variables and serves as the 
+# starting point
+reg1 &lt;- lm(RTEN ~ CONT + INTG + DMNR + DILG + CFMG + 
+           DECI + PREP + FAMI + ORAL + WRIT + PHYS,
+           data = USJudgeRatings)
+regb &lt;- step(reg1,
+             direction = &quot;backward&quot;,
+             trace = 0)  # Don&#39;t print the steps
+summary(regb)
+</code></pre>
+
+<pre><code>## 
+## Call:
+## lm(formula = RTEN ~ INTG + DMNR + DECI + ORAL + PHYS, data = USJudgeRatings)
+## 
+## Residuals:
+##      Min       1Q   Median       3Q      Max 
+## -0.24066 -0.06903 -0.00947  0.06896  0.24640 
+## 
+## Coefficients:
+##             Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept)  -2.2043     0.4361   -5.05  1.2e-05 ***
+## INTG          0.3779     0.1056    3.58  0.00099 ***
+## DMNR          0.1520     0.0635    2.39  0.02196 *  
+## DECI          0.1667     0.0770    2.16  0.03693 *  
+## ORAL          0.2917     0.1019    2.86  0.00689 ** 
+## PHYS          0.2829     0.0468    6.05  5.4e-07 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 0.112 on 37 degrees of freedom
+## Multiple R-squared:  0.991,  Adjusted R-squared:  0.99 
+## F-statistic:  806 on 5 and 37 DF,  p-value: &lt;2e-16
+</code></pre>
+
+<pre><code class="r">
+# Forwards stepwise regression
+# Start with model that has nothing but a constant
+reg0 &lt;- lm(RTEN ~ 1, data = USJudgeRatings)  # Minimal model
+reg0
+</code></pre>
+
+<pre><code>## 
+## Call:
+## lm(formula = RTEN ~ 1, data = USJudgeRatings)
+## 
+## Coefficients:
+## (Intercept)  
+##         7.6
+</code></pre>
+
+<pre><code class="r">regf &lt;- step(reg0,  # Start with minimal model
+             direction = &quot;forward&quot;,
+             scope = (~ CONT + INTG + DMNR + DILG + 
+                        CFMG + DECI + PREP + FAMI + 
+                        ORAL + WRIT + PHYS),
+             data = USJudgeRatings,
+             trace = 0)  # Don&#39;t print the steps
+summary(regf)
+</code></pre>
+
+<pre><code>## 
+## Call:
+## lm(formula = RTEN ~ ORAL + DMNR + PHYS + INTG + DECI, data = USJudgeRatings)
+## 
+## Residuals:
+##      Min       1Q   Median       3Q      Max 
+## -0.24066 -0.06903 -0.00947  0.06896  0.24640 
+## 
+## Coefficients:
+##             Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept)  -2.2043     0.4361   -5.05  1.2e-05 ***
+## ORAL          0.2917     0.1019    2.86  0.00689 ** 
+## DMNR          0.1520     0.0635    2.39  0.02196 *  
+## PHYS          0.2829     0.0468    6.05  5.4e-07 ***
+## INTG          0.3779     0.1056    3.58  0.00099 ***
+## DECI          0.1667     0.0770    2.16  0.03693 *  
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 0.112 on 37 degrees of freedom
+## Multiple R-squared:  0.991,  Adjusted R-squared:  0.99 
+## F-statistic:  806 on 5 and 37 DF,  p-value: &lt;2e-16
+</code></pre>
+
+<pre><code class="r">
+# For many more options, see the &quot;rms&quot; package
+# (&quot;Regression Modeling Strategies&quot;)
+
+rm(list = ls())  # Clean up
+</code></pre>
+
+<!-- Automatically generated by RStudio [12861c30b10411e1afa60800200c9a66] -->
+
+</body>
+
+</html>
+

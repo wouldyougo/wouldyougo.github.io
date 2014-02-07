@@ -103,7 +103,7 @@
 * [Example 05_01](R Statistics Training/Example 05_01.html).			      Selecting cases
 * [Example 05_02](R Statistics Training/Example 05_02.html).           	Analyzing by subgroup
 * [Example 05_03](R Statistics Training/Example 05_03.html).           	Merging files
-* [Example 05_05](R Statistics Training/Example 05_05_Challenge.html). 	Solution: Analyzing guinea pig data subgroups
+* [Example 05_05](R Statistics Training/Example 05_05_Solution.html). 	Solution: Analyzing guinea pig data subgroups
 
 #### 6. Charts for Associations
 * [Example 06_01](R Statistics Training/Example 06_01.html).			      Creating bar charts of group means
@@ -120,7 +120,7 @@
 * [Example 07_06](R Statistics Training/Example 07_06.html).           	Comparing proportions
 * [Example 07_07](R Statistics Training/Example 07_07.html).           	Creating cross tabs for categorical variables
 * [Example 07_08](R Statistics Training/Example 07_08.html).           	Computing robust statistics for bivariate associations
-* [Example 07_09](R Statistics Training/Example 07_Challenge.html).    	Solution: Comparing proportions across several different groups
+* [Example 07_09](R Statistics Training/Example 07_Solution.html).    	Solution: Comparing proportions across several different groups
 
 #### 8. Charts for Three or More Variables
 * [Example 08_01](R Statistics Training/Example 08_01.html).			      Creating clustered bar charts for means			

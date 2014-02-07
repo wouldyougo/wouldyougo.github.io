@@ -1,5 +1,3 @@
-# R Statistics Essential Training
-# Ex02_06
 # Exporting charts
 
 # Load data
@@ -9,7 +7,7 @@ feeds <- table(chickwts$feed)
 # The hard way: Via R's code
 
 # For PNG file (Run entire block at once)
-png(filename= "~/Desktop/R/Ex02_06a.png",  # Open device
+png(filename= "Ex02_06a.png",  # Open device
     width = 888,
     height = 571)
 par(oma = c(1, 1, 1, 1))  # Outside margins: b, l, t, r
@@ -24,7 +22,7 @@ barplot(feeds[order(feeds)],  # Create the chart
 dev.off()  # Close device (run in same block)
 
 # OR this one for PDF file (Run entire block at once)
-pdf("~/Desktop/R/Ex02_06b.pdf",
+pdf("Ex02_06b.pdf",
     width = 9,
     height = 6)
 par(oma = c(1, 1, 1, 1))  # Outside margins: b, l, t, r

@@ -1,5 +1,3 @@
-# R Statistics Essential Training
-# Ex01_12_Solution
 # Creating color palettes
 
 # For all of these challenges, create barplots with the

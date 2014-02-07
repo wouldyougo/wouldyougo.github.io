@@ -1,9 +1,7 @@
-# R Statistics Essential Training
-# Ex04_06_Solution
 # Transforming skewed data
 
 # Import data
-xskew <- read.csv("~/Desktop/R/xskew.csv")
+xskew <- read.csv("xskew.csv")
 x <- xskew[, 2]
 hist(x)
 

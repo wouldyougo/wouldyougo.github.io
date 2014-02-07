@@ -1,5 +1,3 @@
-# R Statistics Essential Training
-# Ex07_10_Challenge
 # Comparing proportions
 
 # Load data

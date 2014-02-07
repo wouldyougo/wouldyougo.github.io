@@ -1,5 +1,3 @@
-# R Statistics Essential Training
-# Ex03_02
 # Calculating descriptives
 
 # LOAD DATASET
@@ -23,7 +21,7 @@ boxplot.stats(cars$speed)
 # ALTERNATIVE DESCRIPTIVES
 # From the package "psych"
 help(package = "psych")
-install.packages("psych")
+#install.packages("psych")
 require("psych")
 describe(cars)
 

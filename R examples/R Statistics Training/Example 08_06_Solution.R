@@ -1,9 +1,7 @@
-# R Statistics Essential Training
-# Ex08_06_Solution
 # Creating Scatterplot Matrices
 
 # Load data
-gsd <- read.csv("~/Desktop/R/SearchData.csv", header = TRUE)
+gsd <- read.csv("SearchData.csv", header = TRUE)
 gsd[1:5, ]
 
 # Scatterplot matrix using "pairs"
