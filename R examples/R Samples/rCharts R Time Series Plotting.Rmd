@@ -51,14 +51,6 @@ knitr::opts_chunk$set(
 ```{r}
 #{r echo = F, message = F, cache = F}
 options(RCHART_WIDTH = 600, RCHART_HEIGHT = 400)
-knitr::opts_chunk$set(
-  results = 'asis',
-  tidy = F,
-  error = T,
-  message = F,
-  warning = F,
-  fig.width = 8,
-  fig.height = 5)
 ```
 
 * [`getSymbols()`](https://r-forge.r-project.org/scm/viewvc.php/pkg/R/getSymbols.R?root=quantmod&view=log)
