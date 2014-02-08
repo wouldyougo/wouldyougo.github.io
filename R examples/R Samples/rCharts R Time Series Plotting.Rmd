@@ -6,12 +6,6 @@ ext_widgets: {rCharts: ["libraries/morris","libraries/nvd3", "libraries/polychar
 hitheme: solarized_light
 ---
 
-<style>
-.rChart {
-  height: 400px
-}
-</style>
-
 #### install.packages
 
 ```{r eval=FALSE}
@@ -33,6 +27,12 @@ require(rCharts)
 require(reshape2)
 ```
 
+```{r}
+require(rCharts)
+options(RCHART_WIDTH = 600, RCHART_HEIGHT = 400)
+```
+
+
 #### options
 ```{r eval=FALSE}
 #{r echo = F, message = F, cache = F}
@@ -47,10 +47,7 @@ knitr::opts_chunk$set(
   fig.width = 8,
   fig.height = 5,
   fig.keep = 'last')
-```
-```{r}
-#{r echo = F, message = F, cache = F}
-options(RCHART_WIDTH = 600, RCHART_HEIGHT = 400)
+#<style>.rChart {height: 400px}</style>
 ```
 
 * [`getSymbols()`](https://r-forge.r-project.org/scm/viewvc.php/pkg/R/getSymbols.R?root=quantmod&view=log)
@@ -121,8 +118,10 @@ head(sp500.melt)
 ```
 
 #### rCharts
-```{r comment = NA}
-require(rCharts)
+```{r comment = NA, results = 'asis', message = F}
+#{r comment = NA, eval=FALSE}
+#require(rCharts)
+#options(RCHART_WIDTH = 600, RCHART_HEIGHT = 400)
 
 n1 <- nPlot(
   value~date,
@@ -140,12 +139,17 @@ n1$x2Axis(
   tickFormat=
     "#!function(d) {return d3.time.format('%Y')(new Date( d ));}!#"
 )
-n1$print("chart1")
+#n1$print("chart1")
+#n1$print("chart1", include_assets = T)
+n1$print("chart1", include_assets = T, cdn = T)
 ```
----
 
 #### morris.js example
-```{r comment = NA}
+```{r comment = NA, results = 'asis', message = F}
+#{r comment = NA, eval=FALSE}
+#require(rCharts)
+#options(RCHART_WIDTH = 600, RCHART_HEIGHT = 400)
+
 sp500.df$date <- format(sp500.df$date, "%Y-%m-%d")
 m1 <- mPlot(
   sp500 ~ date,
@@ -154,29 +158,36 @@ m1 <- mPlot(
 )
 m1$set( pointSize = 0 )
 m1$set( hideHover = "auto" )
-m1$print("chart2")
+#m1$print("chart2")
+#m1$print("chart2", include_assets = T)
+m1$print('chart2', include_assets = T, cdn = T)
 ```
----
 
 #### rickshaw example
-```{r comment = NA}
+```{r comment = NA, eval=FALSE}
+#{r comment = NA, results = 'asis', message = F}
+#require(rCharts)
+#options(RCHART_WIDTH = 600, RCHART_HEIGHT = 400)
+
 #get date in format that rickshaw likes
-sp500.df$date <- as.double(as.POSIXct(as.Date(sp500.df$date),origin="1970-01-01"))
-r1 <- Rickshaw$new()
-r1$layer(
-  sp500 ~ date,
-  data = sp500.df,
-  type = "line"
-)
-r1$set( 
-  slider = TRUE
-)
-r1$print("chart3")
+#sp500.df$date <- as.double(as.POSIXct(as.Date(sp500.df$date),origin="1970-01-01"))
+sp500.df$date <- as.numeric(as.POSIXct(as.Date(sp500.df$date),origin="1970-01-01"))
+
+r3 <- Rickshaw$new()
+#r3$layer( sp500 ~ date, data = sp500.df, type = "line", width = 560)
+r3$layer( sp500 ~ date, data = sp500.df, type = "line")
+r3$set( slider = TRUE )
+#r3$print("chart3")
+#r3$print('chart3', include_assets = T)
+r3$print('chart3', include_assets = T, cdn = T)
 ```
----
 
 #### highcharts example
-```{r comment = NA}
+```{r comment = NA, results = 'asis', message = F}
+#{r comment = NA, eval=FALSE}
+#require(rCharts)
+#options(RCHART_WIDTH = 600, RCHART_HEIGHT = 400)
+
 #get in UTC format that works best with Highcharts
 sp500.df$date <- as.numeric(
   as.POSIXct(sp500.df$date, origin="1970-01-01")
@@ -196,8 +207,7 @@ h1$plotOptions(
     marker = list(enabled = F)
   )
 )
-
-h1$print("chart5")
+#h1$print("chart5")
+#h1$print('chart5', include_assets = T)
+h1$print('chart5', include_assets = T, cdn = T)
 ```
-- - -
----

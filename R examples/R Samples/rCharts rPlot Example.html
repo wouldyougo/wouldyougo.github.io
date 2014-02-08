@@ -182,6 +182,7 @@ hljs.initHighlightingOnLoad();
 <h3>rCharts rPlot Example</h3>
 
 <pre><code class="r">require(rCharts)
+# &lt;style&gt;.rChart{width: 600px; height: 400px;}&lt;/style&gt;
 options(RCHART_WIDTH = 600, RCHART_HEIGHT = 400)
 r1 &lt;- rPlot(mpg ~ wt | am + vs, data = mtcars, type = &quot;point&quot;)
 r1$print(&quot;chart1&quot;, include_assets = T, cdn = T)
@@ -241,8 +242,6 @@ r1$print(&quot;chart1&quot;, include_assets = T, cdn = T)
     })
     var graph_chart1 = polyjs.chart(chartParams);
 </script>
-
-<style>.rChart{width: 600px; height: 400px;}</style>
 
 </body>
 
