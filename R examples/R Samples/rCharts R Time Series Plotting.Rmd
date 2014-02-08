@@ -1,0 +1,211 @@
+---
+title: rCharts R Financial Time Series Plotting
+framework: minimal
+mode: selfcontained
+ext_widgets: {rCharts: ["libraries/morris","libraries/nvd3", "libraries/polycharts", "libraries/highcharts","libraries/xcharts", "libraries/rickshaw"]}
+hitheme: solarized_light
+---
+
+<style>
+.rChart {
+  height: 400px
+}
+</style>
+
+#### install.packages
+
+```{r eval=FALSE}
+install.packages('quantmod')
+#require(RJSONIO)
+#require(devtools)
+#install_github('rCharts', 'ramnathv')
+install_github("rCharts", "ramnathv", ref = "dev")
+#melt
+install.packages("reshape2")
+```
+
+#### require.packages
+```{r eval=FALSE}
+require(quantmod)
+#require(plyr)
+require(rCharts)
+#melt
+require(reshape2)
+```
+
+#### options
+```{r eval=FALSE}
+#{r echo = F, message = F, cache = F}
+options(RCHART_WIDTH = 600, RCHART_HEIGHT = 400)
+knitr::opts_chunk$set(
+  comment = NA,
+  results = 'asis',
+  tidy = F,
+  error = T,
+  message = F,
+  warning = F,
+  fig.width = 8,
+  fig.height = 5,
+  fig.keep = 'last')
+```
+```{r}
+#{r echo = F, message = F, cache = F}
+options(RCHART_WIDTH = 600, RCHART_HEIGHT = 400)
+knitr::opts_chunk$set(
+  results = 'asis',
+  tidy = F,
+  error = T,
+  message = F,
+  warning = F,
+  fig.width = 8,
+  fig.height = 5)
+```
+
+* [`getSymbols()`](https://r-forge.r-project.org/scm/viewvc.php/pkg/R/getSymbols.R?root=quantmod&view=log)
+* [`rCharts`](http://rcharts.github.io/site)
+* [`d3.js`](http://d3js.org)
+* [`raphael`](http://raphaeljs.com)
+* [gallery](http://rcharts.github.io/site/gallery.html)
+
+
+#### Получаем данные
+```{r}
+require(quantmod)
+# get S&P 500 data from FRED (St. Louis Fed)
+sp500 <- na.omit( 
+  getSymbols(
+    "SP500",
+    src = "FRED",
+    from = "1949-12-31",
+    auto.assign = FALSE
+  )
+)
+head(sp500)
+
+# use monthly data
+sp500.monthly <- sp500[endpoints(sp500, on ="months")]
+```
+---
+
+#### Подготавливаем данные
+```{r}
+# base plot of time series prior to xts
+# get the data in data.frame format rather than xts
+sp500.df <- data.frame(
+  index(sp500.monthly),
+  coredata(sp500.monthly),
+  stringsAsFactors=FALSE
+)
+# name columns
+colnames( sp500.df ) <- c( "date", "sp500" )
+head(sp500.df)
+```
+
+#### Подготавливаем данные
+```{r}
+#melt
+require(reshape2)
+# define a function to convert xts wide to long data.frame
+xtsMelt <- function(xtsData,metric){
+  df <- data.frame(index(xtsData),coredata(xtsData),stringsAsFactors=FALSE)
+  df.melt <- melt(df,id.vars=1)
+  df.melt <- data.frame(df.melt,rep(metric,NROW(df.melt)))
+  #little unnecessary housekeeping
+  df.melt <- df.melt[,c(1,2,4,3)]
+  colnames(df.melt) <- c("date","indexname","metric","value")
+  df.melt$date <- as.Date(df.melt$date)
+  #javascript works better when there are no .
+  #remove troublesome . using modified method from Stack Overflow
+  i <- sapply(df.melt, is.factor)
+  df.melt[i] <- lapply(df.melt[i], gsub, pattern="\\.", replacement="")
+  
+  return(df.melt)
+}
+sp500.melt <- xtsMelt(
+  sp500.monthly,
+  metric = "price"
+)
+head(sp500.melt)
+```
+
+#### rCharts
+```{r comment = NA}
+require(rCharts)
+
+n1 <- nPlot(
+  value~date,
+  data = sp500.melt,
+  group = "indexname",  # even though only one series need to specify group
+  type = "lineWithFocusChart"
+)
+
+n1$xAxis(
+  tickFormat=
+    "#!function(d) {return d3.time.format('%b %Y')(new Date( d ));}!#"
+)
+
+n1$x2Axis(
+  tickFormat=
+    "#!function(d) {return d3.time.format('%Y')(new Date( d ));}!#"
+)
+n1$print("chart1")
+```
+---
+
+#### morris.js example
+```{r comment = NA}
+sp500.df$date <- format(sp500.df$date, "%Y-%m-%d")
+m1 <- mPlot(
+  sp500 ~ date,
+  data = sp500.df,
+  type = "Line"
+)
+m1$set( pointSize = 0 )
+m1$set( hideHover = "auto" )
+m1$print("chart2")
+```
+---
+
+#### rickshaw example
+```{r comment = NA}
+#get date in format that rickshaw likes
+sp500.df$date <- as.double(as.POSIXct(as.Date(sp500.df$date),origin="1970-01-01"))
+r1 <- Rickshaw$new()
+r1$layer(
+  sp500 ~ date,
+  data = sp500.df,
+  type = "line"
+)
+r1$set( 
+  slider = TRUE
+)
+r1$print("chart3")
+```
+---
+
+#### highcharts example
+```{r comment = NA}
+#get in UTC format that works best with Highcharts
+sp500.df$date <- as.numeric(
+  as.POSIXct(sp500.df$date, origin="1970-01-01")
+) * 1000
+
+h1 <- hPlot(
+  sp500 ~ date,
+  data = sp500.df,
+  type = "line"
+)
+
+h1$xAxis(type = "datetime")
+h1$chart(zoomType = "x")
+
+h1$plotOptions(
+  line = list(
+    marker = list(enabled = F)
+  )
+)
+
+h1$print("chart5")
+```
+- - -
+---
