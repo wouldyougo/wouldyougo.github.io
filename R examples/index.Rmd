@@ -146,4 +146,6 @@
 * [Example 6](R Samples/rCharts rPlot Example.html). rCharts rPlot Example
 * [Example 7](R Samples/Google Vis gvisMotionChart Example.html). Google Vis gvisMotionChart Example
 * [Example 8](R Samples/History of R Time Series Plotting.html). History of R Time Series Plotting
+* [Example 9](R Samples/rCharts R Time Series Plotting.html). rCharts R Time Series Plotting
+
 
