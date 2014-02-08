@@ -221,23 +221,15 @@ knitr::opts_chunk$set(results = &quot;asis&quot;, tidy = F, error = T, message =
 
 <h1>History of R Financial Time Series Plotting</h1>
 
-<p>As with all of R, the ability to easily chart financial time series is the result of an iterative progression driven by the collaboration of an extremely dedicated group of open source volunteers.  With the release of <a href="http://ramnathv.github.io/rCharts"><code>rCharts</code></a>, I thought it would be interesting to document the timeline of this progression.  For each step in the timeline, I will include a link to the source code (svn or github) of the package and a minimal example to demo the &ldquo;out-of-the-box&rdquo; capability.   In another iteration, I will explore more advanced usage of these functions.  Separating the financial time series piece from graphing in general can get murky, and some of the timeline will differ from the timeline of R graphics and the timeline of R time series analysis.</p>
-
 <p>For a much more extensive discussion of time series analysis with R, please see:</p>
 
 <ul>
 <li><a href="http://www.stats.uwo.ca/faculty/aim/tsar/tsar.pdf">Time Series Analysis with R</a> by A. Ian McLeod, Hao Yu, and Esam Mahdi</li>
 <li><a href="http://cran.r-project.org/web/views/TimeSeries.html">CRAN Task View: Time Series Analysis</a> by Rob Hyndman</li>
 <li><a href="http://a-little-book-of-r-for-time-series.readthedocs.org/en/latest/src/timeseries.html">A Little Book of R for Time Series</a> by Avril Chohlan</li>
+<li><a href="https://r-forge.r-project.org/scm/viewvc.php/pkg/R/getSymbols.R?root=quantmod&amp;view=log"><code>getSymbols()</code></a></li>
+<li><a href="http://ramnathv.github.io/rCharts"><code>rCharts</code></a></li>
 </ul>
-
-<p>Just in case you don&#39;t make it to the end,   </p>
-
-<blockquote>
-<p>Thanks to the contributors!  I wouldn&#39;t be using R if it weren&#39;t for you.</p>
-</blockquote>
-
-<h2>First, to build a plot, we need data. Let&#39;s see how easy it is to get a time series of financial data in R through <code>quantmod</code> <a href="https://r-forge.r-project.org/scm/viewvc.php/pkg/R/getSymbols.R?root=quantmod&amp;view=log"><code>getSymbols()</code></a>.  The <a href="https://r-forge.r-project.org/scm/viewvc.php/pkg/R/getSymbols.R?root=quantmod&amp;view=log"><code>getSymbols()</code></a> function has been a work in progress since December 20, 2006.</h2>
 
 <h4>Получаем данные</h4>
 
@@ -531,7 +523,7 @@ g1
   &ldquo;<a href="http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd%22%3E">http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd&rdquo;&gt;</a>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<title>LineChartID1a84792c22a8</title>
+<title>LineChartID9ac74e91419</title>
 <meta http-equiv="content-type" content="text/html;charset=utf-8" /></p>
 
 <style type="text/css">
@@ -550,14 +542,14 @@ body {
 <body>
  &lt;!&ndash; LineChart generated in R 3.0.2 by googleVis 0.4.7 package &ndash;&gt;</p>
 
-<!-- Sat Feb 08 15:35:40 2014 -->
+<!-- Sat Feb 08 22:50:32 2014 -->
 
 <!-- jsHeader -->
 
 <script type="text/javascript">
  
 // jsData 
-function gvisDataLineChartID1a84792c22a8 () {
+function gvisDataLineChartID9ac74e91419 () {
 var data = new google.visualization.DataTable();
 var datajson =
 [
@@ -3313,8 +3305,8 @@ return(data);
 }
  
 // jsDrawChart
-function drawChartLineChartID1a84792c22a8() {
-var data = gvisDataLineChartID1a84792c22a8();
+function drawChartLineChartID9ac74e91419() {
+var data = gvisDataLineChartID9ac74e91419();
 var options = {};
 options["allowHtml"] = true;
 options["title"] = "S&P 500 (googleVis::gvisLineChart)";
@@ -3322,7 +3314,7 @@ options["height"] =    400;
 options["width"] =    600;
 
     var chart = new google.visualization.LineChart(
-    document.getElementById('LineChartID1a84792c22a8')
+    document.getElementById('LineChartID9ac74e91419')
     );
     chart.draw(data,options);
     
@@ -3346,9 +3338,9 @@ if (newPackage)
   pkgs.push(chartid);
   
 // Add the drawChart function to the global list of callbacks
-callbacks.push(drawChartLineChartID1a84792c22a8);
+callbacks.push(drawChartLineChartID9ac74e91419);
 })();
-function displayChartLineChartID1a84792c22a8() {
+function displayChartLineChartID9ac74e91419() {
   var pkgs = window.__gvisPackages = window.__gvisPackages || [];
   var callbacks = window.__gvisCallbacks = window.__gvisCallbacks || [];
   window.clearTimeout(window.__gvisLoad);
@@ -3374,16 +3366,16 @@ callbacks.shift()();
 
 <!-- jsChart -->  
 
-<script type="text/javascript" src="https://www.google.com/jsapi?callback=displayChartLineChartID1a84792c22a8"></script>
+<script type="text/javascript" src="https://www.google.com/jsapi?callback=displayChartLineChartID9ac74e91419"></script>
  
 
 <!-- divChart -->
 
-<div id="LineChartID1a84792c22a8"
+<div id="LineChartID9ac74e91419"
   style="width: 600px; height: 400px;">
 </div>
 
-<p><div><span>Data: data &#8226; Chart ID: <a href="Chart_LineChartID1a84792c22a8.html">LineChartID1a84792c22a8</a></span><br /> </p>
+<p><div><span>Data: data &#8226; Chart ID: <a href="Chart_LineChartID9ac74e91419.html">LineChartID9ac74e91419</a></span><br /> </p>
 
 <!-- htmlFooter -->
 
