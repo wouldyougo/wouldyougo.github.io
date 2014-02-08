@@ -1,19 +1,62 @@
 ---
 title: R Financial Time Series Plotting
-subtitle: from plot.default to rCharts
-author: Timely Portfolio
-github: {user: timelyportfolio, repo: rCharts_time_series, branch: "gh-pages"}
-framework: minimal
-mode: selfcontained
-ext_widgets: {rCharts: ["libraries/morris","libraries/nvd3", "libraries/polycharts", "libraries/highcharts","libraries/xcharts", "libraries/rickshaw"]}
-hitheme: solarized_light
 ---
 
-<style>
-.rChart {
-  height: 400px
-}
-</style>
+#### install.packages
+```{r eval=FALSE}
+install.packages('latticeExtra')
+install.packages('ggplot2')
+install.packages('reshape2')
+install.packages('PerformanceAnalytics')
+install.packages('quantmod')
+#install.packages('xtsExtra')
+install.packages("xtsExtra_0.0-1.zip", repos = NULL)
+install.packages('timeSeries')
+#googleVis
+#require(RJSONIO)
+#install.packages('googleVis')
+```
+
+#### require.packages
+```{r eval=FALSE}
+require(latticeExtra)
+require(ggplot2)
+require(reshape2)
+suppressPackageStartupMessages(require(googleVis))
+require(quantmod)
+require(PerformanceAnalytics)
+require(xtsExtra)
+require(timeSeries)
+```
+
+#### options
+```{r eval=FALSE}
+#{r echo = F, message = F, cache = F}
+options(RCHART_WIDTH = 600, RCHART_HEIGHT = 400)
+knitr::opts_chunk$set(
+  comment = NA,
+  results = 'asis',
+  tidy = F,
+  error = T,
+  message = F,
+  warning = F,
+  fig.width = 8,
+  fig.height = 5,
+  fig.keep = 'last')
+```
+```{r}
+#{r echo = F, message = F, cache = F}
+knitr::opts_chunk$set(
+  results = 'asis',
+  tidy = F,
+  error = T,
+  message = F,
+  warning = F,
+  fig.width = 8,
+  fig.height = 5)
+```
+
+---
 
 # History of R Financial Time Series Plotting
 
@@ -28,33 +71,11 @@ For a much more extensive discussion of time series analysis with R, please see:
 Just in case you don't make it to the end,   
 > Thanks to the contributors!  I wouldn't be using R if it weren't for you.
 
-```{r echo = F, message = F, cache = F}
-options(RCHART_WIDTH = 600, RCHART_HEIGHT = 400)
-knitr::opts_chunk$set(
-  comment = NA,
-  results = 'asis',
-  tidy = F,
-  error = T,
-  message = F,
-  warning = F,
-  fig.width = 8,
-  fig.height = 5,
-  fig.keep = 'last')
-```
 First, to build a plot, we need data. Let's see how easy it is to get a time series of financial data in R through `quantmod` [`getSymbols()`](https://r-forge.r-project.org/scm/viewvc.php/pkg/R/getSymbols.R?root=quantmod&view=log).  The [`getSymbols()`](https://r-forge.r-project.org/scm/viewvc.php/pkg/R/getSymbols.R?root=quantmod&view=log) function has been a work in progress since December 20, 2006.
+---
 
+#### Получаем данные
 ```{r}
-require(latticeExtra)
-require(ggplot2)
-require(reshape2)
-suppressPackageStartupMessages(
-  require(googleVis)
-)
-require(PerformanceAnalytics)
-require(xtsExtra)
-require(rCharts)
-
-
 require(quantmod)
 # get S&P 500 data from FRED (St. Louis Fed)
 sp500 <- na.omit( 
@@ -65,101 +86,14 @@ sp500 <- na.omit(
     auto.assign = FALSE
   )
 )
+head(sp500)
 
 # use monthly data
 sp500.monthly <- sp500[endpoints(sp500, on ="months")]
 ```
-
 ---
-## Timeline
 
-```{r echo = FALSE, fig.width = 8, fig.height = 2.5, eval=FALSE}
-#require(devtools)
-#install_github('timeline','jbryer')
-require(timeline)
-require(plyr)
-
-rTimeline <- read.csv(
-  "https://docs.google.com/spreadsheet/pub?key=0AieeEIaS0AOsdHpPbmRaZkJtSW44M2pFQnRMaEJLcEE&single=true&gid=0&output=csv",
-  stringsAsFactors = FALSE
-)
-#seems easier to me to get in the default column order
-#expected by timeline
-#label, group, start, end
-rTimeline.clean <- rTimeline[,c(3,3,1,2)]
-
-colnames(rTimeline.clean) <- c(
-  "Release",
-  "Group",
-  "Start",
-  "End"
-)
-#really don't have groups
-#make same group or do by r.?
-rTimeline.clean[,c(2)] <- substr(rTimeline.clean[,2],1,3)
-#convert the text dates to dates
-rTimeline.clean[,c(3,4)] <- lapply(
-  rTimeline.clean[,c(3,4)],
-  FUN = as.Date,
-  format = "%m/%d/%Y"
-)
-#in the Google Doc, I have a phony date to provide a start slide
-#get rid of this last row
-rTimeline.clean <- rTimeline.clean[-nrow(rTimeline.clean),]
-#sort by release date; spreadsheet is in decreasing order
-rTimeline.clean <- rTimeline.clean[order(rTimeline.clean[,3]),]
-#another way to do it shade r.? and then add each release as event
-groupDates <- ddply(
-  rTimeline.clean,
-  .(Group),
-  function(x){return(c(x[1,3],x[nrow(x),4]))}
-)
-groupDates[,4] <- rep("Release",nrow(groupDates))
-colnames(groupDates) <- c("Release","Start","End","Group")
-#define events for the timeline
-events <- data.frame(
-  rbind(
-    c("ts","1999-08-27"),
-    c("lattice/grid","2002-04-29"),
-    c("zoo","2004-10-08"),
-    c("zoo/lattice","2006-07-06"),
-    c("PeformanceAnalytics","2007-02-02"),
-    c("ggplot2","2007-06-10"),
-    c("quantmod/TTR","2007-10-07"),
-    c("xts","2008-02-17"),
-    c("timeSeries","2009-05-17"),
-    c("googleVis","2010-11-30"),
-    c("xtsExtra","2012-05-30"),
-    c("zoo/ggplot2","2012-10-14"),
-    c("rCharts","2013-04-10")
-  ),
-  stringsAsFactors = FALSE
-)
-colnames(events) <- c("Package","Date")
-events$Date <- as.Date(events$Date)
-
-g2 <- timeline(
-  df = groupDates,
-  events = events,
-  label.col = "Release",
-  group.col ="Group",
-  start.col = "Start",
-  end.col="End",
-  event.label.col = "Package",
-  event.col = "Date",
-  event.above = FALSE,
-#  event.text.angle = 90,
-#  event.text.size = 2,
-#  event.label.method = 1
-) + labs(title = "Significant Events of R Time Series Plotting")
-g2
-```
-
-- - -
-
----
-### `plot.default` (As Old as Time Itself)
-
+#### Подготавливаем данные
 ```{r}
 # base plot of time series prior to xts
 # get the data in data.frame format rather than xts
@@ -170,6 +104,14 @@ sp500.df <- data.frame(
 )
 # name columns
 colnames( sp500.df ) <- c( "date", "sp500" )
+head(sp500.df)
+```
+---
+- - -
+---
+### `plot.default` (As Old as Time Itself)
+
+```{r}
 # go back in time to plot.default from the graphics library
 graphics::plot.default(
   x = sp500.df$date,
@@ -209,6 +151,8 @@ stats::plot.ts(
 R 1.5.0 was a very important milestone for both graphing and time series analysis with the release of `lattice` (Deepayan Sarkar) and `gri`d (Paul Murrell) and also the improvements in `ts` mentioned above., All of these are covered in [Volume 2 of R News, June 2002](http://cran.r-project.org/doc/Rnews/Rnews_2002-2.pdf).  `lattice` using `grid` as its platform began an era of aesthetically pleasing and production-quality graphics straight from R.  
 
 ```{r}
+#install.packages("lattice")
+require("lattice")
 xyplot(
   sp500 ~ date,
   data = sp500.df,
@@ -240,6 +184,8 @@ zoo::plot.zoo(
 ```{r}
 # although slightly out of chronology
 # I'll also use theEconomist from latticeExtra
+#install.packages('latticeExtra')
+require(latticeExtra)
 asTheEconomist(
   xyplot(
     sp500.monthly,
@@ -256,9 +202,11 @@ asTheEconomist(
 
 `PerformanceAnalytics` addressed many of the graphical patterns necessary for financial performance reporting.  `chart.TimeSeries()` and `chart.BarVaR()` serve as the base for functions such as the very useful `charts.PerformanceSummary()` below.  In addition to the charts, `PerformanceAnalytics` adds many useful tables and makes both easy and very complicated performance calculations accessible in R.  Most of the `PerformanceAnalytics` functions require a `xts` return series rather than price.
 
-```{r eval=FALSE}
-# 2007-02-02 chart.TimeSeries in PerformanceAnalytics
-#install.packages("PerformanceAnalytics")
+#### 2007-02-02 chart.TimeSeries in PerformanceAnalytics
+```{r warning=FALSE}
+#install.packages('PerformanceAnalytics')
+require(PerformanceAnalytics)
+# "S&P 500 (PerformanceAnalytice::charts.PerformanceSummary)"
 charts.PerformanceSummary(
   ROC(sp500.monthly, n = 1, type = "discrete"),
   main = "S&P 500 (PerformanceAnalytice::charts.PerformanceSummary)"
@@ -274,6 +222,8 @@ Hadley Wickham's 2005 original `ggplot` was significant, but the [2007 rewrite i
 ```{r}
 #ggplot2 requires conversion of xts to data.frame
 #we will use the data.frame from the plot.default example
+#install.packages('ggplot2')
+require(ggplot2)
 ggplot( sp500.df, aes(date) ) + 
   geom_line( aes( y = sp500 ) ) +
   labs( title = "S&P 500 (ggplot2::ggplot)")
@@ -286,7 +236,8 @@ ggplot( sp500.df, aes(date) ) +
 `quantmod` and `TTR` were designed to give R technical analysis tools and calculations.  The `chartSeries()` function makes OHLC, candlesticks, and bars charts of prices easy.  Adding technical analysis, such as Bollinger Bands, RSI, MACD, becomes a couple letter function.
 
 
-```{r}
+```{r warning=FALSE}
+require(quantmod)
 chartSeries(
   sp500.monthly,
   theme = chartTheme("white"),
@@ -296,7 +247,7 @@ chartSeries(
 
 Just look how easy it is to zoom.
 
-```{r}
+```{r warning=FALSE}
 # also easy zooming
 zoomChart("1990::")
 ```
@@ -307,7 +258,7 @@ zoomChart("1990::")
 ### [`xts` `plot.xts`](https://r-forge.r-project.org/scm/viewvc.php/pkg/xts/R/plot.R?root=xts&view=log) 2008-02-17
 In 2008, despite the various time series options in R, the world of finance demanded more and Jeff Ryan and Joshua Ulrich responded with `xts`.  I strongly recommend reading the [`xts` vignette](http://cran.r-project.org/web/packages/xts/vignettes/xts.pdf) to understand the benefits of `xts`.  It is now the standard for financial time series in R.  `xts` ported `plot.zoo()` to its own `plot()` method.  A `xyplot.xts()` was also provided for use with `lattice`.
 
-```{r}
+```{r warning=FALSE}
 # 2008-02-17 xts improved zoo and other time series libraries
 # http://cran.r-project.org/web/packages/xts/vignettes/xts.pdf
 # plot.zoo got ported to plot.xts and little graphing improvement
@@ -339,7 +290,8 @@ timeSeries::plot(
 ### [`googleVis`](http://cran.r-project.org/src/contrib/Archive/googleVis/) 2010-11-30 and [source](https://code.google.com/p/google-motion-charts-with-r/)
 `googleVis` adds accessible interactivity to charts using [Google Charts](https://developers.google.com/chart/interactive/docs/index).  There are a variety of chart types along with very nice animation/storyboard options.
 
-```{r}
+```{r comment = NA, results = 'asis'}
+suppressPackageStartupMessages(require(googleVis))
 g1 <- gvisLineChart(
   data = sp500.df,
   xvar = "date",
@@ -350,7 +302,9 @@ g1 <- gvisLineChart(
     width = 600
   )
 )
-plot(g1)
+#plot googleVis gvisLineChart
+#plot(g1)
+g1
 ```
 
 - - -
@@ -359,14 +313,17 @@ plot(g1)
 ### [xtsExtra plot.xts and barplot.xts](https://r-forge.r-project.org/scm/viewvc.php/pkg/xtsExtra/R/plot.R?root=xts&view=log) 2012-05-30
 
 The Summer 2012 Google Summer of Code project `xtsExtra` by Michael Weylandt sought to improve the `xts` plotting methods as described well in [Michael's announcement to R-Sig-Finance](https://stat.ethz.ch/pipermail/r-sig-finance/2012q3/010652.html).
+[lots of examples in this post](http://timelyportfolio.blogspot.com/search/label/plot.xts).
 
-```{r eval=FALSE}
-# lots of examples in this post
-# http://timelyportfolio.blogspot.com/search/label/plot.xts
-
+```{r warning=FALSE}
+#install.packages('xtsExtra')
+#install.packages('xtsExtra', source = "http://r-forge.r-project.org")
+#Warning in install.packages :
+#  package ‘xtsExtra’ is not available (for R version 3.0.2)
+#install.packages("xtsExtra_0.0-1.zip", repos = NULL)
+require(xtsExtra)
 #explore barplot.xts to do a chart of annual returns for both indexes
 #merge prices
-
 russell2000 <- getSymbols("^RUT", from = "1900-01-01", auto.assign = F)  
 prices <- merge(sp500,russell2000[,4])
 #use endpoints to get annual returns
@@ -412,113 +369,6 @@ autoplot.zoo(sp500.monthly) +
   ggtitle("S&P 500 (zoo::autoplot.zoo)")
 ```
 
-- - -
-
----
-### [`rCharts`](http://rcharts.github.io/site) 2013
-Although beautiful charts were possible with all the methods above in R, good interactivity was still missing.  `rCharts` released in 2013 by Ramnath Vaidyanathan makes interactive charts straight from R with built-in functionality from frameworks built on top of [`d3.js`](http://d3js.org), [`raphael`](http://raphaeljs.com), and other leading javascript libraries.  This interactivity offers a whole new level of discovery and exploration previously not available with static graphics.  See the examples below.  The examples are only minimal examples to demonstrate how much can be done in a few lines of code.  For more thorough demos, check out the [gallery](http://rcharts.github.io/site/gallery.html).
-
-```{r}
-# 2013 the world changes with rCharts
-
-# define a function to convert xts wide to long data.frame
-xtsMelt <- function(xtsData,metric){
-  df <- data.frame(index(xtsData),coredata(xtsData),stringsAsFactors=FALSE)
-  df.melt <- melt(df,id.vars=1)
-  df.melt <- data.frame(df.melt,rep(metric,NROW(df.melt)))
-  #little unnecessary housekeeping
-  df.melt <- df.melt[,c(1,2,4,3)]
-  colnames(df.melt) <- c("date","indexname","metric","value")
-  df.melt$date <- as.Date(df.melt$date)
-  #javascript works better when there are no .
-  #remove troublesome . using modified method from Stack Overflow
-  i <- sapply(df.melt, is.factor)
-  df.melt[i] <- lapply(df.melt[i], gsub, pattern="\\.", replacement="")
-  
-  return(df.melt)
-}
-
-sp500.melt <- xtsMelt(
-  sp500.monthly,
-  metric = "price"
-)
-
-n1 <- nPlot(
-  value~date,
-  data = sp500.melt,
-  group = "indexname",  # even though only one series need to specify group
-  type = "lineWithFocusChart"
-)
-
-n1$xAxis(
-  tickFormat=
-    "#!function(d) {return d3.time.format('%b %Y')(new Date( d ));}!#"
-)
-
-n1$x2Axis(
-  tickFormat=
-    "#!function(d) {return d3.time.format('%Y')(new Date( d ));}!#"
-)
-n1$print("chart1")
-```
-<br/><h4>morris.js example</h4>
-```{r}
-sp500.df$date <- format(sp500.df$date, "%Y-%m-%d")
-m1 <- mPlot(
-  sp500 ~ date,
-  data = sp500.df,
-  type = "Line"
-)
-m1$set( pointSize = 0 )
-m1$set( hideHover = "auto" )
-m1$print("chart2")
-```
-
-<br/><h4>rickshaw example</h4>
-```{r}
-#get date in format that rickshaw likes
-sp500.df$date <- as.double(as.POSIXct(as.Date(sp500.df$date),origin="1970-01-01"))
-r1 <- Rickshaw$new()
-r1$layer(
-  sp500 ~ date,
-  data = sp500.df,
-  type = "line"
-)
-r1$set( 
-  slider = TRUE
-)
-r1$print("chart3")
-```
-
-<br/><h4>highcharts example</h4>
-```{r}
-#get in UTC format that works best with Highcharts
-sp500.df$date <- as.numeric(
-  as.POSIXct(sp500.df$date, origin="1970-01-01")
-) * 1000
-
-h1 <- hPlot(
-  sp500 ~ date,
-  data = sp500.df,
-  type = "line"
-)
-
-h1$xAxis(type = "datetime")
-h1$chart(zoomType = "x")
-
-h1$plotOptions(
-  line = list(
-    marker = list(enabled = F)
-  )
-)
-
-h1$print("chart5")
-```
-
-
-- - -
-
----
 ## Thanks
 Thanks to all the wonderful and diligent contributors who have made R great.
 
