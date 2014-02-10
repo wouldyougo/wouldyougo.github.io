@@ -53,34 +53,12 @@ p1$print('chart5', include_assets = T, cdn = T)
 p1$layer(data = league_data, type = 'line', 
         color = list(const = 'blue'), copy_layer = T, tooltip = NULL)
 p1$print('chart6', include_assets = T, cdn = T)
+
+myteam = "Boston Red Sox"
+p1$layer(data = team_data[team_data$name == myteam,], color = list(const = 'red'), copy_layer = T)
+p1$print('chart7')
 ```
 
-
-
-### xCharts
-```{r comment = NA, results = 'asis', message = F}
-#require(rCharts)
-require(reshape2)
-uspexp <- melt(USPersonalExpenditure)
-names(uspexp)[1:2] = c("category", "year")
-x1 <- xPlot(value ~ year, group = "category", data = uspexp, type = "line-dotted")
-x1$print("chart7", include_assets = T, cdn = T)
-#x2 <- xPlot(value ~ year, group = "category", data = uspexp, type = "line")
-#x2$print("chart7", include_assets = T, cdn = T)
-```
-
-### HighCharts
-```{r comment = NA, results = 'asis', message = F}
-h1 <- hPlot(x = "Wr.Hnd", y = "NW.Hnd", data = MASS::survey, 
-            type = c("line", "bubble", "scatter"), 
-            group = "Clap", size = "Age")
-h1$print("chart8", include_assets = T, cdn = T)
-
-h2 <- hPlot(x = "Wr.Hnd", y = "NW.Hnd", data = MASS::survey, 
-            type = c("line", "line", "line"), 
-            group = "Clap")
-h2$print("chart9", include_assets = T, cdn = T)
-```
 
 
 

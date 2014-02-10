@@ -143,9 +143,11 @@
 * [Example 3](R Samples/Markdown Example.html). Markdown Example
 * [Example 4](R Samples/DateTime POSIXct Example.html). DateTime POSIXct Example
 * [Example 5](R Samples/rCharts JS assets Example.html). rCharts JS assets Example
-* [Example 6](R Samples/rCharts Example.html). rCharts Example
+* [Example 6](R Samples/rCharts PolyChartsJS Example.html). rCharts PolyChartsJS Example
 * [Example 7](R Samples/Google Vis gvisMotionChart Example.html). Google Vis gvisMotionChart Example
 * [Example 8](R Samples/History of R Time Series Plotting.html). History of R Time Series Plotting
 * [Example 9](R Samples/rCharts R Time Series Plotting.html). rCharts R Time Series Plotting
+* [Example 10](R Samples/rCharts Rickshaw Example.html). rCharts Rickshaw Example
+
 
 

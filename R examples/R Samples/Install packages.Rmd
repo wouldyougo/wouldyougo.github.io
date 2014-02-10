@@ -59,3 +59,20 @@ suppressPackageStartupMessages(
   require(googleVis)
 )
 ```
+
+### Пример
+### Install rHighcharts
+```{r eval=FALSE}
+library(devtools)
+install_github("rHighcharts", "metagraf")
+require(rHighcharts)
+```
+
+### Пример
+### Install shiny
+```{r eval=FALSE}
+install.packages("shiny")
+require(shiny)
+```
+
+

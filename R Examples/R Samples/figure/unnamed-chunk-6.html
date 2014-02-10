@@ -1,0 +1,169 @@
+<!doctype HTML>
+<html>
+  <head>
+    <link rel='stylesheet' href='http://cdn.strategiqcommerce.com/ajax/libs/rickshaw/1.2.1/rickshaw.min.css'>
+    <link rel='stylesheet' href='http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css'>
+    
+    <script src='http://d3js.org/d3.v2.min.js' type='text/javascript'></script>
+    <script src='http://cdn.strategiqcommerce.com/ajax/libs/rickshaw/1.2.1/rickshaw.min.js' type='text/javascript'></script>
+    <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js' type='text/javascript'></script>
+    <script src='https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.15/jquery-ui.min.js' type='text/javascript'></script>
+    
+    <style>
+    .chart_container {
+        position: relative;
+        display: inline-block;
+        font-family: Arial, Helvetica, sans-serif;
+    }
+    .rChart {
+        display: inline-block;
+        margin-left: 40px;
+    }
+   .yAxis {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        width: 40px;
+   }
+   .legend {
+        position: absolute;
+        top: 0;
+        right: -160px;
+        vertical-align: top;
+    }
+    .slider {
+      margin-left: 40px;
+      margin-top: 12px;
+    }
+    </style>
+    
+  </head>
+  <body>
+    <div class='chart_container'>
+      <div id='yAxischart4e1038b23501' class='yAxis'></div>
+      <div id='chart4e1038b23501' class='rChart rickshaw'></div>
+      <div id='xAxischart4e1038b23501' class='xAxis'></div>
+      <div id='legendchart4e1038b23501' class='legend'></div>
+      <div id='sliderchart4e1038b23501' class='slider'></div>
+    </div>
+    
+    <script type='text/javascript'> 
+  var palette = new Rickshaw.Color.Palette({ scheme: "colorwheel" });
+  var chartParams = {
+ "dom": "chart4e1038b23501",
+"width":            540,
+"height":            240,
+"scheme": "colorwheel",
+"colors": "steelblue",
+"series": [
+ {
+ "data": [
+ {
+ "x":    -1893465000,
+"y":       92228531 
+},
+{
+ "x":    -1577934000,
+"y":      106021568 
+},
+{
+ "x":    -1262311200,
+"y":      123202660 
+},
+{
+ "x":     -946782000,
+"y":      132165129 
+},
+{
+ "x":     -631162800,
+"y":      151325798 
+},
+{
+ "x":     -315630000,
+"y":      179323175 
+},
+{
+ "x":         -10800,
+"y":      203211926 
+},
+{
+ "x":      315522000,
+"y":      226545805 
+},
+{
+ "x":      631141200,
+"y":      248709873 
+},
+{
+ "x":      946674000,
+"y":      281421906 
+},
+{
+ "x":     1262293200,
+"y":      308745538 
+} 
+],
+"name": "y",
+"info": {
+ "-1893465000": [
+    -1893465000 
+],
+"-1577934000": [
+    -1577934000 
+],
+"-1262311200": [
+    -1262311200 
+],
+"-946782000": [
+     -946782000 
+],
+"-631162800": [
+     -631162800 
+],
+"-315630000": [
+     -315630000 
+],
+"-10800": [
+         -10800 
+],
+"315522000": [
+      315522000 
+],
+"631141200": [
+      631141200 
+],
+"946674000": [
+      946674000 
+],
+"1262293200": [
+     1262293200 
+] 
+},
+"color": "steelblue" 
+} 
+],
+"renderer": "area",
+"id": "chart4e1038b23501" 
+}
+  chartParams.element = document.querySelector('#chart4e1038b23501')
+  
+  var graphchart4e1038b23501 = new Rickshaw.Graph(chartParams);
+  
+  graphchart4e1038b23501.render();
+  
+  var xAxischart4e1038b23501 = new Rickshaw.Graph.Axis.Time({
+ "graph":  graphchart4e1038b23501  
+})
+
+
+
+
+
+
+  
+  graphchart4e1038b23501.render();
+  
+</script> 
+    
+  </body>
+</html>
