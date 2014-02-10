@@ -1,0 +1,77 @@
+### rCharts Example
+
+### Polychart rPlot
+```{r comment = NA, results = 'asis', message = F}
+require(rCharts)
+## Example 1 Facetted Scatterplot
+names(iris) = gsub("\\.", "", names(iris))
+r1 <- rPlot(SepalLength ~ SepalWidth | Species, data = iris, color = 'Species', type = 'point')
+r1$print('chart1', include_assets = T, cdn = T)
+
+## Example 2 Facetted Barplot
+hair_eye = as.data.frame(HairEyeColor)
+r2 <- rPlot(Freq ~ Hair | Eye, color = 'Eye', data = hair_eye, type = 'bar')
+r2$print('chart2', include_assets = T, cdn = T)
+```
+
+```{r comment = NA, results = 'asis', message = F}
+#require(rCharts)
+#<style>.rChart{width: 600px; height: 400px;}</style>
+options(RCHART_WIDTH = 600, RCHART_HEIGHT = 400)
+r3 <- rPlot(mpg ~ wt | am + vs, data = mtcars, type = 'point')
+r3$print('chart3', include_assets = T, cdn = T)
+
+r4 <- rPlot(mpg ~ wt | am + vs, data = mtcars, type = "point", color = "gear")
+r4$print('chart4', include_assets = T, cdn = T)
+```
+
+### MorrisJS
+```{r comment = NA, results = 'asis', message = F}
+#require(rCharts)
+data(economics, package = "ggplot2")
+econ <- transform(economics, date = as.character(date))
+m1 <- mPlot(x = "date", y = c("psavert", "uempmed"), type = "Line", data = econ)
+m1$set(pointSize = 0, lineWidth = 1)
+m1$print("chart5", include_assets = T, cdn = T)
+```
+
+### xCharts
+```{r comment = NA, results = 'asis', message = F}
+#require(rCharts)
+require(reshape2)
+uspexp <- melt(USPersonalExpenditure)
+names(uspexp)[1:2] = c("category", "year")
+x1 <- xPlot(value ~ year, group = "category", data = uspexp, type = "line-dotted")
+x1$print("chart6", include_assets = T, cdn = T)
+#x2 <- xPlot(value ~ year, group = "category", data = uspexp, type = "line")
+#x2$print("chart7", include_assets = T, cdn = T)
+```
+
+### Rickshaw
+```{r comment = NA, results = 'asis', message = F, eval=FALSE}
+usp = reshape2::melt(USPersonalExpenditure)
+# get the decades into a date Rickshaw likes
+usp$Var2 <- as.numeric(as.POSIXct(paste0(usp$Var2, "-01-01")))
+p4 <- Rickshaw$new()
+p4$layer(value ~ Var2, group = "Var1", data = usp, type = "area", width = 560)
+# add a helpful slider this easily; other features TRUE as a default
+p4$set(slider = TRUE)
+p4$print("chart7", include_assets = T, cdn = T)
+```
+
+### HighCharts
+```{r comment = NA, results = 'asis', message = F}
+h1 <- hPlot(x = "Wr.Hnd", y = "NW.Hnd", data = MASS::survey, 
+            type = c("line", "bubble", "scatter"), 
+            group = "Clap", size = "Age")
+h1$print("chart8", include_assets = T, cdn = T)
+
+h2 <- hPlot(x = "Wr.Hnd", y = "NW.Hnd", data = MASS::survey, 
+            type = c("line", "line", "line"), 
+            group = "Clap")
+h2$print("chart9", include_assets = T, cdn = T)
+```
+
+
+
+
