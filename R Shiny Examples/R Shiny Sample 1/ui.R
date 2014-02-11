@@ -1,19 +1,22 @@
-## ui.R
-require(rCharts)
+library(shiny)
+
+# Define UI for application that plots random distributions 
 shinyUI(pageWithSidebar(
-  headerPanel("rCharts: Interactive Charts from R using polychart.js"),
   
+  # Application title
+  headerPanel("Hello Shiny!"),
+  
+  # Sidebar with a slider input for number of observations
   sidebarPanel(
-    selectInput(inputId = "x",
-                label = "Choose X",
-                choices = c('SepalLength', 'SepalWidth', 'PetalLength', 'PetalWidth'),
-                selected = "SepalLength"),
-    selectInput(inputId = "y",
-                label = "Choose Y",
-                choices = c('SepalLength', 'SepalWidth', 'PetalLength', 'PetalWidth'),
-                selected = "SepalWidth")
+    sliderInput("obs", 
+                "Number of observations:", 
+                min = 1,
+                max = 1000, 
+                value = 500)
   ),
+  
+  # Show a plot of the generated distribution
   mainPanel(
-    showOutput("myChart", "polycharts")
+    plotOutput("distPlot")
   )
 ))

@@ -1,61 +1,25 @@
+library(shiny)
+
+# Define UI for dataset viewer application
 shinyUI(pageWithSidebar(
-  headerPanel("Stocks"),
   
+  # Application title
+  headerPanel("Shiny Text"),
+  
+  # Sidebar with controls to select a dataset and specify the number
+  # of observations to view
   sidebarPanel(
-    wellPanel(
-      p(strong("Stocks")),
-      checkboxInput(inputId = "stock_aapl", label = "Apple (AAPL)",     value = TRUE),
-      checkboxInput(inputId = "stock_msft", label = "Microsoft (MSFT)", value = FALSE),
-      checkboxInput(inputId = "stock_ibm",  label = "IBM (IBM)",        value = FALSE),
-      checkboxInput(inputId = "stock_goog", label = "Google (GOOG)",    value = TRUE),
-      checkboxInput(inputId = "stock_yhoo", label = "Yahoo (YHOO)",     value = FALSE)
-    ),
+    selectInput("dataset", "Choose a dataset:", 
+                choices = c("rock", "pressure", "cars")),
     
-    selectInput(inputId = "chart_type",
-                label = "Chart type",
-                choices = c("Candlestick" = "candlesticks",
-                            "Matchstick" = "matchsticks",
-                            "Bar" = "bars",
-                            "Line" = "line")
-    ),
-    
-    wellPanel(
-      p(strong("Date range (back from present)")),
-      sliderInput(inputId = "time_num",
-                  label = "Time number",
-                  min = 1, max = 24, step = 1, value = 6),
-      
-      selectInput(inputId = "time_unit",
-                  label = "Time unit",
-                  choices = c("Days" = "days",
-                              "Weeks" = "weeks",
-                              "Months" = "months",
-                              "Years" = "years"),
-                  selected = "Months")
-    ),
-    
-    checkboxInput(inputId = "log_y", label = "log y axis", value = FALSE)
+    numericInput("obs", "Number of observations to view:", 10)
   ),
   
+  # Show a summary of the dataset and an HTML table with the requested
+  # number of observations
   mainPanel(
-    conditionalPanel(condition = "input.stock_aapl",
-                     br(),
-                     div(plotOutput(outputId = "plot_aapl"))),
+    verbatimTextOutput("summary"),
     
-    conditionalPanel(condition = "input.stock_msft",
-                     br(),
-                     div(plotOutput(outputId = "plot_msft"))),
-    
-    conditionalPanel(condition = "input.stock_ibm",
-                     br(),
-                     div(plotOutput(outputId = "plot_ibm"))),
-    
-    conditionalPanel(condition = "input.stock_goog",
-                     br(),
-                     div(plotOutput(outputId = "plot_goog"))),
-    
-    conditionalPanel(condition = "input.stock_yhoo",
-                     br(),
-                     plotOutput(outputId = "plot_yhoo"))
+    tableOutput("view")
   )
 ))
