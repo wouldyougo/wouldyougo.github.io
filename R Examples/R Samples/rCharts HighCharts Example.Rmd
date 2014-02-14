@@ -1,0 +1,13 @@
+### HighCharts
+```{r comment = NA, results = 'asis', message = F}
+require(rCharts)
+h1 <- hPlot(x = "Wr.Hnd", y = "NW.Hnd", data = MASS::survey, 
+            type = c("line", "bubble", "scatter"), 
+            group = "Clap", size = "Age")
+h1$print("chart8", include_assets = T, cdn = T)
+
+h2 <- hPlot(x = "Wr.Hnd", y = "NW.Hnd", data = MASS::survey, 
+            type = c("line", "line", "line"), 
+            group = "Clap")
+h2$print("chart9", include_assets = T, cdn = T)
+```

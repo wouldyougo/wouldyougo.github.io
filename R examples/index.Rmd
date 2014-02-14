@@ -148,6 +148,11 @@
 * [Example 8](R Samples/History of R Time Series Plotting.html). History of R Time Series Plotting
 * [Example 9](R Samples/rCharts R Time Series Plotting.html). rCharts R Time Series Plotting
 * [Example 10](R Samples/rCharts Rickshaw Example.html). rCharts Rickshaw Example
+* [Example 11](R Samples/rCharts MorrisJS Example.html). rCharts MorrisJS Example
+* [Example 12](R Samples/rCharts xCharts Example.html). rCharts xCharts Example
+* [Example 13](R Samples/rCharts HighCharts Example.html). rCharts HighCharts Example
+
+
 
 
 
